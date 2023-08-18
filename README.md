@@ -8,7 +8,7 @@
 2023.08.18 ~ 2023.09.22
 
 ## 개발인원
-1명 
+이학근
 ## 개발환경
 - OS : Window
 - FrameWork : Spring, Spring Security, MyBatis
