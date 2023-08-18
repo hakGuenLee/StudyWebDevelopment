@@ -11,8 +11,8 @@
 이학근
 ### 개발환경
 - OS : Window
-- FrameWork : Spring, Spring Security, MyBatis
-- Tool : sts 4.19.0, BootStrap 5
+- FrameWork : Spring Framework, Spring Security, MyBatis
+- Tool : sts 3.9.18.RELEASE, BootStrap 5
 - Language : Java, Javascript, Jquery, JSP
 - DBMS : MySQL
 - Build : Maven
