@@ -1,0 +1,51 @@
+
+
+section{
+	margin:auto;
+	margin-top:120px;
+/* 	border:1px solid black; */
+	height:1000px;
+}
+
+/* 약관동의 및 설명문 가운데 정렬 */
+section h4{
+	text-align:center;
+}
+
+section >p{
+	text-align:center;
+	color:gray;
+}
+
+.container{
+/* 	border:1px solid black; */
+	margin:auto;
+ 	text-align:center; 
+}
+
+.agreementText{
+	display:inline-block;
+	margin-top : 50px;
+	width:50%;
+}
+
+.textBox{
+	border:1px solid #A9A9A9;
+	outline-color:orange;
+
+}
+
+
+input{
+	margin-left:50px;
+}
+
+#btnBox{
+	width:500px;
+	height:100px;
+	padding-top:30px;
+	text-align:center;
+	margin: auto;
+}
+
+

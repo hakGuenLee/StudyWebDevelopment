@@ -17,8 +17,6 @@
 				<img src="<c:url value="/img/mainimg.jpg"/>">
 			</div>
 		</div>
-
-	
 	</section>
 
 </body>

@@ -41,7 +41,7 @@
 						</ul>				
 					</li>
 					<li><a>Login</a></li>
-					<li><a href="<c:url value="/usermenu/userRegister"/>">join</a></li>
+					<li><a href="<c:url value="/usermenu/acceptRule"/>">join</a></li>
 					
 				</ul>
 			</div>

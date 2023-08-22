@@ -16,10 +16,17 @@ public class UserRegisterController {
 	private UserRegisterService userRegisterService;
 
 	//약관동의 페이지 이동
-	@GetMapping("/userRegister")
+	@GetMapping("/acceptRule")
 	public String userRegister() {
 	
 		return "usermenu/acceptRule";
+	}
+	
+	//회원가입 정보 입력 페이지 이동
+	@GetMapping("/registerInfo")
+	public String registerPage() {
+		
+		return "usermenu/userRegister";
 	}
 	
 	
