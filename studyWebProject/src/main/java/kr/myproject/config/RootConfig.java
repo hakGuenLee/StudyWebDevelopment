@@ -49,7 +49,7 @@ public class RootConfig {
 		SqlSessionFactoryBean sfb = new SqlSessionFactoryBean();
 		sfb.setDataSource(hkSource());
 		sfb.setConfigLocation(ac.getResource("classpath:/config.xml"));
-		sfb.setMapperLocations(ac.getResources("classpath:/mapper/*.xml"));
+		/* sfb.setMapperLocations(ac.getResources("classpath:/mapper/*.xml")); */
 		return (SqlSessionFactory)sfb.getObject();
 	}
 	
