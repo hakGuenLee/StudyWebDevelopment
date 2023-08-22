@@ -14,10 +14,12 @@ a{
 
 /* Header CSS */
 
+
 #menu{
 	display:flex;
 	justify-content:space-between;
 	margin-top:30px;
+
 }
 
  #menu ul{
@@ -25,7 +27,7 @@ a{
 } 
 
 #logo{
-	margin-left:15px;
+	margin-left:30px;
 }
 
 #logo a{
@@ -36,15 +38,29 @@ a{
 #guidemenu ul > li{
 	float: left;
 	width : 120px;
-	font-size:20px;
-	font-weight:bold;
+ 	font-size:20px;
+	font-weight:bold; 
 	text-align:center;
 	margin-left:35px;
+
+}
+
+
+#guidemenu ul > li li{
+	font-size:15px;
+	font-weight:normal;
+	margin-top:10px;
+	float: right;
 }
 
 #usermenu ul > li{
 	float: left;
 	width : 90px;
+	margin-left:35px;
+}
+
+#usermenu ul > li li{
+	float: right;
 }
 
 /* #menu ul > li{
@@ -55,6 +71,15 @@ a{
 
 #menu ul li > ul{
 	display:none;
+}
+
+#menu ul li:hover{
+	cursor:pointer;
+}
+
+#menu ul li:hover ul{
+	cursor:pointer;
+	display:block;
 }
 
 
