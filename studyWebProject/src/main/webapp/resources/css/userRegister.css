@@ -13,6 +13,18 @@ section h4{
 	text-align:center; 
 }
 
-#idInput{
-	width:400;
+#idArea{
+
+	text-align:center;
+	justify-content:center;
+}
+
+.idInput{
+	margin-left:30px;
+	margin-right:30px;
+}
+
+.passwordArea{
+	text-align:center;
+	justify-content:center;
 }
