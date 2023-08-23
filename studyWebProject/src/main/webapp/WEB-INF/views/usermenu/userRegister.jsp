@@ -60,6 +60,9 @@
 
 				<button type="button" id="mailConfirmBtn" class="btn btn-secondary">이메일 인증</button>	
 			</div>		
+			<!-- 이메일 인증코드 확인 -->
+			<div class="infoBox mt-3 p-3 row" id="confirmEmail">
+			</div>
 			
 			
 			
@@ -152,23 +155,55 @@ $("#pwConfirmBtn").on("click", function(){
 //이메일 인증 진행
 $("#mailConfirmBtn").on("click", function(){
 	let email = $("#mailInput").val();
+	console.log("하하!");
 	
 	$.ajax({
 		url : "/study/usermenu/emailCheck",
 		type : "post",
-		data : {"mail", email},
-		success : function(data){
-			alert("data")
+		data : {"mail": email},
+		success : function(emailCode){
+			
+			if(emailCode != "fail"){
+				
+				serverUUID = emailCode;
+				console.log(emailCode)
+				
+				$("#confirmEmail")
+				.html(
+						'<div class="col-md-8">'
+								+ '<input class="form-control w-25 mb-2" type="text" id="confirmUUID">'
+								+ ' </div>'
+								+ ' <div class="col-md-4">'
+								+ ' <span class="btn btn-outline-secondary" onclick="emailConfirm()">인증코드확인</span>'
+								+ '</div>');
+			}else{
+			alert("이메일을 다시 확인하세요!")
+			$("#mailInput").select();
+			}
 		},
 		error:function(request, status, error){
 			alert("error code : " + request.status + "\n" + "message:" + request.responseText+"\n"+"error:"+error);
 			console.log("실패!")
 		} 
 		
-	})
-
-	
+	})	
 })
+
+//이메일 인증번호 확인 절차
+function emailConfirm(){
+	let confirmValue = $("#confirmUUID").val();
+	
+	if(confirmValue == null || confirmValue == ""){
+		alert("인증코드를 확인하세요!");
+		$("#confirmUUID").select();
+	}else if(serverUUID == confirmValue){
+		alert("인증에 성공하였습니다!")
+	}else{
+		alert("인증 번호를 확인하세요!")
+		$("#confirmUUID").select();
+		return;
+	}
+}
 
 
 </script>

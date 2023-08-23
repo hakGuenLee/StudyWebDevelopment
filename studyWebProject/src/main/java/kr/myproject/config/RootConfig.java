@@ -19,7 +19,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @MapperScan(basePackages="kr.myproject.mapper")
 @PropertySource({"classpath:/db.properties"})
-@ComponentScan(basePackages= {"kr.myproject.service"})
+@ComponentScan(basePackages= {"kr.myproject.service", "kr.myproject.handler"})
 public class RootConfig {
 	
 	

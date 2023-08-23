@@ -1,8 +1,11 @@
 package kr.myproject.service.usermenu;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
+import kr.myproject.handler.MailSendHandler;
 import kr.myproject.mapper.usermenu.UserRegisterMapper;
 
 @Service
@@ -10,6 +13,10 @@ public class UserRegisterServiceImpl implements UserRegisterService {
 	
 	@Autowired
 	private UserRegisterMapper userRegisterMapper;
+
+	@Autowired
+	private MailSendHandler mailHandler;
+	
 
 	//회원 가입 시 아이디 중복 체크
 	@Override
@@ -23,6 +30,14 @@ public class UserRegisterServiceImpl implements UserRegisterService {
 	public String checkNickName(String nickName) {
 		
 		return userRegisterMapper.selectNickName(nickName);
+	}
+
+	//회원 가입 시 이메일 인증 처리
+	@Override
+	public String emailCheck(String email) {
+	
+		return mailHandler.sendEmailCode(email);
+	
 	}
 
 }

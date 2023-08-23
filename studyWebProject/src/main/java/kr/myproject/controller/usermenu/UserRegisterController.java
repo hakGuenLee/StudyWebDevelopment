@@ -1,6 +1,7 @@
 package kr.myproject.controller.usermenu;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,8 @@ public class UserRegisterController {
 	
 	@Autowired
 	private UserRegisterService userRegisterService;
+	
+
 
 	//약관동의 페이지 이동
 	@GetMapping("/acceptRule")
@@ -38,11 +41,7 @@ public class UserRegisterController {
 	@ResponseBody
 	public String idCheck(@RequestParam("id") String id) {
 		
-		System.out.println("넘어온 아이디값 : " + id);
-		
 		String checkId = userRegisterService.checkId(id);
-		
-		System.out.println("확인 된 아이디 : " + checkId);
 		
 		if(checkId == null) {
 			String okayMsg = "사용 가능한 아이디입니다!";
@@ -59,20 +58,28 @@ public class UserRegisterController {
 	@ResponseBody
 	public String nickNameCheck(@RequestParam("nickName") String nickName) {
 		
-		System.out.println("넘어온 닉네임 : " + nickName);
-		
 		String checkNickName = userRegisterService.checkNickName(nickName);
-		
-		System.out.println("확인 된 닉네임 : " + checkNickName);
-		
+				
 		if(checkNickName == null) {
 			String okayMsg = "사용 가능한 닉네임입니다!";
 			return okayMsg;
-		}
-		
+		}		
 		String rejectMsg = "중복된 닉네임입니다!";
 		
 		return rejectMsg;
 	}
+	
+	//이메일 인증 진행
+	//문자열 리턴하기 전 UTF-8 인코딩 처리
+	@PostMapping(value = "/emailCheck", produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String userEmailCheck(@RequestParam("mail") String email) {
+		
+		String emailCode = userRegisterService.emailCheck(email);
+		
+		return emailCode;
+		
+	}
+	
 	
 }
