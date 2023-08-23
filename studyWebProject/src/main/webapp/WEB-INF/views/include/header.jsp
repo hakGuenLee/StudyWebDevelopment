@@ -43,7 +43,12 @@
 							<li class="submenu"><a>1:1문의하기</a></li>
 						</ul>				
 					</li>
+					<c:if test="${sessionScope.userDTO == null}">
 					<li><a href="<c:url value="/usermenu/loginPage"/>">Login</a></li>
+					</c:if>
+					<c:if test="${sessionScope.userDTO != null}">
+					<li><a href="<c:url value="/usermenu/userLogOut"/>">Logout</a></li>
+					</c:if>
 					<li><a href="<c:url value="/usermenu/acceptRule"/>">join</a></li>
 					
 				</ul>

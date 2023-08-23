@@ -29,10 +29,10 @@
 	
 	<p id="askMsg" class="mt-5">계정이 생각나지 않으시나요?</p>
 			<div class="d-flex justify-content-center">
-				<a id="searchId" type="button" class="btn">아이디찾기</a>
+				<a id="searchId" type="button" class="btn">아이디 찾기</a>
 			</div>
 			<div class="d-flex justify-content-center mt-3">
-				<a id="searchPw" type="button" class="btn">비밀번호 찾기</a>
+				<a id="searchPw" type="button" class="btn">비밀번호 변경하기</a>
 			</div>
 			
 			

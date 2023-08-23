@@ -1,16 +1,15 @@
 package kr.myproject.controller.usermenu;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.myproject.domain.UserDTO;
 import kr.myproject.service.usermenu.UserLoginService;
 
 @Controller
@@ -20,8 +19,7 @@ public class UserLoginController {
 	@Autowired
 	private UserLoginService userLoginService;
 	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+
 
 	//로그인 페이지 이동하기
 	@GetMapping("/loginPage")
@@ -30,29 +28,37 @@ public class UserLoginController {
 		return "usermenu/userLogin";
 	}
 	
+	//로그인
 	@PostMapping("/userLogin")
-	public String userLogin(String id, String pw, Model model, HttpSession session) {
+	public String userLogin(HttpServletRequest request, HttpSession session, Model model) {
 		
-		System.out.println("뷰에서 넘어온 아이디 : " + id);
-		System.out.println("뷰에서 넘어온 비밀번호 : " + pw);
+		boolean result = userLoginService.LoginComplete(request);
 		
-		UserDTO uDto = userLoginService.LoginComplete(id, pw);
+		String preUrl = (String) session.getAttribute("prev_url");
+		System.out.println("넘어온 이전 경로 : " + preUrl);
 		
-		if(uDto == null) {
-			String loginError = "일치하는 계정이 없습니다! 아이디 또는 비밀번호를 다시 확인하세요!";
-			model.addAttribute("loginError", loginError);
+		if(preUrl == null) {
+			preUrl = "/";
+		}
+		
+		if(!result) {
+			String loginErrorMsg = "아이디 또는 비밀번호를 다시 확인하세요!";
+			model.addAttribute("loginError", loginErrorMsg);
 			return "usermenu/userLogin";
 		}
 		
-		String dbPw = uDto.getUser_pw();
+		return "redirect:"+ preUrl;
 		
-		if(passwordEncoder.matches(pw, dbPw)) {
-			session.setAttribute("userDTO", uDto);
-			return "home";
-		}
+	}
+	
+	
+	//로그아웃
+	@RequestMapping("/userLogOut")
+	public String logOut(HttpSession session) {
 		
-		return null;
+		session.invalidate();
 		
+		return "redirect:/";
 	}
 	
 }

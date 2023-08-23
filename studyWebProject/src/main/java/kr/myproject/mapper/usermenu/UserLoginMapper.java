@@ -8,7 +8,9 @@ import kr.myproject.domain.UserDTO;
 @Mapper
 public interface UserLoginMapper {
 
-	//로그인 처리
-	UserDTO selectUserAccount(@Param("id")String id, @Param("pw")String pw);
+	//로그인 처리 시 view에서 넘어온 id와 일치하는 계정을 가져옴
+	UserDTO selectAccount(String parameter);
+
+
 
 }
