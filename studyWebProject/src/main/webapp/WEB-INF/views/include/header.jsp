@@ -43,7 +43,7 @@
 							<li class="submenu"><a>1:1문의하기</a></li>
 						</ul>				
 					</li>
-					<li><a>Login</a></li>
+					<li><a href="<c:url value="/usermenu/loginPage"/>">Login</a></li>
 					<li><a href="<c:url value="/usermenu/acceptRule"/>">join</a></li>
 					
 				</ul>
