@@ -10,14 +10,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.myproject.service.usermenu.UserLoginService;
+import kr.myproject.service.usermenu.UserAccountService;
+
+//회원 계정 관련 기능 담당
+//로그인, 로그아웃, 아이디/비번 찾기
 
 @Controller
 @RequestMapping("/usermenu")
-public class UserLoginController {
+public class UserAccountController {
 	
 	@Autowired
-	private UserLoginService userLoginService;
+	private UserAccountService userAccountService;
 	
 
 
@@ -32,7 +35,7 @@ public class UserLoginController {
 	@PostMapping("/userLogin")
 	public String userLogin(HttpServletRequest request, HttpSession session, Model model) {
 		
-		boolean result = userLoginService.LoginComplete(request);
+		boolean result = userAccountService.LoginComplete(request);
 		
 		String preUrl = (String) session.getAttribute("prev_url");
 		System.out.println("넘어온 이전 경로 : " + preUrl);

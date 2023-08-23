@@ -8,13 +8,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.myproject.domain.UserDTO;
-import kr.myproject.mapper.usermenu.UserLoginMapper;
+import kr.myproject.mapper.usermenu.UserAccountMapper;
 
 @Service
-public class UserLoginServiceImpl implements UserLoginService {
+public class UserAccountServiceImpl implements UserAccountService {
 
 	@Autowired
-	private UserLoginMapper userLoginMapper;
+	private UserAccountMapper userAccountMapper;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -25,7 +25,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 		
 		HttpSession session = request.getSession();
 
-		UserDTO userDTO = userLoginMapper.selectAccount(request.getParameter("id"));	
+		UserDTO userDTO = userAccountMapper.selectAccount(request.getParameter("id"));	
 		
 		if(userDTO != null) {
 			String inputPw = request.getParameter("pw"); //view에서 사용자가 입력한 패스워드
