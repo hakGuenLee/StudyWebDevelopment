@@ -1,7 +1,7 @@
 
 section{
 	margin-top:80px;
-	height:1200px;
+	height:1500px;
 }
 
 section h4{
@@ -20,18 +20,12 @@ span{
 	border: 1px solid black;
 }
 
-/* {
-
-	text-align:center;
-	justify-content:center;
+#passwordArea{
+	margin-right:50px;
 }
- */
 
 
-#chkMsg{
-	display:inline-block;
-	border:1px solid black;
-}
+
 
 .infoBox{
 	justify-content:center;
@@ -42,7 +36,3 @@ span{
 	margin-right:30px;
 }
 
-.passwordArea{
-	text-align:center;
-	justify-content:center;
-} 
