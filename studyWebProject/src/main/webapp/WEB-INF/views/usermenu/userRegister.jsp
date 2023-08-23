@@ -37,12 +37,12 @@
 					
 			<div id="usernamedArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
 				<p><b>성명</b></p> <span>*</span>
-				<input type="text" class="infoText form-control w-25" placeholder="성함을 입력해주세요" name="user_nm">
+				<input type="text" id="userName" class="infoText form-control w-25" placeholder="성함을 입력해주세요" name="user_nm">
 			</div>	
 			
 			<div id="birthArea" class="d-flex mt-3 p-3 me-5 justify-content-center" >
 				<p><b>생년월일</b></p>
-				<input type="date" class="infoText form-control w-25" name="birth_ymd">
+				<input type="date" id="birthday" class="infoText form-control w-25" name="birth_ymd">
 			</div>
 			
 			<div id="homeNumberArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
@@ -52,7 +52,7 @@
 			
 			<div id="mobileNumberArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
 				<p><b>휴대번호</b></p> <span>*</span> 
-				<input type="text" class="infoText form-control w-25" placeholder="휴대번호를 입력해주세요" name="user_phone">
+				<input type="text" id="userPhone" class="infoText form-control w-25" placeholder="휴대번호를 입력해주세요" name="user_phone">
 			</div>	
 			
 			<div id="mailArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
@@ -89,8 +89,8 @@
 			</div>	
 			
 			<div class="infoBox d-flex mt-3 p-3 justify-content-center">
-				<button type="button" class="btn btn-secondary">이전으로</button>
-				<button type="button" class="btn btn-primary">가입하기</button>
+				<a type="button" class="btn btn-secondary">이전으로</a>
+				<button id="registerConfirmBtn" type="button" class="btn btn-primary">가입하기</button>
 			</div>
 
 		</form>	
@@ -129,7 +129,7 @@ $("#idConfirmBtn").on("click", function(){
 			console.log(result);
 			alert(result);
 			if(result == "중복된 아이디입니다!"){
-				$("#idInput").attr("value", null);
+				$("#idInput").val("");
 			}
 		},
 		error:function(request, status, error){
@@ -258,16 +258,35 @@ function emailConfirm(){
 }
 
 
+//전체 입력 정보 유효성 검사
+$("#registerConfirmBtn").on("click", function(){
+	
+	let idInput = $("#idInput").val();
+	let nickName = $("#nickInput").val();
+	let pwVal = $("#pwConfirm").val();
+	let userName = $("#userName").val();
+	let birthday = $("#birthday").val();
+	let userPhone = $("#userPhone").val();
+	let mail = $("#mailInput").val();
+	let postCode = $("#sample4_postcode").val();
+	let roadAddress = $("#sample4_roadAddress").val();
+	let jibunAddress = $("#sample4_jibunAddress").val();
+	let addrInfo = $("#addrInfo").val();
+	
+	if(idInput == 0 || nickName == 0 || pwVal == 0 || userName == 0 || birthday == 0 || userPhone == 0 || mail == 0
+			|| postCode == 0 || roadAddress == 0 || jibunAddress == 0 || addrInfo == 0){
+		alert("정보를 모두 입력해주세요!");
+		location.replace("#");
+		
+	}else{
+		$("#registerConfirmBtn").attr("type", "submit");
+	}
 
-
-
-
-
-
-
-
-
-
+	
+	
+	
+	
+})
 </script>
 
 

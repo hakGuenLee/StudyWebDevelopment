@@ -1,6 +1,6 @@
 package kr.myproject.service.usermenu;
 
-
+import kr.myproject.domain.UserDTO;
 
 public interface UserRegisterService {
 
@@ -12,5 +12,8 @@ public interface UserRegisterService {
 
 	//회원 가입 시 이메일 인증 처리
 	String emailCheck(String email);
+
+	//회원가입 처리하기
+	void registerComplete(UserDTO uDto);
 
 }

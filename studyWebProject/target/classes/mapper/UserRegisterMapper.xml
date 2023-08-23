@@ -6,14 +6,21 @@
 
 <!-- view에서 넘어온 id 값과 일치하는 id가 DB에 있는지 확인(중복검사) -->
 <select id="selectId" resultType="String">
-select user_id from user_master where user_id = #{id}
+SELECT user_id from user_master WHERE user_id = #{id}
 </select>
 
 
 <!-- view에서 넘어온 닉네임과 일치하는 닉네임이 DB에 있는지 확인(중복검사) -->
 <select id="selectNickName" resultType="String">
-select user_nickname from user_master where user_nickname = #{nickName}
+SELECT user_nickname from user_master WHERE user_nickname = #{nickName}
 </select>
 
+<!-- 회원가입 처리하기  -->
+<insert id="InsertNewUser">
+INSERT INTO user_master(user_id, user_nickname, user_pw, user_nm, user_home, user_phone,
+user_email, birth_ymd, zipcode, addr_jibun, addr_road, addr_detail, register_dt)
+VALUES(#{user_id}, #{user_nickname}, #{user_pw}, #{user_nm}, #{user_home}, #{user_phone}, #{user_email}, #{birth_ymd}, #{zipcode},
+#{addr_jibun}, #{addr_road}, #{addr_detail}, now())
+</insert>
 
 </mapper>

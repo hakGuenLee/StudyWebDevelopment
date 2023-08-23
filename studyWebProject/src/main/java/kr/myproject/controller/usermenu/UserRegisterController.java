@@ -85,7 +85,11 @@ public class UserRegisterController {
 	@PostMapping("/userRegisterConfirm")
 	public String userRegisterConfirm(UserDTO uDto) {
 		
-		return null;
+		System.out.println("뷰에서 넘어온 회원 가입 정보 : " + uDto);
+		
+		userRegisterService.registerComplete(uDto);
+		
+		return "usermenu/userLogin";
 	}
 	
 	
