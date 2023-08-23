@@ -3,6 +3,7 @@ package kr.myproject.controller.usermenu;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,9 @@ public class UserLoginController {
 	
 	@Autowired
 	private UserLoginService userLoginService;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	//로그인 페이지 이동하기
 	@GetMapping("/loginPage")
@@ -40,10 +44,14 @@ public class UserLoginController {
 			return "usermenu/userLogin";
 		}
 		
-		session.setAttribute("userDTO", uDto);
+		String dbPw = uDto.getUser_pw();
 		
+		if(passwordEncoder.matches(pw, dbPw)) {
+			session.setAttribute("userDTO", uDto);
+			return "home";
+		}
 		
-		return "home";
+		return null;
 		
 	}
 	
