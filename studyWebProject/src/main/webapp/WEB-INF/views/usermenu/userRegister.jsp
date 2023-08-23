@@ -11,7 +11,7 @@
 <section>
 	<h4>가입 정보 입력</h4>
 	<div id="container">	
-		<form action="" method="post">
+		<form action="/study/usermenu/userRegisterConfirm" method="post">
 		
 			<div id="idArea" class="infoBox d-flex mt-5 p-3">
 				<p><b>아이디</b></p> <span>*</span>
@@ -42,12 +42,12 @@
 			
 			<div id="birthArea" class="d-flex mt-3 p-3 me-5 justify-content-center" >
 				<p><b>생년월일</b></p>
-				<input type="date" class="infoText form-control w-25" placeholder="성함을 입력해주세요" name="birth_ymd">
+				<input type="date" class="infoText form-control w-25" name="birth_ymd">
 			</div>
 			
 			<div id="homeNumberArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
 				<p><b>자택번호</b></p> 
-				<input type="text" class="infoText form-control w-25" placeholder="성함을 입력해주세요" name="user_home">
+				<input type="text" class="infoText form-control w-25" placeholder="자택 번호를 입력해주세요" name="user_home">
 			</div>	
 			
 			<div id="mobileNumberArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
@@ -57,7 +57,7 @@
 			
 			<div id="mailArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
 				<p><b>이메일</b></p> <span>*</span>
-				<input type="text" id="mailInput" class="infoText form-control w-25" name="user_email" placeholder="정확한 메일을 입력해주세요!">
+				<input type="text" id="mailInput" class="infoText form-control w-25" name="user_email" placeholder="실제 사용하시는 메일을 입력해주세요!">
 
 				<button type="button" id="mailConfirmBtn" class="btn btn-secondary">이메일 인증</button>	
 			</div>		
@@ -107,14 +107,17 @@ $("#idConfirmBtn").on("click", function(){
 	let inputId = $("#idInput").val();
 	console.log(inputId);
 
+	//ID를 입력하지 않았을 경우
 	if(inputId == 0){
 		alert("아이디를 입력하세요!");
 	}
 	
+	//입력한 ID가 정규식에 어긋날 경우
 	else if(!idpattern.test(inputId)){
 		alert("ID는 영문,숫자 조합 & 2자리 이상 10자리 이하로 만들어주세요!")
 		$("#idInput").val("");
 
+	//ID가 정규식에 맞게 입력되었을 경우 중복 확인 절차 진행	
 	}else{
 
 	$.ajax({
@@ -145,10 +148,12 @@ $("#nickConfirmBtn").on("click", function(){
 	let inputNick = $("#nickInput").val();
 	console.log(inputNick);
 	
+	//닉네임을 입력하지 않았을 경우
 	if(inputNick == 0){
 		alert("닉네임을 입력하세요!");
 	}else{
 
+	//닉네임을 입력하였을 경우 중복 검사 진행	
 	$.ajax({
 		url: "/study/usermenu/nicknameCheck",
 		type: "post",
@@ -179,14 +184,21 @@ $("#pwConfirmBtn").on("click", function(){
 	let pwPattern = /^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/;
 	
 	if(firstPwInput == 0 || SecondPwInput == 0){
-		alert("비밀번호를 입력하세요!");
+		alert("비밀번호를 입력하세요!")
 	}
 	
-	if(firstPwInput == SecondPwInput){
-		alert("비밀번호가 일치합니다!")
-	}else{
+	else if(firstPwInput != SecondPwInput){
 		alert("비밀번호가 일치하지 않습니다! 다시 입력해주세요!")
 		$("#pwConfirm").val("");
+	}
+	
+	else if(!pwPattern.test(firstPwInput)){
+		alert("비밀번호는 영어+숫자+특수기호 조합 8~16자여야 합니다!")
+		$("#pwInput").val("");
+		
+		$("#pwConfirm").val("");
+	}else{
+		alert("사용 가능한 비밀번호입니다!")
 	}
 
 })

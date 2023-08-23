@@ -1,7 +1,6 @@
 package kr.myproject.controller.usermenu;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.myproject.domain.UserDTO;
 import kr.myproject.service.usermenu.UserRegisterService;
 
 //회원가입 처리 Controller
@@ -79,6 +79,13 @@ public class UserRegisterController {
 		
 		return emailCode;
 		
+	}
+	
+	//회원가입 처리
+	@PostMapping("/userRegisterConfirm")
+	public String userRegisterConfirm(UserDTO uDto) {
+		
+		return null;
 	}
 	
 	
