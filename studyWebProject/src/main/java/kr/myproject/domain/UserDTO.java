@@ -9,6 +9,7 @@ public class UserDTO {
 	
 	private int user_no; //회원 번호
 	private String user_id; //회원 아이디
+	private String user_nickname; //회원 닉네임
 	private String user_pw; //패스워드
 	private String user_nm; //회원명
 	private String user_home; //자택번호

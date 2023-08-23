@@ -53,4 +53,26 @@ public class UserRegisterController {
 		return rejectMsg; 		
 	}
 	
+	//닉네임 중복체크
+	//문자열 리턴하기 전 UTF-8 인코딩 처리
+	@PostMapping(value = "/nicknameCheck", produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String nickNameCheck(@RequestParam("nickName") String nickName) {
+		
+		System.out.println("넘어온 닉네임 : " + nickName);
+		
+		String checkNickName = userRegisterService.checkNickName(nickName);
+		
+		System.out.println("확인 된 닉네임 : " + checkNickName);
+		
+		if(checkNickName == null) {
+			String okayMsg = "사용 가능한 닉네임입니다!";
+			return okayMsg;
+		}
+		
+		String rejectMsg = "중복된 닉네임입니다!";
+		
+		return rejectMsg;
+	}
+	
 }

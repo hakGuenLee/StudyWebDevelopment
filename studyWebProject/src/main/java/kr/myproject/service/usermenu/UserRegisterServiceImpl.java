@@ -14,8 +14,15 @@ public class UserRegisterServiceImpl implements UserRegisterService {
 	//회원 가입 시 아이디 중복 체크
 	@Override
 	public String checkId(String id) {
-		// TODO Auto-generated method stub
+		
 		return userRegisterMapper.selectId(id);
+	}
+
+	//회원 가입 시 닉네임 중복 체크
+	@Override
+	public String checkNickName(String nickName) {
+		
+		return userRegisterMapper.selectNickName(nickName);
 	}
 
 }

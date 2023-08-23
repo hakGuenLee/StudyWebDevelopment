@@ -1,0 +1,18 @@
+drop table user_master;
+
+create table user_master(
+user_no int not null primary key auto_increment,
+user_id varchar(30) not null unique ,
+user_nickname varchar(30) not null unique,
+user_pw varchar(200) not null  ,
+user_nm varchar(50) not null  ,
+user_home varchar(50)   ,
+user_phone varchar(50)   ,
+user_email varchar(200) not null  ,
+birth_ymd date   ,
+zipcode varchar(10)   ,
+addr_jibun varchar(100)   ,
+addr_road varchar(200) not null  ,
+addr_detail varchar(200)   ,
+use_yn varchar(1)   default 'Y',
+register_dt datetime   default now())
