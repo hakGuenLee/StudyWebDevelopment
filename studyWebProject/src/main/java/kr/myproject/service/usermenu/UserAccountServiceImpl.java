@@ -42,4 +42,11 @@ public class UserAccountServiceImpl implements UserAccountService {
 		return false;   //회원 정보가 아예 없는 경우
 	}
 
+	//아이디 찾기
+	@Override
+	public String searchUsersId(String mail) {
+		
+		return userAccountMapper.selectId(mail);
+	}
+
 }

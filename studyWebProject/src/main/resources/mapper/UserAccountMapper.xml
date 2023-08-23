@@ -9,5 +9,9 @@
 SELECT * FROM user_master WHERE user_id = #{parameter}
 </select>
 
+<!-- 아이디 찾기(view에서 넘어온 mail주소로 찾음) -->
+<select id="selectId" resultType="String">
+SELECT user_id FROM user_master WHERE user_email = #{mail}
+</select>
 
 </mapper>

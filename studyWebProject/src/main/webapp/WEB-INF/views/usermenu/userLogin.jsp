@@ -43,6 +43,62 @@
 	
 </section>
 
+
+
+<!-- 아이디 찾기 Modal -->
+<div class="modal fade" id="idSerchModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">아이디 찾기</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="height:100px">
+        <p>가입 시 등록하셨던 이메일을 입력해주세요!</p>
+        <input id="mailInput" type="text" class="form-control w-100">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button id="serchIdBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">아이디찾기</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 아이디 찾기 결과 Modal -->
+<div class="modal fade" id="idsearchResultModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">아이디 찾기 결과</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" id="idSearchResultModalBody">
+        <p></p>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button id="serchIdBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
 <script>
 //로그인 정보 입력 유효성 검사
 $("#loginBtn").on("click", function(){
@@ -67,6 +123,36 @@ $(document).ready(function(){
 	}
 })
 
+$("#searchId").on("click", function(){	
+	$("#idSerchModal").modal("show");
+})
+
+$("#serchIdBtn").on("click", function(){
+	let mail = $("#mailInput").val();
+	console.log(mail);
+	
+	$.ajax({
+		url:"/study/usermenu/idSerch",
+		type:"post",
+		data: {"mail" : mail},
+		success: function(data){
+			console.log(data)
+			
+			$("#idsearchResultModal").modal("show");
+			
+			let str = "";
+			str += "<p>" +data+ "</p>";
+			$("#idSearchResultModalBody").html(str);
+			
+			
+		},
+		error: function(){
+			alert("요청실패!");
+		}
+	})
+
+
+})
 
 
 </script>
