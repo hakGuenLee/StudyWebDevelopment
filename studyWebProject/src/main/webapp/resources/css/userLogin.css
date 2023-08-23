@@ -1,0 +1,54 @@
+
+section{
+	margin-top:80px;
+	height:1500px;
+}
+
+section h4{
+	text-align:center;
+}
+
+#askMsg{
+	text-align:center;
+	color:gray;
+}
+
+#askMsg2{
+	text-align:center;
+	color:gray;
+}
+
+#idInput{
+	width:300px;
+	margin-left:30px;
+}
+
+#pwInput{
+	width:300px;
+	margin-left:30px;
+}
+
+#loginBtn{
+	width:400px;
+	color:white;	
+	background-color:dodgerBlue;
+}
+
+
+#searchId{
+	width:400px;
+	color:gray;	
+	background-color:#DCDCDC;
+}
+
+#searchPw{
+	width:400px;
+	color:gray;	
+	background-color:#DCDCDC;
+}
+
+#joinButton{
+	width:400px;
+	color:white;	
+	background-color:Peru;
+}
