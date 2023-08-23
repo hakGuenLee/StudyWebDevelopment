@@ -127,6 +127,9 @@ $("#searchId").on("click", function(){
 	$("#idSerchModal").modal("show");
 })
 
+
+
+
 $("#serchIdBtn").on("click", function(){
 	let mail = $("#mailInput").val();
 	console.log(mail);
