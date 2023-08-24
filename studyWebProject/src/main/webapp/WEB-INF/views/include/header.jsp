@@ -40,7 +40,7 @@
 							<li class="submenu"><a>나의 모임 관리</a></li>
 							<li class="submenu"><a>나의 알림 메세지</a></li>
 							<li class="submenu"><a>나의 위시리스트</a></li>
-							<li class="submenu"><a>1:1문의하기</a></li>
+							<li class="submenu"><a href="<c:url value="/userCs/myCsPage"/>">1:1문의하기</a></li>
 						</ul>				
 					</li>
 					<c:if test="${sessionScope.userDTO == null}">
