@@ -19,8 +19,24 @@ SELECT user_id FROM user_master WHERE user_email = #{mail}
 SELECT * FROM user_master WHERE user_id = #{id} AND user_email = #{mail}
 </select>
 
-<!-- 회원 비밀번호 처리 진행 -->
+<!-- 회원 비밀번호 변경 처리 진행 -->
 <update id="UpdateUserPassword">
 UPDATE user_master SET user_pw = #{cipher} WHERE user_id = #{id}
 </update>
+
+<!-- 회원 정보 수정 처리 진행 -->
+<update id="updateUserInfo">
+UPDATE user_master SET user_nickname = #{user_nickname},
+user_home = #{user_home},
+user_phone = #{user_phone},
+user_email = #{user_email},
+birth_ymd = #{birth_ymd},
+zipcode = #{zipcode},
+addr_jibun = #{addr_jibun},
+addr_road = #{addr_road},
+addr_detail = #{addr_detail}
+WHERE user_id = #{user_id} 
+</update>
+
+
 </mapper>

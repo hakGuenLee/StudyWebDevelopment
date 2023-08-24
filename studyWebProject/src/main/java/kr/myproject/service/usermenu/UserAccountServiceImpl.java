@@ -83,4 +83,11 @@ public class UserAccountServiceImpl implements UserAccountService {
 		return userAccountMapper.selectAccount(id);
 	}
 
+	//회원 정보 수정 처리하기
+	@Override
+	public void UpdateUserInfo(UserDTO userDTO) {
+		userAccountMapper.updateUserInfo(userDTO);
+		
+	}
+
 }

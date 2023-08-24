@@ -20,6 +20,9 @@ public interface UserAccountMapper {
 	//회원 비밀번호 처리 진행
 	int UpdateUserPassword(@Param("id")String id, @Param("cipher")String cipher);
 
+	//회원 정보 수정 처리하기
+	void updateUserInfo(UserDTO userDTO);
+
 
 
 }

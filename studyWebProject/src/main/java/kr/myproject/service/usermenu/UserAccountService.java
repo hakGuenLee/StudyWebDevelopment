@@ -23,4 +23,7 @@ public interface UserAccountService {
 	//회원정보 수정 페이지 이동 시 요청한 유저의 계정 정보 가져오기
 	UserDTO getUserInfo(HttpServletRequest request);
 
+	//회원 정보 수정 처리하기
+	void UpdateUserInfo(UserDTO userDTO);
+
 }

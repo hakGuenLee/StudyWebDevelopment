@@ -11,51 +11,42 @@
 <section>
 	<h4>나의 정보 수정하기</h4>
 	<div id="container">	
-		<form action="/study/userRegister/userRegisterConfirm" method="post">
+		<form action="/study/userAccount/userInfoUpdate" method="post">
 		
 			<div id="idArea" class="infoBox d-flex mt-5 p-3">
 				<p><b>아이디</b></p>
 				<input type="text" value="${userDTO.user_id}" class="infoText form-control w-25" name="user_id" readonly>
 			</div>
+			
+			<div id="usernamedArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
+				<p><b>성명</b></p>
+				<input type="text" id="userName" value="${userDTO.user_nm}" class="infoText form-control w-25" name="user_nm" readonly>
+			</div>	
 
 			<div id="nickArea" class="infoBox d-flex mt-3 p-3">
 				<p><b>닉네임</b></p>
 				<input type="text" id="nickInput" value="${userDTO.user_nickname }" class="infoText form-control w-25" name="user_nickname">
 				<button type="button" id="nickConfirmBtn" class="btn btn-secondary">중복확인</button>	
 			</div>	
-			
-<!-- 			<div id="passwordArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
-				<p><b>비밀번호</b></p>
-				<input type="password" id="pwInput" class="infoText form-control w-25" placeholder="비밀번호는 영문,숫자,특수기호 조합 8~16자로 만들어주세요!">
-			</div>		
- 			<div id="passwordArea2" class="infoBox d-flex mt-3 p-3 me-5 justify-content-center">
-				<input type="password" id="pwConfirm" class="infoText form-control w-25" name="user_pw" placeholder="비밀번호를 한번 더 확인해주세요!">
-				<button type="button" id="pwConfirmBtn" class="btn btn-secondary">비밀번호 확인</button>	
-			</div> -->
-					
-			<div id="usernamedArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
-				<p><b>성명</b></p>
-				<input type="text" id="userName" value="${userDTO.user_nm}" class="infoText form-control w-25" name="user_nm" readonly>
-			</div>	
-			
+	
 			<div id="birthArea" class="d-flex mt-3 p-3 me-5 justify-content-center" >
 				<p><b>생년월일</b></p>
-				<input type="date" id="birthday" class="infoText form-control w-25" name="birth_ymd">
+				<input type="date" value="${userDTO.birth_ymd}" id="birthday" class="infoText form-control w-25" name="birth_ymd">
 			</div>
 			
 			<div id="homeNumberArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
 				<p><b>자택번호</b></p> 
-				<input type="text" class="infoText form-control w-25" placeholder="자택 번호를 입력해주세요" name="user_home">
+				<input type="text" value="${userDTO.user_home}" class="infoText form-control w-25" name="user_home">
 			</div>	
 			
 			<div id="mobileNumberArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
-				<p><b>휴대번호</b></p> <span>*</span> 
-				<input type="text" id="userPhone" class="infoText form-control w-25" placeholder="휴대번호를 입력해주세요" name="user_phone">
+				<p><b>휴대번호</b></p>
+				<input type="text" value="${userDTO.user_phone}" class="infoText form-control w-25" name="user_phone">
 			</div>	
 			
 			<div id="mailArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
-				<p><b>이메일</b></p> <span>*</span>
-				<input type="text" id="mailInput" class="infoText form-control w-25" name="user_email" placeholder="실제 사용하시는 메일을 입력해주세요!">
+				<p><b>이메일</b></p>
+				<input type="text" id="mailInput" class="infoText form-control w-25" name="user_email" value="${userDTO.user_email}">
 
 				<button type="button" id="mailConfirmBtn" class="btn btn-secondary">이메일 인증</button>	
 			</div>		
@@ -66,29 +57,29 @@
 			<!-- 주소 확인 -->
 			
 			<div id="addrArea" class="infoBox d-flex mt-3 p-3">
-				<p><b>주소 확인</b></p> <span>*</span>
-				<input type="text" id="sample4_postcode" class="infoText form-control w-25" name="zipcode" placeholder="우편번호" readonly>
+				<p><b>주소 확인</b></p> 
+				<input type="text" id="sample4_postcode" class="infoText form-control w-25" name="zipcode" value="${userDTO.zipcode}" readonly>
 				<button type="button" id="" onclick="sample4_execDaumPostcode()" class="btn btn-primary">주소 검색</button>	
 			</div>	
 			
 			<div id="addrArea2" class="infoBox d-flex mt-3 p-3">
-				<p><b>도로명 주소</b></p> <span>*</span>
-				<input type="text" id="sample4_roadAddress" class="infoText form-control w-25" name="addr_road" placeholder="도로명주소" readonly>
+				<p><b>도로명 주소</b></p> 
+				<input type="text" id="sample4_roadAddress" class="infoText form-control w-25" name="addr_road" value="${userDTO.addr_road}" readonly>
 			</div>	
 			
 			<div id="addrArea3" class="infoBox d-flex mt-3 p-3">
 				<p><b>지번 주소</b></p> <span>*</span>
-				<input type="text" id="sample4_jibunAddress" class="infoText form-control w-25" name="addr_jibun" placeholder="지번주소" >
+				<input type="text" id="sample4_jibunAddress" class="infoText form-control w-25" name="addr_jibun" value="${userDTO.addr_jibun}" placeholder="지번주소" >
 			</div>	
 			
 			<div id="addrArea4" class="infoBox d-flex mt-3 p-3">
-				<p><b>상세 주소</b></p> <span>*</span>
-				<input type="text" id="addrInfo" class="infoText form-control w-25" name="addr_detail" placeholder="상세주소를 입력해주세요" >
+				<p><b>상세 주소</b></p>
+				<input type="text" id="addrInfo" class="infoText form-control w-25" name="addr_detail" value="${userDTO.addr_detail}">
 			</div>	
 			
 			<div class="infoBox d-flex mt-3 p-3 justify-content-center">
 				<a type="button" class="btn btn-secondary">이전으로</a>
-				<button id="registerConfirmBtn" type="button" class="btn btn-primary">변경하기</button>
+				<button id="registerConfirmBtn" type="button" class="btn btn-primary">수정하기</button>
 			</div>
 
 		</form>	
@@ -173,33 +164,6 @@ $("#nickConfirmBtn").on("click", function(){
 	}
 })
 
-//비밀번호 정규식 && 일치 여부 확인
-$("#pwConfirmBtn").on("click", function(){
-	
-	let firstPwInput = $("#pwInput").val();
-	let SecondPwInput = $("#pwConfirm").val();
-	
-	let pwPattern = /^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/;
-	
-	if(firstPwInput == 0 || SecondPwInput == 0){
-		alert("비밀번호를 입력하세요!")
-	}
-	
-	else if(firstPwInput != SecondPwInput){
-		alert("비밀번호가 일치하지 않습니다! 다시 입력해주세요!")
-		$("#pwConfirm").val("");
-	}
-	
-	else if(!pwPattern.test(firstPwInput)){
-		alert("비밀번호는 영어+숫자+특수기호 조합 8~16자여야 합니다!")
-		$("#pwInput").val("");
-		
-		$("#pwConfirm").val("");
-	}else{
-		alert("사용 가능한 비밀번호입니다!")
-	}
-
-})
 
 //이메일 인증 진행
 $("#mailConfirmBtn").on("click", function(){

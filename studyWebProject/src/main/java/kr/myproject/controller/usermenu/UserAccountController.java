@@ -123,4 +123,13 @@ public class UserAccountController {
 		return "usermenu/userInfoUpdate";
 	}
 	
+	//회원 정보 수정 처리
+	@PostMapping("/userInfoUpdate")
+	public String userInfoUpdate(UserDTO userDTO) {
+		
+		userAccountService.UpdateUserInfo(userDTO);
+		
+		return "redirect:/userAccount/userInfoUpdate";
+	}
+	
 }
