@@ -80,7 +80,7 @@ public class UserAccountController {
 		
 	}
 	
-	//비밀번호 찾기
+	//비밀번호 변경 1차(계정 유무 확인)
 	@PostMapping("/pwChange")
 	@ResponseBody
 	public boolean pwChange(@RequestParam("id") String id, @RequestParam("mail") String mail) {

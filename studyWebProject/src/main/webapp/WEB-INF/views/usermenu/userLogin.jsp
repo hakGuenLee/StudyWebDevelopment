@@ -139,7 +139,7 @@
       </div>
 
       <div class="modal-footer" id="pwChangeConfirmFooter">
-        <button id="changePwConfirmBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">변경하기</button>
+        <button id="changePwConfirmBtn" type="button" class="btn btn-primary" >변경하기</button>
       </div>
 
     </div>
@@ -254,7 +254,7 @@ $("#changePwBtn").on("click", function(){
 				$("#pwChangeConfirmBody").html(str3);
 				
 				str4 = "";
-				str4 += "<button id='changePwConfirmBtn' type='button' class='btn btn-primary' data-bs-dismiss='modal'>변경하기</button>"
+				str4 += "<button id='changePwConfirmBtn' type='button' onclick='pwChangeConfirmEvent()' class='btn btn-primary'>변경하기</button>"
 				
 				$("#pwChangeConfirmFooter").html(str4);
 				
@@ -274,21 +274,25 @@ $("#changePwBtn").on("click", function(){
 		$("#checkMsg").html("비밀번호는 영어,숫자, 특수기호 조합 8~16자여야 합니다! 다시 입력해주세요!");
 		$("#checkMsg").css({"color" : "red", "font-size" : "12px"});
 		
-		let str4 = "";
-		str4 += "<button id='changePwConfirmBtn' type='button' class='btn btn-primary'>변경하기</button>"
+/* 		let str4 = "";
+		str4 += "<button id='changePwConfirmBtn' type='button' class='btn btn-primary'>변경하기</button>" */
 		
 		$("#pwChangeConfirmFooter").html(str4);
 	}else{
 		$("#checkMsg").html("사용 가능한 비밀번호입니다!");
 		$("#checkMsg").css({"color" : "blue", "font-size" : "12px"});
-		let str5 = "";
-		str5 += "<button id='changePwConfirmBtn' type='button' class='btn btn-primary' data-bs-dismiss='modal'>변경하기</button>"
-			$("#pwChangeConfirmFooter").html(str5);
+		
+/* 		let str5 = "";
+		str5 += "<button id='changePwConfirmBtn' type='button' class='btn btn-primary'>변경하기</button>"
+			$("#pwChangeConfirmFooter").html(str5); */
 	}
 } 
+
 //새 비밀번호 변경 처리 전 유효성 검사 후 변경 처리 진행
-$("#changePwConfirmBtn").on("click", function(){
-	let fisrtPw = $("#newPwInput").val();
+/* $("#changePwConfirmBtn").on("click", "#selector", function(event) */
+function pwChangeConfirmEvent(){
+	console.log("하하!");
+	let firstPw = $("#newPwInput").val();
 	let secondPw = $("#newPwInput2").val();
 	
 	console.log(firstPw);
@@ -306,6 +310,7 @@ $("#changePwConfirmBtn").on("click", function(){
 	}
 	
 	if(firstPw == 0 || secondPw == 0){
+		$("#checkMsg2").html("");
 		$("#checkMsg").html("비밀번호를 입력해주세요!");
 		$("#checkMsg").css({"color" : "red", "font-size" : "12px"});
 		let str2 = "";
@@ -314,16 +319,34 @@ $("#changePwConfirmBtn").on("click", function(){
 		$("#pwChangeConfirmFooter").html(str2);
 	}
 	
-	if(firstPw == secondPw){
+	if(firstPw != 0 && secondPw != 0 && firstPw == secondPw){
 		$("#checkMsg2").html("비밀번호가 일치합니다!");
-		$("#checkMsg2").css({"color" : "blue", "font-size" : "12px"});
+		$("#checkMsg2").css({"color" : "blue", "font-size" : "12px"});	
+		
+		$.ajax({
+			
+			url: "/study/usermenu/pwChageConfirm",
+			type: "post",
+			data: {"newPw" : firstPw},
+			success:function(){
+				$("#pwChangeModal").modal("hide");
+				alert("비밀번호 변경이 완료되었습니다!");
+			},
+			error:function(){
+				alert("서버 에러!");
+			}
+			
+			
+			
+			
+		})
 	}
 	
 	
 	
 	
 	
-})
+}
 
 </script>
 
