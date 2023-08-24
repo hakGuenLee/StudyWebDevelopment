@@ -3,6 +3,7 @@ package kr.myproject.mapper.usermenu;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import kr.myproject.domain.CsDTO;
 
@@ -14,6 +15,9 @@ public interface UserCsMapper {
 	
 	//회원 1:1문의 등록하기
 	void InsertUserQuestion(CsDTO csDTO);
+
+	//회원의 1:1문의 내역 검색하기
+	List<CsDTO> searchMyCsList(@Param("searchValue") String searchValue, @Param("userId")String userId);
 
 
 

@@ -24,10 +24,12 @@
 			<h4>나의 1:1문의 내역</h4>	
 		</div>
 		<div>
-			<div id="searchGroup" class="input-group mb-3">
-			  <input type="text" class="form-control" placeholder="제목을 검색해보세요">
-			  <button class="btn btn-secondary" type="button">검색하기</button>
-			</div>
+			<form action="/study/userCs/searchMyCsList" method="post">
+				<div id="searchGroup" class="input-group mb-3">
+				  <input type="text" name="searchValue" class="form-control" placeholder="제목을 검색해보세요">
+				  <button class="btn btn-secondary" type="submit">검색하기</button>
+				</div>
+			</form>
 		</div>
 	</div>
 	

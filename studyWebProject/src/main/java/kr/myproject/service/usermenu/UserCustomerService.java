@@ -15,6 +15,9 @@ public interface UserCustomerService {
 	//1:1문의 등록하기
 	void registerUserQuestion(CsDTO csDTO);
 
+	//회원의 문의 내역 검색하기
+	List<CsDTO> findUserCsList(String searchValue, HttpServletRequest request);
+
 
 
 }

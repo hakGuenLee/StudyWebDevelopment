@@ -36,6 +36,18 @@ public class UserCsController {
 		return "usermenu/myCsPage";
 	}
 	
+	//1:1문의 검색하기
+	@PostMapping("/searchMyCsList")
+	public String searchMyCsList(String searchValue, HttpServletRequest request, Model model) {
+		
+		List<CsDTO> findList = userCustomerService.findUserCsList(searchValue, request);
+		
+		model.addAttribute("list", findList);
+		
+		return "usermenu/myCsPage";
+		
+	}
+	
 	//1:1 문의 등록 페이지 이동
 	@GetMapping("/csRegisterPage")
 	public String csRegisterPage() {

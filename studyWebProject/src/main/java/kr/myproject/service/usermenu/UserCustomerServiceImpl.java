@@ -53,4 +53,15 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 
 
 
+	//회원의 1:1문의 내역 검색하기
+	@Override
+	public List<CsDTO> findUserCsList(String searchValue, HttpServletRequest request) {
+	
+		String userId = userInfoHandler.getUserId(request);
+		
+		return userCsMapper.searchMyCsList(searchValue, userId);
+	}
+
+
+
 }
