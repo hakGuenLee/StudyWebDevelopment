@@ -36,7 +36,7 @@
 				<ul>
 					<li>MyPage
 						<ul>
-							<li class="submenu"><a>나의 정보 수정</a></li>
+							<li class="submenu"><a href="<c:url value="/userAccount/userInfoUpdate"/>">나의 정보 수정</a></li>
 							<li class="submenu"><a>나의 모임 관리</a></li>
 							<li class="submenu"><a>나의 알림 메세지</a></li>
 							<li class="submenu"><a>나의 위시리스트</a></li>
@@ -44,12 +44,12 @@
 						</ul>				
 					</li>
 					<c:if test="${sessionScope.userDTO == null}">
-					<li><a href="<c:url value="/usermenu/loginPage"/>">Login</a></li>
+						<li><a href="<c:url value="/userAccount/loginPage"/>">Login</a></li>
 					</c:if>
 					<c:if test="${sessionScope.userDTO != null}">
-					<li><a href="<c:url value="/usermenu/userLogOut"/>">Logout</a></li>
+						<li><a href="<c:url value="/userAccount/userLogOut"/>">Logout</a></li>
 					</c:if>
-					<li><a href="<c:url value="/usermenu/acceptRule"/>">join</a></li>
+					<li><a href="<c:url value="/userRegister/acceptRule"/>">join</a></li>
 					
 				</ul>
 			</div>

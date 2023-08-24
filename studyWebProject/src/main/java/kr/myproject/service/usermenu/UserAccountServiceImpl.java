@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.myproject.domain.UserDTO;
+import kr.myproject.handler.UserInfoHandler;
 import kr.myproject.mapper.usermenu.UserAccountMapper;
 
 @Service
@@ -18,6 +19,9 @@ public class UserAccountServiceImpl implements UserAccountService {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private UserInfoHandler userInfoHandler;
 	
 	//회원 로그인 처리
 	@Override
@@ -68,6 +72,15 @@ public class UserAccountServiceImpl implements UserAccountService {
 		String cipher = passwordEncoder.encode(pw);
 
 		return userAccountMapper.UpdateUserPassword(id, cipher);
+	}
+
+	//회원정보 수정 페이지 이동 시 요청한 유저의 계정 정보 가져오기
+	@Override
+	public UserDTO getUserInfo(HttpServletRequest request) {
+
+		String id = userInfoHandler.getUserId(request);
+		
+		return userAccountMapper.selectAccount(id);
 	}
 
 }

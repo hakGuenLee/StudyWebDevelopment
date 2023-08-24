@@ -13,7 +13,7 @@ import kr.myproject.service.usermenu.UserRegisterService;
 
 //회원가입 처리 Controller
 @Controller
-@RequestMapping("/usermenu")
+@RequestMapping("/userRegister")
 public class UserRegisterController {
 	
 	@Autowired

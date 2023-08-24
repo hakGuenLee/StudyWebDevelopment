@@ -10,7 +10,7 @@
  	<input id="errorMessage" type="hidden" value="${loginError}">
 	<h4>로그인</h4>
 	<div id="container">
-		<form action="/study/usermenu/userLogin" method="post">
+		<form action="/study/userAccount/userLogin" method="post">
 			<div class="d-flex justify-content-center mt-5">
 				<p><b>아이디</b></p>
 				<input id="idInput" type="text" class="form-control" placeholder="아이디를 입력하세요" name="id">
@@ -38,7 +38,7 @@
 			
 		<p id="askMsg2" class="mt-5">아직 회원이 아니신가요?</p>
 			<div class="d-flex justify-content-center">
-				<a href="<c:url value="/usermenu/acceptRule"/>" id="joinButton" type="button" class="btn">회원가입하기</a>
+				<a href="<c:url value="/userRegister/acceptRule"/>" id="joinButton" type="button" class="btn">회원가입하기</a>
 			</div>
 	
 </section>
@@ -187,7 +187,7 @@ $("#serchIdBtn").on("click", function(){
 	console.log(mail);
 	
 	$.ajax({
-		url:"/study/usermenu/idSerch",
+		url:"/study/userAccount/idSerch",
 		type:"post",
 		data: {"mail" : mail},
 		success: function(data){
@@ -222,7 +222,7 @@ $("#changePwBtn").on("click", function(){
 	console.log(mail2);
 	
 	$.ajax({
-		url:"/study/usermenu/pwChange",
+		url:"/study/userAccount/pwChange",
 		type:"post",
 		data: {"id":id2, "mail":mail2},
 		success: function(data){
@@ -327,7 +327,7 @@ function pwChangeConfirmEvent(){
 		
 		$.ajax({
 			
-			url: "/study/usermenu/pwChangeConfirm",
+			url: "/study/userAccount/pwChangeConfirm",
 			type: "post",
 			data: {"newPw" : firstPw, "id" : buttonValue},
 			success:function(resultMsg){
@@ -340,11 +340,6 @@ function pwChangeConfirmEvent(){
 			
 		})
 	}
-	
-	
-	
-	
-	
 }
 
 </script>

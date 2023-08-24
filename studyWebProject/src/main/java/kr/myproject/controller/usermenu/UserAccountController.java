@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.myproject.domain.UserDTO;
 import kr.myproject.service.usermenu.UserAccountService;
 
 //회원 계정 관련 기능 담당
 //로그인, 로그아웃, 아이디/비번 찾기
 
 @Controller
-@RequestMapping("/usermenu")
+@RequestMapping("/userAccount")
 public class UserAccountController {
 	
 	@Autowired
@@ -109,6 +110,17 @@ public class UserAccountController {
 		String failMsg = "비밀번호 변경이 실패하였습니다! 다시 시도해보세요!";
 		return failMsg;
 		
+	}
+	
+	//회원 정보 수정 페이지 이동
+	@GetMapping("/userInfoUpdate")
+	public String userUpdatePage(HttpServletRequest request, Model model) {
+		
+		UserDTO userDTO = userAccountService.getUserInfo(request);
+		
+		model.addAttribute("userDTO", userDTO);
+		
+		return "usermenu/userInfoUpdate";
 	}
 	
 }

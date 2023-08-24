@@ -9,35 +9,33 @@
 
 
 <section>
-	<h4>가입 정보 입력</h4>
+	<h4>나의 정보 수정하기</h4>
 	<div id="container">	
 		<form action="/study/userRegister/userRegisterConfirm" method="post">
 		
 			<div id="idArea" class="infoBox d-flex mt-5 p-3">
-				<p><b>아이디</b></p> <span>*</span>
-				<input type="text" id="idInput" class="infoText form-control w-25" name="user_id" placeholder="ID는 영문,숫자 조합 & 2자리 이상 10자리 이하로 만들어주세요!">
-
-				<button type="button" id="idConfirmBtn" class="btn btn-secondary">중복확인</button>	
+				<p><b>아이디</b></p>
+				<input type="text" value="${userDTO.user_id}" class="infoText form-control w-25" name="user_id" readonly>
 			</div>
 
 			<div id="nickArea" class="infoBox d-flex mt-3 p-3">
-				<p><b>닉네임</b></p> <span>*</span>
-				<input type="text" id="nickInput" class="infoText form-control w-25" name="user_nickname">
+				<p><b>닉네임</b></p>
+				<input type="text" id="nickInput" value="${userDTO.user_nickname }" class="infoText form-control w-25" name="user_nickname">
 				<button type="button" id="nickConfirmBtn" class="btn btn-secondary">중복확인</button>	
 			</div>	
 			
-			<div id="passwordArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
-				<p><b>비밀번호</b></p> <span>*</span>
+<!-- 			<div id="passwordArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
+				<p><b>비밀번호</b></p>
 				<input type="password" id="pwInput" class="infoText form-control w-25" placeholder="비밀번호는 영문,숫자,특수기호 조합 8~16자로 만들어주세요!">
 			</div>		
  			<div id="passwordArea2" class="infoBox d-flex mt-3 p-3 me-5 justify-content-center">
 				<input type="password" id="pwConfirm" class="infoText form-control w-25" name="user_pw" placeholder="비밀번호를 한번 더 확인해주세요!">
 				<button type="button" id="pwConfirmBtn" class="btn btn-secondary">비밀번호 확인</button>	
-			</div>
+			</div> -->
 					
 			<div id="usernamedArea" class="d-flex mt-3 p-3 me-5 justify-content-center">
-				<p><b>성명</b></p> <span>*</span>
-				<input type="text" id="userName" class="infoText form-control w-25" placeholder="성함을 입력해주세요" name="user_nm">
+				<p><b>성명</b></p>
+				<input type="text" id="userName" value="${userDTO.user_nm}" class="infoText form-control w-25" name="user_nm" readonly>
 			</div>	
 			
 			<div id="birthArea" class="d-flex mt-3 p-3 me-5 justify-content-center" >
@@ -90,7 +88,7 @@
 			
 			<div class="infoBox d-flex mt-3 p-3 justify-content-center">
 				<a type="button" class="btn btn-secondary">이전으로</a>
-				<button id="registerConfirmBtn" type="button" class="btn btn-primary">가입하기</button>
+				<button id="registerConfirmBtn" type="button" class="btn btn-primary">변경하기</button>
 			</div>
 
 		</form>	
