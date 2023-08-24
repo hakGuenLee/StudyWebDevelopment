@@ -26,7 +26,7 @@
 		<div>
 			<div id="searchGroup" class="input-group mb-3">
 			  <input type="text" class="form-control" placeholder="제목을 검색해보세요">
-			  <button class="btn btn-secondary" type="submit">검색하기</button>
+			  <button class="btn btn-secondary" type="button">검색하기</button>
 			</div>
 		</div>
 	</div>
@@ -46,16 +46,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<c:if test="${list == null || list.size()==0}">
+					<tr>
+						<td colspan="8">문의 내역이 존재하지 않습니다</td>
+					</tr>
+				</c:if>
+				<c:if test="${list != null || list.size()!=0}">
+					<c:forEach var="cs" items="${list }">
+					<tr>
+						<td>${cs.cs_no}</td>
+						<td>${cs.cs_code}</td>
+						<td>${cs.cs_title}</td>
+						<td>${cs.user_id}</td>
+						<td>${cs.cs_dt}</td>
+						<td>${cs.proc_sts}</td>
+						<td><a type="button" class="btn btn-primary">상세보기</a></td>
+						<td><button type="button" class="btn btn-danger">삭제하기</button></td>
+					</tr>
+					</c:forEach>
+				</c:if>
 			</tbody>		
 		</table>
 	</div>

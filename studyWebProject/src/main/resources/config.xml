@@ -6,6 +6,7 @@
   <typeAliases>
   	<!-- 별칭 설정  -->
   	<typeAlias type="kr.myproject.domain.UserDTO" alias="UserDTO"/>
+  	<typeAlias type="kr.myproject.domain.CsDTO" alias="CsDTO"/>
 
   </typeAliases>
 </configuration>

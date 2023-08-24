@@ -1,7 +1,12 @@
 package kr.myproject.controller.usermenu;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +25,13 @@ public class UserCsController {
 	
 	//마이페이지 나의 1:1문의로 이동
 	@GetMapping("/myCsPage")
-	public String EnterCsPage() {
+	public String EnterCsPage(HttpServletRequest request, Model model) {
+		
+		List<CsDTO> csList = userCustomerService.getCsListById(request);
+		
+		System.out.println("문의내역 : " + csList);
+		
+		model.addAttribute("list", csList);
 		
 		return "usermenu/myCsPage";
 	}
@@ -39,9 +50,7 @@ public class UserCsController {
 		System.out.println(csDTO);
 		
 		userCustomerService.registerUserQuestion(csDTO);
-		
-		
-		
+
 		return "redirect:/userCs/myCsPage";
 	}
 
