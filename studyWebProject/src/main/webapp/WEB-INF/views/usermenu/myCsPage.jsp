@@ -50,7 +50,7 @@
 			<tbody>
 				<c:if test="${list == null || list.size()==0}">
 					<tr>
-						<td colspan="8">문의 내역이 존재하지 않습니다</td>
+						<td colspan="8">문의 내역이 존재하지 않습니다!</td>
 					</tr>
 				</c:if>
 				<c:if test="${list != null || list.size()!=0}">
