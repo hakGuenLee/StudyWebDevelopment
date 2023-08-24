@@ -5,18 +5,20 @@ import javax.servlet.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import kr.myproject.security.SecurityConfig;
+
 public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 
-		return new Class[] {RootConfig.class, MailConfig.class};
+		return new Class[] {RootConfig.class, MailConfig.class, SecurityConfig.class};
 	}
 	
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 
-		return new Class[] {ServletConfig.class};
+		return new Class[] {ServletConfig.class, InterceptorConfig.class};
 	}
 	
 	@Override

@@ -9,6 +9,7 @@
 <section>
  	<input id="errorMessage" type="hidden" value="${loginError}">
 	<h4>로그인</h4>
+	<p style="color:gray; text-align:center" class="mt-5">로그인 후 더 많은 서비스를 이용하실 수 있습니다</p>
 	<div id="container">
 		<form action="/study/userAccount/userLogin" method="post">
 			<div class="d-flex justify-content-center mt-5">

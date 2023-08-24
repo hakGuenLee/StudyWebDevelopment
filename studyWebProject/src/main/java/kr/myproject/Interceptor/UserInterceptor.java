@@ -1,13 +1,15 @@
 package kr.myproject.Interceptor;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.stereotype.Component;
+
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-@Component
+
 public class UserInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
@@ -27,7 +29,8 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 		
 		//로그인되지 않은 상태에서 접근 시 로그인 페이지 띄우기
 		if(UserDTO == null) {
-			response.sendRedirect("/userAccount/loginPage");
+			response.sendRedirect("/study/userAccount/loginPage");
+			
 			return false;
 		}else {
 				

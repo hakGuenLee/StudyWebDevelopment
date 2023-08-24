@@ -113,7 +113,7 @@ public class UserAccountController {
 	}
 	
 	//회원 정보 수정 페이지 이동
-	@GetMapping("/userInfoUpdate")
+	@GetMapping("/userUpdatePage")
 	public String userUpdatePage(HttpServletRequest request, Model model) {
 		
 		UserDTO userDTO = userAccountService.getUserInfo(request);
