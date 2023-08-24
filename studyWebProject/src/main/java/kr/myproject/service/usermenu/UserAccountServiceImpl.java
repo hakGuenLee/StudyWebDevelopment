@@ -51,15 +51,23 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 	//회원 비밀번호 찾기 진행 절차 1 : id와 mail을 통해 일치하는 계정 여부 확인
 	@Override
-	public boolean serchUserAccountByIdAndMail(String id, String mail) {
+	public String serchUserAccountByIdAndMail(String id, String mail) {
 		
 		UserDTO uDto = userAccountMapper.selectUserAccountByIdAndMail(id,mail);
 		
-		if(uDto != null) {
-			return true;
+		if(uDto == null) {
+			return "fail";
 		}
+		return uDto.getUser_id();
+	}
+
+	//회원 비밀번호 변경 처리
+	@Override
+	public int changePassword(String pw, String id) {
 		
-		return false;
+		String cipher = passwordEncoder.encode(pw);
+
+		return userAccountMapper.UpdateUserPassword(id, cipher);
 	}
 
 }

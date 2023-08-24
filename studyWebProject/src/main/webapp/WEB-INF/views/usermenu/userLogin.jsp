@@ -227,7 +227,7 @@ $("#changePwBtn").on("click", function(){
 		data: {"id":id2, "mail":mail2},
 		success: function(data){
 			console.log(data)
-			if(data == false){
+			if(data == "fail"){
 				$("#pwChangeModal").modal("show");
 				let str = "";
 				str += "<p>일치하는 계정이 존재하지 않습니다! 아이디와 이메일을 다시 확인해보세요!</p>";
@@ -240,11 +240,11 @@ $("#changePwBtn").on("click", function(){
 					$("#pwSerchModal").modal("show");
 				})
 				
-			}else if(data == true){
+			}else if(data != "fail"){
 				$("#pwChangeModal").modal("show");
 				let str3= "";
 				
-				str3 += "<p>새로운 비밀번호를 입력해주세요!</p>"
+				str3 += "<p>"+data+"님, 새로운 비밀번호를 입력해주세요!</p>"
 					+	"<div>"
 					+	"<input id='newPwInput' type='password' class='form-control w-100' placeholder='비밀번호를 입력하세요' onkeyup='patternCheck()'>"
 					+	"<p id='checkMsg'></p>"
@@ -254,7 +254,7 @@ $("#changePwBtn").on("click", function(){
 				$("#pwChangeConfirmBody").html(str3);
 				
 				str4 = "";
-				str4 += "<button id='changePwConfirmBtn' type='button' onclick='pwChangeConfirmEvent()' class='btn btn-primary'>변경하기</button>"
+				str4 += "<button value="+data+" id='changePwConfirmBtn' type='button' onclick='pwChangeConfirmEvent()' class='btn btn-primary'>변경하기</button>"
 				
 				$("#pwChangeConfirmFooter").html(str4);
 				
@@ -294,9 +294,11 @@ function pwChangeConfirmEvent(){
 	console.log("하하!");
 	let firstPw = $("#newPwInput").val();
 	let secondPw = $("#newPwInput2").val();
+	let buttonValue = $("#changePwConfirmBtn").val();
 	
 	console.log(firstPw);
 	console.log(secondPw);
+	console.log(buttonValue);
 	
 	if(firstPw != secondPw){
 		$("#checkMsg2").html("비밀번호가 일치하지 않습니다! 다시 확인해주세요!");
@@ -325,19 +327,16 @@ function pwChangeConfirmEvent(){
 		
 		$.ajax({
 			
-			url: "/study/usermenu/pwChageConfirm",
+			url: "/study/usermenu/pwChangeConfirm",
 			type: "post",
-			data: {"newPw" : firstPw},
-			success:function(){
+			data: {"newPw" : firstPw, "id" : buttonValue},
+			success:function(resultMsg){
 				$("#pwChangeModal").modal("hide");
-				alert("비밀번호 변경이 완료되었습니다!");
+				alert(resultMsg);
 			},
 			error:function(){
 				alert("서버 에러!");
 			}
-			
-			
-			
 			
 		})
 	}

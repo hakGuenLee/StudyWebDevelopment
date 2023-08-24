@@ -81,15 +81,34 @@ public class UserAccountController {
 	}
 	
 	//비밀번호 변경 1차(계정 유무 확인)
-	@PostMapping("/pwChange")
+	@PostMapping(value = "/pwChange", produces = "application/text; charset=UTF-8")
 	@ResponseBody
-	public boolean pwChange(@RequestParam("id") String id, @RequestParam("mail") String mail) {
+	public String pwChange(@RequestParam("id") String id, @RequestParam("mail") String mail) {
 		
-		boolean result = userAccountService.serchUserAccountByIdAndMail(id, mail);
+		String FindId = userAccountService.serchUserAccountByIdAndMail(id, mail);
 		
-		System.out.println("서비스단에서 넘어온 계정일치 결과 : " + result);
+		System.out.println("서비스단에서 넘어온 계정일치 결과 : " + FindId);
 		
-		return result;
+		
+		
+		return FindId;
+	}
+	
+	//비밀번호 변경 2차(변경 진행)
+	@PostMapping(value = "/pwChangeConfirm", produces = "applacation/text; charset=UTF-8")
+	@ResponseBody
+	public String pwChangeConfirm(@RequestParam("newPw") String pw, @RequestParam("id") String id) {
+		
+		int successNum = userAccountService.changePassword(pw,id);
+		
+		if(successNum != 0) {
+			String successMsg = "비밀번호 변경이 완료되었습니다. 다시 로그인해주세요!";
+			return successMsg;
+		}
+		
+		String failMsg = "비밀번호 변경이 실패하였습니다! 다시 시도해보세요!";
+		return failMsg;
+		
 	}
 	
 }
