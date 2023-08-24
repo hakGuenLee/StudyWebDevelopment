@@ -8,61 +8,53 @@
 
 <section>
 	
-	<div id="guideBox" class="d-flex justify-content-around">
-		<div>
-			<h4>문의 등록</h4>	
-			<p>회원님의 소중한 문의에 최대한 신속히 답변해드리겠습니다</p>
-		</div>
-		<div>
-			<button id="csRegisterBtn" type="button" class="btn">문의 등록하기</button>
-		</div>
-	</div>
-	
-	
-	<div id="csListBox" class="d-flex justify-content-around">
-		<div>
-			<h4>나의 1:1문의 내역</h4>	
-		</div>
-		<div>
-			<div id="searchGroup" class="input-group mb-3">
-			  <input type="text" class="form-control" placeholder="제목을 검색해보세요">
-			  <button class="btn btn-secondary" type="submit">검색하기</button>
+	<div class="d-flex">
+		<div id="mentBox">
+			<div>
+				<h3><b>문의 등록</b></h3>	
+				<p>회원님의 소중한 문의에 최대한 신속히 답변해드리겠습니다</p>
 			</div>
 		</div>
-	</div>
+		<div id="registerBox">
+			<div class="d-flex">
+				<p><b>문의 유형 선택</b></p>
+				<select id="csType" class="form-select">
+					<option>sssss</option>
+					<option>sssss</option>
+					<option>sssss</option>
+					<option>ssssss</option>
+				</select>
+			</div>
+			<div id="register" class="d-flex">
+				<p><b>등록자 ID</b></p>
+				<p id="registerId">sksksksk</p>
+	<!-- 			<input id="registerId" type="text" class="form-control" readonly> -->
+			</div>
+			<div id="registerName" class="d-flex">
+				<p><b>등록자 성명</b></p>
+				<p id="userName">sksksksk</p>
+			</div>
+
+			<div class="mt-5">
+				<p><b>문의 내용 입력</b></p>
+			</div>
+		
+			<div>
+				<textarea id="contentText" class="form-control"></textarea>
+			</div>
+			
+			<div>
+				<button type="button" class="btn">등록하기</button>
+				
+			</div>
+		
+		</div>
+	</div>		
 	
-	<div id="tableBox" class="container w-75 mt-5">
-		<table class="table mt-3">
-			<thead class="table-secondary">
-				<tr>
-					<th>No.</th>
-					<th>구분</th>
-					<th>제목</th>
-					<th>등록자</th>
-					<th>등록일자</th>
-					<th>상태</th>
-					<th>상세보기</th>
-					<th>삭제</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>		
-		</table>
-	</div>
+
+	
+
 </section>
-
-
-
 
 
 

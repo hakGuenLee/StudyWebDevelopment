@@ -1,1 +1,49 @@
-@charset "UTF-8";
+
+section{
+	margin-top:120px;
+}
+
+#mentBox{
+	margin-left:90px;
+}
+
+#mentBox p{
+	margin-top:30px;
+	font-size:16px;
+	color:gray;
+}
+
+#registerBox{
+	margin-left:20%;
+}
+
+#registerBox p{
+	font-size:18px;
+}
+
+#csType{
+	margin-left:60px;
+	width:380px;
+}
+
+#register{
+	margin-top:30px;
+}
+
+#registerId{
+	margin-left:98px;
+
+}
+
+#registerName{
+	margin-top:30px;
+}
+
+#userName{
+	margin-left:82px;
+}
+
+#contentText{
+	width:580px;
+	height:240px;
+}
