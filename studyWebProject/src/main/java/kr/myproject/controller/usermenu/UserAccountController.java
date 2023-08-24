@@ -80,4 +80,16 @@ public class UserAccountController {
 		
 	}
 	
+	//비밀번호 찾기
+	@PostMapping("/pwChange")
+	@ResponseBody
+	public boolean pwChange(@RequestParam("id") String id, @RequestParam("mail") String mail) {
+		
+		boolean result = userAccountService.serchUserAccountByIdAndMail(id, mail);
+		
+		System.out.println("서비스단에서 넘어온 계정일치 결과 : " + result);
+		
+		return result;
+	}
+	
 }

@@ -14,6 +14,9 @@ public interface UserAccountMapper {
 	//아이디 찾기(view에서 넘어온 mail주소로 찾음)
 	String selectId(String mail);
 
+	//회원 비밀번호 찾기 진행 절차 1 : id와 mail을 통해 일치하는 계정 여부 확인
+	UserDTO selectUserAccountByIdAndMail(@Param("id")String id, @Param("mail")String mail);
+
 
 
 }

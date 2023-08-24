@@ -49,4 +49,17 @@ public class UserAccountServiceImpl implements UserAccountService {
 		return userAccountMapper.selectId(mail);
 	}
 
+	//회원 비밀번호 찾기 진행 절차 1 : id와 mail을 통해 일치하는 계정 여부 확인
+	@Override
+	public boolean serchUserAccountByIdAndMail(String id, String mail) {
+		
+		UserDTO uDto = userAccountMapper.selectUserAccountByIdAndMail(id,mail);
+		
+		if(uDto != null) {
+			return true;
+		}
+		
+		return false;
+	}
+
 }

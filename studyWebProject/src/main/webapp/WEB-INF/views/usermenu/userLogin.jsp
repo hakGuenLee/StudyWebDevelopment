@@ -50,51 +50,101 @@
   <div class="modal-dialog">
     <div class="modal-content">
 
-      <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">아이디 찾기</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
-      <!-- Modal body -->
       <div class="modal-body" style="height:100px">
         <p>가입 시 등록하셨던 이메일을 입력해주세요!</p>
         <input id="mailInput" type="text" class="form-control w-100">
       </div>
 
-      <!-- Modal footer -->
       <div class="modal-footer">
         <button id="serchIdBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">아이디찾기</button>
       </div>
 
     </div>
   </div>
-</div>
+</div> 
 
 <!-- 아이디 찾기 결과 Modal -->
 <div class="modal fade" id="idsearchResultModal">
   <div class="modal-dialog">
     <div class="modal-content">
 
-      <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">아이디 찾기 결과</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
-      <!-- Modal body -->
       <div class="modal-body" id="idSearchResultModalBody">
         <p></p>
       </div>
 
-      <!-- Modal footer -->
       <div class="modal-footer">
         <button id="serchIdBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
       </div>
 
     </div>
   </div>
-</div>
+</div> 
+
+
+
+<!-- 비밀번호 변경 Modal -->
+<div class="modal fade" id="pwSerchModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">비밀번호 변경하기</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body" style="height:160px">
+        <p>가입하셨던 ID와 이메일을 입력해주세요!</p>
+        <div>
+	        <input id="idInput2" type="text" class="form-control w-100" placeholder="ID를 입력하세요">
+	        <input id="mailInput2" type="text" class="form-control mt-3 w-100" placeholder="이메일을 입력하세요">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="changePwBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">비밀번호 변경하기</button>
+      </div>
+
+    </div>
+  </div>
+</div> 
+
+<!-- 비밀번호 변경 진행 Modal -->
+<div class="modal fade" id="pwChangeModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">비밀번호 변경 진행</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body" style="height:250px">
+        <p>새로운 비밀번호를 입력해주세요!</p>
+        <div>
+	        <input id="newPwInput" type="password" class="form-control w-100" placeholder="비밀번호를 입력하세요" onkeyup="patternCheck()">
+	        <p id="checkMsg"></p>
+	        <input id="newPwInput2" type="password" class="form-control mt-3 w-100" placeholder="비밀번호를 확인해주세요">
+        </div>
+      </div>
+
+      <div class="modal-footer" id="pwChangeConfirmFooter">
+        <button id="changePwConfirmBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">변경하기</button>
+      </div>
+
+    </div>
+  </div>
+</div> 
+
 
 
 
@@ -113,7 +163,7 @@ $("#loginBtn").on("click", function(){
 
 })
 
-
+//일치하는 계정이 없을 경우 에러 메세지 alert
 $(document).ready(function(){
 	
 	let error = $("#errorMessage").val();
@@ -123,13 +173,14 @@ $(document).ready(function(){
 	}
 })
 
+//아이디찾기 Modal 열기
 $("#searchId").on("click", function(){	
 	$("#idSerchModal").modal("show");
 })
 
 
 
-
+//아이디찾기 Modal에서 찾기 버튼 클릭 시 아이디 찾기 진행 및 결과 Modal 열기
 $("#serchIdBtn").on("click", function(){
 	let mail = $("#mailInput").val();
 	console.log(mail);
@@ -144,7 +195,7 @@ $("#serchIdBtn").on("click", function(){
 			$("#idsearchResultModal").modal("show");
 			
 			let str = "";
-			str += "<p>" +data+ "</p>";
+			str += "<p>검색된 ID : " +data+ "</p>";
 			$("#idSearchResultModalBody").html(str);
 			
 			
@@ -153,10 +204,62 @@ $("#serchIdBtn").on("click", function(){
 			alert("요청실패!");
 		}
 	})
-
-
 })
 
+//비밀번호 찾기 Modal 열기
+$("#searchPw").on("click", function(){
+	$("#pwSerchModal").modal("show")	
+})
+
+//비밀번호 찾기 Modal에서 찾기 버튼 클릭 시 비밀번호 변경 진행 처리 및 Modal 열기
+
+$("#changePwBtn").on("click", function(){
+	let id2 = $("#idInput2").val();	
+	let mail2 = $("#mailInput2").val();
+	
+	console.log(id2);
+	console.log(mail2);
+	
+	$.ajax({
+		url:"/study/usermenu/pwChange",
+		type:"post",
+		data: {"id":id2, "mail":mail2},
+		success: function(data){
+			console.log(data)
+			if(data == false){
+				$("#pwChangeModal").modal("show");
+				let str = "";
+				str += "<p>일치하는 계정이 존재하지 않습니다! 아이디와 이메일을 다시 확인해보세요!</p>";
+				$("#pwChangeConfirmBody").html(str);
+				
+				let str2 = ""
+				str2 += "<button id='againBtn' type='button' class='btn btn-danger' data-bs-dismiss='modal'>다시 입력하기</button>";
+				$("#pwChangeConfirmFooter").html(str2);
+				$("#againBtn").on("click", function(){
+					$("#pwSerchModal").modal("show");
+				})
+			}else{
+				$("#pwChangeModal").modal("show");
+			}			
+		},
+		error: function(){
+			alert("요청실패!");
+		}
+	})
+})
+
+function patternCheck(){
+	let pattern = /^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/;
+	let newPw1 = $("#newPwInput").val();
+	if(!pattern.test(newPw1)){
+		$("#checkMsg").html("비밀번호는 영어,숫자, 특수기호 조합 8~16자여야 합니다!");
+		$("#checkMsg").css({"color" : "red", "font-size" : "12px"});
+		$("#changePwConfirmBtn").on("click", function(){
+			$("#pwChangeModal").modal("show");
+		})
+		
+	}
+}
 
 </script>
 
