@@ -15,10 +15,8 @@
 
 			<input type="checkbox" id="agreeCheckBox">
 			<lable for="agreeCheckBox">이용약관을 확인하였으며 이에 동의합니다</lable>
-			<textarea class="textBox" cols="80" rows="10" readonly>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, ut. Omnis, asperiores facere? Corrupti at, explicabo quidem optio recusandae,
-				reiciendis culpa odio libero laudantium enim laboriosam accusantium qui esse rem!
-			</textarea>			
+			<input type="text" class="form-control w-100 h-25 mt-3" value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, ut. Omnis, asperiores facere? Corrupti at, explicabo quidem optio recusandae,
+				reiciendis culpa odio libero laudantium enim laboriosam accusantium qui esse rem!" readonly>	
 		</div>
 
 		<!-- 개인정보 처리방침 -->
@@ -26,10 +24,8 @@
 		<div class="agreementText">
 			<input type="checkbox" id="agreeCheckBox2">
 			<lable for="agreeCheckBox2">개인정보 처리방침을 확인하였으며 이에 동의합니다</lable>
-			<textarea class="textBox" cols="80" rows="10" readonly>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, ut. Omnis, asperiores facere? Corrupti at, explicabo quidem optio recusandae,
-				reiciendis culpa odio libero laudantium enim laboriosam accusantium qui esse rem!
-			</textarea>			
+			<input type="text" class="form-control w-100 h-25 mt-3" value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, ut. Omnis, asperiores facere? Corrupti at, explicabo quidem optio recusandae,
+				reiciendis culpa odio libero laudantium enim laboriosam accusantium qui esse rem!" readonly>		
 		</div>
 	</div>
 	
