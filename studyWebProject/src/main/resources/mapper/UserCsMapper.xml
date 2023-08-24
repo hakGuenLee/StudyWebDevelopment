@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.myproject.mapper.usermenu.UserCsMapper">
+
+<!-- 회원 1:1문의 등록하기 -->
+<insert id="InsertUserQuestion">
+
+INSERT INTO cs_master(cs_serial, user_id, cs_code, cs_dt, cs_title, cs_content, proc_id)
+VALUES(
+	#{cs_serial}, #{user_id}, #{cs_code}, now(), #{cs_title}, #{cs_content}, null
+)
+</insert>
+
+
+
+</mapper>

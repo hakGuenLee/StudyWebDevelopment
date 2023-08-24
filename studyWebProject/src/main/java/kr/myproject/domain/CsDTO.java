@@ -11,6 +11,7 @@ public class CsDTO {
 	
 	private int cs_no; //문의 순번, 번호
 	private String user_id; //회원 아이디
+	private String cs_serial; //문의 고유번호
 	private String cs_code; //문의 유형
 	private Date cs_dt; //등록일자
 	private String cs_title; //문의 제목
