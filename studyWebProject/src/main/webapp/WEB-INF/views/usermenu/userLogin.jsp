@@ -128,12 +128,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
-      <div class="modal-body" style="height:250px">
+      <div class="modal-body" style="height:200px" id="pwChangeConfirmBody">
         <p>새로운 비밀번호를 입력해주세요!</p>
         <div>
 	        <input id="newPwInput" type="password" class="form-control w-100" placeholder="비밀번호를 입력하세요" onkeyup="patternCheck()">
 	        <p id="checkMsg"></p>
 	        <input id="newPwInput2" type="password" class="form-control mt-3 w-100" placeholder="비밀번호를 확인해주세요">
+	        <p id="checkMsg2"></p>
         </div>
       </div>
 
@@ -238,8 +239,25 @@ $("#changePwBtn").on("click", function(){
 				$("#againBtn").on("click", function(){
 					$("#pwSerchModal").modal("show");
 				})
-			}else{
+				
+			}else if(data == true){
 				$("#pwChangeModal").modal("show");
+				let str3= "";
+				
+				str3 += "<p>새로운 비밀번호를 입력해주세요!</p>"
+					+	"<div>"
+					+	"<input id='newPwInput' type='password' class='form-control w-100' placeholder='비밀번호를 입력하세요' onkeyup='patternCheck()'>"
+					+	"<p id='checkMsg'></p>"
+					+	"<input id='newPwInput2' type='password' class='form-control mt-3 w-100' placeholder='비밀번호를 확인해주세요'>"
+					+   "<p id='checkMsg2'></p>"
+					+ "</div>"
+				$("#pwChangeConfirmBody").html(str3);
+				
+				str4 = "";
+				str4 += "<button id='changePwConfirmBtn' type='button' class='btn btn-primary' data-bs-dismiss='modal'>변경하기</button>"
+				
+				$("#pwChangeConfirmFooter").html(str4);
+				
 			}			
 		},
 		error: function(){
@@ -248,18 +266,64 @@ $("#changePwBtn").on("click", function(){
 	})
 })
 
-function patternCheck(){
+//새 비밀번호 정규식 검사
+ function patternCheck(){
 	let pattern = /^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/;
 	let newPw1 = $("#newPwInput").val();
 	if(!pattern.test(newPw1)){
-		$("#checkMsg").html("비밀번호는 영어,숫자, 특수기호 조합 8~16자여야 합니다!");
+		$("#checkMsg").html("비밀번호는 영어,숫자, 특수기호 조합 8~16자여야 합니다! 다시 입력해주세요!");
 		$("#checkMsg").css({"color" : "red", "font-size" : "12px"});
-		$("#changePwConfirmBtn").on("click", function(){
-			$("#pwChangeModal").modal("show");
-		})
 		
+		let str4 = "";
+		str4 += "<button id='changePwConfirmBtn' type='button' class='btn btn-primary'>변경하기</button>"
+		
+		$("#pwChangeConfirmFooter").html(str4);
+	}else{
+		$("#checkMsg").html("사용 가능한 비밀번호입니다!");
+		$("#checkMsg").css({"color" : "blue", "font-size" : "12px"});
+		let str5 = "";
+		str5 += "<button id='changePwConfirmBtn' type='button' class='btn btn-primary' data-bs-dismiss='modal'>변경하기</button>"
+			$("#pwChangeConfirmFooter").html(str5);
 	}
-}
+} 
+//새 비밀번호 변경 처리 전 유효성 검사 후 변경 처리 진행
+$("#changePwConfirmBtn").on("click", function(){
+	let fisrtPw = $("#newPwInput").val();
+	let secondPw = $("#newPwInput2").val();
+	
+	console.log(firstPw);
+	console.log(secondPw);
+	
+	if(firstPw != secondPw){
+		$("#checkMsg2").html("비밀번호가 일치하지 않습니다! 다시 확인해주세요!");
+		$("#checkMsg2").css({"color" : "red", "font-size" : "12px"});
+		$("#newPwInput2").val("");
+		
+		let str = "";
+		str += "<button id='changePwConfirmBtn' type='button' class='btn btn-primary'>변경하기</button>"
+		
+		$("#pwChangeConfirmFooter").html(str);
+	}
+	
+	if(firstPw == 0 || secondPw == 0){
+		$("#checkMsg").html("비밀번호를 입력해주세요!");
+		$("#checkMsg").css({"color" : "red", "font-size" : "12px"});
+		let str2 = "";
+		str2 += "<button id='changePwConfirmBtn' type='button' class='btn btn-primary'>변경하기</button>"
+		
+		$("#pwChangeConfirmFooter").html(str2);
+	}
+	
+	if(firstPw == secondPw){
+		$("#checkMsg2").html("비밀번호가 일치합니다!");
+		$("#checkMsg2").css({"color" : "blue", "font-size" : "12px"});
+	}
+	
+	
+	
+	
+	
+})
 
 </script>
 
