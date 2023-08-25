@@ -22,8 +22,9 @@
 						<th>구분</th>
 						<th>모임명</th>
 						<th>대표자ID</th>
-						<th>모임인원</th>
+						<th>참가인원</th>
 						<th>가입일자</th>
+						<th>나의권한</th>
 						<th>수정</th>
 						<th>삭제</th>
 					</tr>
@@ -40,6 +41,7 @@
 								<td>${dto.wish_no}</td>
 								<td>${dto.space_name}</td>
 								<td>${dto.space_addr}</td>
+								<td>${dto.space_tel}</td>
 								<td>${dto.space_tel}</td>
 								<td>${dto.space_tel}</td>
 								<td>${dto.space_tel}</td>
