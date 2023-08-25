@@ -26,9 +26,19 @@
 				</div>
 			</div>
 		
-			<div id="map" style="width:900px;height:600px; margin-left:11%">
+			<div id="map" style="width:900px;height:600px; margin-left:11%;">
 			</div>
 		</div>
+		
+		<div id="mapTypeSelectButton" style="margin-left:45%; margin-top:30px;">
+		<p>
+    <input type="checkbox" id="chkUseDistrict" onclick="setOverlayMapTypeId()" /> 지적편집도 정보 보기
+    <input type="checkbox" id="chkTerrain" onclick="setOverlayMapTypeId()" /> 지형정보 보기 
+    <input type="checkbox" id="chkTraffic" onclick="setOverlayMapTypeId()" /> 교통정보 보기       
+    <input type="checkbox" id="chkBicycle" onclick="setOverlayMapTypeId()" /> 자전거도로 정보 보기
+		</p> 
+		</div>
+		
 	</section>
 
 <script>
@@ -41,6 +51,53 @@ var mapOptions = { //지도를 생성할 때 필요한 기본 옵션
 };
 
 var map = new kakao.maps.Map(mapContainer, mapOptions); //지도 생성 및 객체 리턴
+
+var mapTypes = {
+	    terrain : kakao.maps.MapTypeId.TERRAIN,    
+	    traffic :  kakao.maps.MapTypeId.TRAFFIC,
+	    bicycle : kakao.maps.MapTypeId.BICYCLE,
+	    useDistrict : kakao.maps.MapTypeId.USE_DISTRICT
+	};
+
+	// 체크 박스를 선택하면 호출되는 함수입니다
+	function setOverlayMapTypeId() {
+	    var chkTerrain = document.getElementById('chkTerrain'),  
+	        chkTraffic = document.getElementById('chkTraffic'),
+	        chkBicycle = document.getElementById('chkBicycle'),
+	        chkUseDistrict = document.getElementById('chkUseDistrict');
+	    
+	    // 지도 타입을 제거합니다
+	    for (var type in mapTypes) {
+	        map.removeOverlayMapTypeId(mapTypes[type]);    
+	    }
+
+	    // 지적편집도정보 체크박스가 체크되어있으면 지도에 지적편집도정보 지도타입을 추가합니다
+	    if (chkUseDistrict.checked) {
+	        map.addOverlayMapTypeId(mapTypes.useDistrict);    
+	    }
+	    
+	    // 지형정보 체크박스가 체크되어있으면 지도에 지형정보 지도타입을 추가합니다
+	    if (chkTerrain.checked) {
+	        map.addOverlayMapTypeId(mapTypes.terrain);    
+	    }
+	    
+	    // 교통정보 체크박스가 체크되어있으면 지도에 교통정보 지도타입을 추가합니다
+	    if (chkTraffic.checked) {
+	        map.addOverlayMapTypeId(mapTypes.traffic);    
+	    }
+	    
+	    // 자전거도로정보 체크박스가 체크되어있으면 지도에 자전거도로정보 지도타입을 추가합니다
+	    if (chkBicycle.checked) {
+	        map.addOverlayMapTypeId(mapTypes.bicycle);    
+	    }
+	    
+	} 
+
+
+
+
+
+
 
 //장소 검색 객체를 생성합니다
 /* /* var ps = new kakao.maps.services.Places();  */
@@ -234,7 +291,7 @@ function removeAllChildNods(el) {
  }
 } 
 
-
+  
 
 </script>
 
