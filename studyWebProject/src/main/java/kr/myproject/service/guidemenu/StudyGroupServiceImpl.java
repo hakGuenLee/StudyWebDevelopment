@@ -2,6 +2,7 @@ package kr.myproject.service.guidemenu;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -44,6 +45,8 @@ public class StudyGroupServiceImpl implements StudyGroupService {
 	public void makeStudyGroup(GroupDTO groupDTO, HttpServletRequest request) {
 		
 		String id = userInfoHandler.getUserId(request);
+		String nickName = userInfoHandler.getUserNickName(request);
+		String userName = userInfoHandler.getUserRealName(request);
 		
 		//모임고유번호 생성하기
 		LocalDateTime now = LocalDateTime.now();
@@ -54,9 +57,20 @@ public class StudyGroupServiceImpl implements StudyGroupService {
 		
 		groupDTO.setGroup_key(serialNumber);
 		
+		//group_master 테이블에 모임 정보 넣기
 		studyGroupMapper.InsertNewGroup(groupDTO, id);
 		
+		//group_detail 테이블에 모임 정보 넣기
+		studyGroupMapper.InsertNewGroupDetail(groupDTO, id, nickName, userName);
+	}
+	
+	//나의 모임 페이지 이동 시 모임 리스트 가져오기
+	@Override
+	public List<GroupDTO> getStudyGroupList(HttpServletRequest request) {
 		
+		String userId = userInfoHandler.getUserId(request);
+		
+		return studyGroupMapper.selectMyGroupList(userId);
 	}
 
 }

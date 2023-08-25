@@ -26,6 +26,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		registry.addInterceptor(userInterceptor)
 		.addPathPatterns("/userAccount/userUpdatePage")
 		.addPathPatterns("/userCs/**")
+		.addPathPatterns("/group/**")
 		.addPathPatterns("/location/addWishPlace")
 		.addPathPatterns("/location/myWishList");
 	}

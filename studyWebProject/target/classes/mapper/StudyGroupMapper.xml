@@ -17,4 +17,17 @@ group_info, register_dt)
 VALUES(#{groupDTO.group_key}, #{groupDTO.group_category}, #{groupDTO.group_name}, #{id}, #{groupDTO.group_member}, #{groupDTO.group_info}, now())
 </insert>
 
+<!-- 스터디 모임 만들 시 group_detail에도 넣기 -->
+<insert id="InsertNewGroupDetail">
+INSERT INTO studygroup_detail(group_key, member_id, member_nickname, member_name)
+VALUES(#{groupDTO.group_key}, #{id}, #{nickName}, #{userName})
+</insert>
+
+<!-- 나의 모임 페이지 이동 시 모임 리스트 가져오기 -->
+<select id="selectGroupList">
+SELECT * FROM studygroup_master WHERE user_id = #{userId}
+</select>
+
+
+
 </mapper>

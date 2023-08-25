@@ -37,7 +37,7 @@
 					<li>MyPage
 						<ul>
 							<li class="submenu"><a href="<c:url value="/userAccount/userUpdatePage"/>">나의 정보 수정</a></li>
-							<li class="submenu"><a>나의 모임 관리</a></li>
+							<li class="submenu"><a href="<c:url value="/group/myGroupManager"/>">나의 모임 관리</a></li>
 							<li class="submenu"><a>나의 알림 메세지</a></li>
 							<li class="submenu"><a href="<c:url value="/location/myWishList"/>">나의 위시리스트</a></li>
 							<li class="submenu"><a href="<c:url value="/userCs/myCsPage"/>">1:1문의하기</a></li>

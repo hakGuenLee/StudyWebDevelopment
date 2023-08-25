@@ -22,5 +22,24 @@ public class UserInfoHandler {
 		return uDto.getUser_id();
 	}
 	
+	//session에 저장된 user의 닉네임 얻기
+	public String getUserNickName(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		UserDTO uDto = (UserDTO) session.getAttribute("userDTO");
+		
+		return uDto.getUser_nickname();
+	}
+	
+	//session에 저장된 user의 성명 얻기
+	public String getUserRealName(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		UserDTO uDto = (UserDTO) session.getAttribute("userDTO");
+		
+		return uDto.getUser_nm();
+	}
 	
 }
