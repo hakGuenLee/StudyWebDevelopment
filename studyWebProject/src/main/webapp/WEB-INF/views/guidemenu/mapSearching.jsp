@@ -1,12 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
-		 
+		 	 
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84333c9c51fc5f7bcaa6f798ec88144b&libraries=services"></script>	 
 <link  href="<c:url value="/css/kakaomapAPI.css"/>" rel="stylesheet"/> 
 
 <jsp:include page="../include/header.jsp"/> 
+
 
 	<section class="mt-5">
 		<div class="d-flex" style="margin-top:130px">
@@ -31,8 +32,7 @@
 	</section>
 
 <script>
-
-var markers = [];
+ var markers = [];
 
 var mapContainer = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 var mapOptions = { //지도를 생성할 때 필요한 기본 옵션
@@ -43,7 +43,7 @@ var mapOptions = { //지도를 생성할 때 필요한 기본 옵션
 var map = new kakao.maps.Map(mapContainer, mapOptions); //지도 생성 및 객체 리턴
 
 //장소 검색 객체를 생성합니다
-/* var ps = new kakao.maps.services.Places();  */
+/* /* var ps = new kakao.maps.services.Places();  */
 
 var ps = new kakao.maps.services.Places();  
 
@@ -232,7 +232,8 @@ function removeAllChildNods(el) {
  while (el.hasChildNodes()) {
      el.removeChild (el.lastChild);
  }
-}
+} 
+
 
 
 </script>
