@@ -19,11 +19,10 @@
 					<button id="searchBtn" type="button" style="margin-left:20px" class="btn btn-primary">검색하기</button>
 				</div>
 				
-				<div id="menu_wrap" class="bg_white" style="margin-top:360px; margin-left:300px; width:500px; height:400px; border:1px solid black">
+				<div id="menu_wrap" class="bg_white" style="margin-top:360px; margin-left:300px; width:500px; height:430px; border:1px solid #DCDCDC">
 					<ul id="placesList"></ul>
                 	<div id="pagination"></div>
 				</div>
-
 			</div>
 		
 			<div id="map" style="width:900px;height:600px; margin-left:11%">
