@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/location")
 public class LocationController {
 	
-	//모임장소 둘러보기로 이동
+	//모임 장소 둘러보기 페이지 이동
 	@GetMapping("/movetoMap")
-	public String mapSite() {
+	public String mapSearchingPage() {
 		
-		return "guidemenu/locationSearch";
+		return "guidemenu/mapSearching";
 	}
+	
+
 }
