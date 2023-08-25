@@ -114,3 +114,15 @@ a{
 	position:relative;
 	animation: fadeInUp 1s;
 }
+
+th{
+	text-align:center;
+}
+
+td{
+	text-align:center;
+}
+
+
+
+

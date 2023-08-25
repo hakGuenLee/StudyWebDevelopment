@@ -49,7 +49,12 @@
 					<c:if test="${sessionScope.userDTO != null}">
 						<li><a href="<c:url value="/userAccount/userLogOut"/>">Logout</a></li>
 					</c:if>
-					<li><a href="<c:url value="/userRegister/acceptRule"/>">join</a></li>
+					<c:if test="${sessionScope.userDTO == null }">
+						<li><a href="<c:url value="/userRegister/acceptRule"/>">join</a></li>
+					</c:if>
+					<c:if test="${sessionScope.userDTO != null }">
+						<span style="color:gray">즐거운 스터디 되세요!</span>
+					</c:if>
 					
 				</ul>
 			</div>

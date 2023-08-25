@@ -28,7 +28,7 @@
 				<tbody>
 					<c:if test="${list == null || list.size()==0 }">
 						<tr>
-							<td colspan="5">찜하신 모임 공간이 없습니다! <a href="<c:url value="/location/movetoMap"/>" id="movetomap" type="button" class="btn">모임공간 둘러보기</a> </td>
+							<td colspan="5"><span>찜하신 모임 공간이 없습니다. 모임 공간을 찾아보세요!</span> <a href="<c:url value="/location/movetoMap"/>" id="movetomap" type="button" class="btn">모임공간 둘러보기</a> </td>
 						</tr>
 					</c:if>
 					<c:if test="${list != null || list.size()!=0 }">	
