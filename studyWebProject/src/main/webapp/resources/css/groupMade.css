@@ -29,3 +29,35 @@ section{
 	margin-left:35px;
 	width:150px;
 }
+
+#groupCategory{
+	margin-left: 35px;
+	width:350px;
+}
+
+#groupIntro{
+	margin-left: 35px;
+	width:350px;
+	height:200px;
+}
+
+
+#buttonGroup{
+	margin-top:40px;
+	margin-left:40px;
+}
+
+#goBackBtn{
+	background-color:gray;
+	margin-left:86px;
+	width:130px;
+	height:50px;
+	color:white;
+}
+
+#registerConfirmBtn{
+	background-color:dodgerBlue;
+	width:130px;
+	height:50px;
+	color:white;
+}

@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div id="groupOpenBox">
-		  <form action="/study/userCs/csRegisterComplete" method="post">
+		  <form action="/study/group/groupMadeComplete" method="post">
 			<div class="d-flex">
 				<p><b>모임명</b></p>
 				<input id="groupNameInput" type="text" class="form-control" placeholder="모임 이름을 입력해주세요!">
@@ -26,33 +26,33 @@
 			</div>
 			<div id="register" class="d-flex mt-5">
 				<p><b>모임 인원</b></p>
-				<input id="memberCount" type="text" class="form-control" name="user_id" readonly>
+				<input id="memberCount" type="text" class="form-control" name="user_id">
 				<p style="margin-left:15px"><b>명</b></p> 
 			</div>
-			<div id="registerName" class="d-flex">
-				<p><b>등록자 성명</b></p>
-				<input id="userName" type="text" value="${sessionScope.userDTO.user_nm}" class="form-control" readonly> 
+			
+			<div id="registerName" class="d-flex mt-5">
+				<p><b>모임 유형</b></p>
+				<select id="groupCategory" class="form-select">
+					<option>취업스터디</option>
+					<option>취미모임</option>
+					<option>학술회</option>
+					<option>독서모임</option>
+					<option>팀플모임</option>
+					<option>토론회</option>
+				</select>
 			</div>
 			
 			
 			<div class="mt-5 d-flex">
-				<p><b>문의 제목</b></p>
-				<input id="titleInput" type="text" class="form-control" name="cs_title" >
+				<p><b>모임 설명</b></p>
+				<textarea id="groupIntro" class="form-control" placeholder="30자 내외로 작성해주세요! 작성해주신 내용은 초대할 친구들에게 전해집니다!"></textarea>
 			</div>
 			
-			
-			<div class="mt-5">
-				<p><b>문의 내용</b></p>
-			</div>
-		
-			<div>
-				<textarea name="cs_content" id="contentText" class="form-control"></textarea>
-			</div>
+
 			
 			<div id="buttonGroup">
-				<a id="goBackBtn" href="<c:url value="/userCs/myCsPage"/>" type="button" class="btn">이전으로</a>
-				<button id="registerResetBtn" type="reset" class="btn">다시 작성하기</button>
-				<button id="registerConfirmBtn" type="button" class="btn">등록하기</button>
+				<a id="goBackBtn" href="<c:url value="/"/>" type="button" class="btn">이전으로</a>
+				<button id="registerConfirmBtn" type="button" class="btn">모임 만들기</button>
 				
 			</div>
 		  </form>
@@ -63,15 +63,43 @@
 </section>
 
 <script>
+
+//모임명 중복검사
+$("#checkNameBtn").on("click", function(){
+	
+	groupName = $("#groupNameInput").val();
+	
+	$.ajax({
+		url:"/study/group/nameCheck",
+		type:"post",
+		data:{"name" : groupName},
+		success:function(data){
+			if(data == "중복된 모임 이름입니다! 다른 이름으로 만들어주세요!"){
+				alert(data);
+				$("#groupNameInput").val("");
+			}else{
+				alert(data);
+			}
+		}
+	})
+
+})
+
+
 //빈 값 유효성 체크
 
 $("#registerConfirmBtn").on("click", function(){
-	let content = $("#contentText").val();
+
+	let groupName =  $("#groupNameInput").val();
+	let memberCount = $("#memberCount").val();
+	let category = $("#groupCategory").val();
+	let intro = $("#groupIntro").val();
 	
-	if(content == 0){
-		alert("문의 내용을 입력해주세요!");
+	if(groupName == 0 || memberCount == 0 || category == 0 || intro == 0){
+		alert("내용을 빠짐 없이 입력해주세요!");
+		location.replace("#");
 	}else{
-		$("#registerConfirmBtn").attr("type","submit");
+		$("#registerConfirmBtn").attr("type", "submit");
 	}
 
 })
