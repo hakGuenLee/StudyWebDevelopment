@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 		 
-
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84333c9c51fc5f7bcaa6f798ec88144b&libraries=services"></script>	 
 <link  href="<c:url value="/css/kakaomapAPI.css"/>" rel="stylesheet"/> 
 
@@ -148,7 +148,9 @@ function getListItem(index, places){
     }
                  
       itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                '</div>';           
+                '</div>';       
+                
+       itemStr += '<a href="<c:url value="/location/addWishPlace?name='+places.place_name+'&addr='+places.address_name+'&tel='+places.phone+'"/>" type="button" class="btn btn-success rounded-0 sm">WISH</a>';         
 
     el.innerHTML = itemStr;
     el.className = 'item';
