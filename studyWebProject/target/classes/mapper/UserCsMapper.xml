@@ -32,4 +32,8 @@ AND user_id = #{userId}
 SELECT * FROM cs_master WHERE cs_no = #{no} AND user_id = #{getId}
 </select>
 
+<!-- 1:1문의 삭제하기 -->
+<delete id="deleteCs">
+DELETE FROM cs_master WHERE cs_no = #{no}
+</delete>
 </mapper>

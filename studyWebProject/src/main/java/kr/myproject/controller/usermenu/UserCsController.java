@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.myproject.domain.CsDTO;
 import kr.myproject.service.usermenu.UserCustomerService;
@@ -45,8 +46,7 @@ public class UserCsController {
 		
 		model.addAttribute("list", findList);
 		
-		return "usermenu/myCsPage";
-		
+		return "usermenu/myCsPage";		
 	}
 	
 	//1:1 문의 등록 페이지 이동
@@ -77,5 +77,17 @@ public class UserCsController {
 		
 		return "usermenu/myCsDetailInfo";
 	}
+	
+	//1:1 문의 삭제하기
+	@PostMapping(value = "/csDelete", produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String csDelete(@RequestParam("no") int no) {
+		System.out.println("넘어온 번호 : " + no);
+		
+		userCustomerService.deleteContent(no);
+		
+		return "/study/userCs/myCsPage";
+	}
+	
 
 }

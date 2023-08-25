@@ -21,6 +21,9 @@ public interface UserCustomerService {
 	//1:1문의 상세정보 가져오기
 	CsDTO getUserCsDetail(int no, HttpServletRequest request);
 
+	//1:1문의 삭제하기
+	void deleteContent(int no);
+
 
 
 }

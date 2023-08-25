@@ -68,8 +68,15 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 	public CsDTO getUserCsDetail(int no, HttpServletRequest request) {
 		String getId = userInfoHandler.getUserId(request);
 		
-		
 		return userCsMapper.selectCsDetailInfo(no, getId);
+	}
+
+
+	//1:1문의 삭제하기
+	@Override
+	public void deleteContent(int no) {
+		userCsMapper.deleteCs(no);
+		
 	}
 
 

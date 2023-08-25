@@ -22,6 +22,9 @@ public interface UserCsMapper {
 	//1:1문의 상세정보 가져오기
 	CsDTO selectCsDetailInfo(@Param("no")int no, @Param("getId")String getId);
 
+	//1:1문의 삭제하기
+	void deleteCs(int no);
+
 
 
 }

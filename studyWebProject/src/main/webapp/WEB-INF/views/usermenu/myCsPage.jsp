@@ -63,7 +63,7 @@
 						<td>${cs.cs_dt}</td>
 						<td>${cs.proc_sts}</td>
 						<td><a href="<c:url value="/userCs/userCsDetailInfo?no=${cs.cs_no}"/>" type="button" class="btn btn-primary">상세보기</a></td>
-						<td><button type="button" class="btn btn-danger">삭제하기</button></td>
+						<td><button value="${cs.cs_no}" onclick="deleteConfirm(this.value)" type="button" class="btn btn-danger">삭제하기</button></td>
 					</tr>
 					</c:forEach>
 				</c:if>
@@ -71,11 +71,35 @@
 		</table>
 	</div>
 </section>
+<script>
+function deleteConfirm(e){
+	
+	console.log(e)
+	
+	if(window.confirm("삭제하시면 문의 내역을 복구할 수 없습니다. 정말 삭제하시겠습니까?")){
+		console.log("확인")
+		
+		$.ajax({
+			url: "/study/userCs/csDelete",
+			type: "post",
+			data: {"no" : e},
+			success: function(data){
+				location.replace(data);
+			},
+			error: function(){
+				alert("요청실패!!");
+			}		
+		})
+		
+	}else{
+		console.log("취소")
+	}
+	
+}
 
 
 
-
-
+</script>
 
 </body>
 </html>
