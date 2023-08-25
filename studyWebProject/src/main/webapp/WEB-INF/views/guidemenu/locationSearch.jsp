@@ -11,10 +11,13 @@
 	<div class="d-flex">
 		<div style="margin-left:130px">
 			<h4 style="font-size:30px"><b>장소 둘러보기</b></h4>
-		
+			<div class="d-flex mt-5">
+				<input id="searchLocation" type="text" style="width:280px" class="form-control" placeholder="검색할 장소를 입력해주세요!">
+				<input id="submit" type="button" style="margin-left:30px" class="btn btn-primary" value="주소검색">
+			</div>
 		</div>
 	
-		<div id="map" style="width:1000px;height:600px; margin-left:30%;">
+		<div id="map" style="width:1000px;height:600px; margin-left:18%;">
 		</div>
 	</div>
 	
