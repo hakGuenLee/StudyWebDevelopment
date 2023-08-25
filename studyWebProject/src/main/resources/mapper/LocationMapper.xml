@@ -10,5 +10,14 @@ INSERT INTO space_wish(user_id, space_name, space_addr, space_tel)
 VALUES(#{id}, #{name}, #{addr}, #{tel})
 </insert>
 
+<!-- 회원의 모임 위시리스트 가져오기 -->
+<select id="selectWishList" resultType="PlaceDTO">
+SELECT * FROM space_wish WHERE user_id = #{userId};
+</select>
+
+<!-- 찜한 모임 장소 삭제하기 -->
+<delete id="deleteWishPlace">
+DELETE FROM space_wish WHERE wish_no = #{no}
+</delete>
 
 </mapper>

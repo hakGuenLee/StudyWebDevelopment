@@ -7,6 +7,7 @@
   	<!-- 별칭 설정  -->
   	<typeAlias type="kr.myproject.domain.UserDTO" alias="UserDTO"/>
   	<typeAlias type="kr.myproject.domain.CsDTO" alias="CsDTO"/>
+  	<typeAlias type="kr.myproject.domain.PlaceDTO" alias="PlaceDTO"/>
 
   </typeAliases>
 </configuration>
