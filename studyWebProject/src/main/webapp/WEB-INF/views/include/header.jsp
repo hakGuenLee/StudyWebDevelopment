@@ -29,7 +29,7 @@
 							<li class="submenu"><a>나의 모임 일정</a></li>
 						</ul>
 					</li>
-					<li>장소 둘러보기</li>
+					<li><a href="<c:url value="/location/movetoMap"/>">장소 둘러보기</a></li>
 				</ul>	
 			</div>	
 			<div id="usermenu">
