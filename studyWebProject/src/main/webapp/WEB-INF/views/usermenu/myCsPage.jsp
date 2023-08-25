@@ -62,7 +62,7 @@
 						<td>${cs.user_id}</td>
 						<td>${cs.cs_dt}</td>
 						<td>${cs.proc_sts}</td>
-						<td><a type="button" class="btn btn-primary">상세보기</a></td>
+						<td><a href="<c:url value="/userCs/userCsDetailInfo?no=${cs.cs_no}"/>" type="button" class="btn btn-primary">상세보기</a></td>
 						<td><button type="button" class="btn btn-danger">삭제하기</button></td>
 					</tr>
 					</c:forEach>

@@ -19,6 +19,9 @@ public interface UserCsMapper {
 	//회원의 1:1문의 내역 검색하기
 	List<CsDTO> searchMyCsList(@Param("searchValue") String searchValue, @Param("userId")String userId);
 
+	//1:1문의 상세정보 가져오기
+	CsDTO selectCsDetailInfo(@Param("no")int no, @Param("getId")String getId);
+
 
 
 }

@@ -18,6 +18,9 @@ public interface UserCustomerService {
 	//회원의 문의 내역 검색하기
 	List<CsDTO> findUserCsList(String searchValue, HttpServletRequest request);
 
+	//1:1문의 상세정보 가져오기
+	CsDTO getUserCsDetail(int no, HttpServletRequest request);
+
 
 
 }

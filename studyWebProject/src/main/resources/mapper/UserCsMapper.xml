@@ -21,11 +21,15 @@ VALUES(
 </insert>
 
 <!-- 회원의 1:1문의 내역 검색하기 -->
-
 <select id="searchMyCsList" resultType="CsDTO">
 SELECT * FROM cs_master 
 WHERE cs_title Like CONCAT('%', #{searchValue}, '%')
 AND user_id = #{userId}
+</select>
+
+<!-- 1:1문의 상세정보 가져오기 -->
+<select id="selectCsDetailInfo" resultType="CsDTO">
+SELECT * FROM cs_master WHERE cs_no = #{no} AND user_id = #{getId}
 </select>
 
 </mapper>

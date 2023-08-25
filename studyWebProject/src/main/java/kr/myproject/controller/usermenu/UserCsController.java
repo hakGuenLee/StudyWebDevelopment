@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.myproject.domain.CsDTO;
 import kr.myproject.service.usermenu.UserCustomerService;
@@ -64,6 +65,17 @@ public class UserCsController {
 		userCustomerService.registerUserQuestion(csDTO);
 
 		return "redirect:/userCs/myCsPage";
+	}
+	
+	//1:1 문의 상세보기
+	@GetMapping("/userCsDetailInfo")
+	public String csDetailInfo(@RequestParam("no") int no, HttpServletRequest request, Model model) {
+		
+		CsDTO csDTO = userCustomerService.getUserCsDetail(no, request);
+		
+		model.addAttribute("csDTO", csDTO);
+		
+		return "usermenu/myCsDetailInfo";
 	}
 
 }

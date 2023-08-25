@@ -63,5 +63,15 @@ public class UserCustomerServiceImpl implements UserCustomerService {
 	}
 
 
+	//1:1문의 상세정보 가져오기
+	@Override
+	public CsDTO getUserCsDetail(int no, HttpServletRequest request) {
+		String getId = userInfoHandler.getUserId(request);
+		
+		
+		return userCsMapper.selectCsDetailInfo(no, getId);
+	}
+
+
 
 }
