@@ -10,5 +10,11 @@ SELECT group_name FROM studygroup_master
 WHERE group_name = #{name}
 </select>
 
+<!-- 스터디 모임 만들기 -->
+<insert id="InsertNewGroup">
+INSERT INTO studygroup_master(group_key, group_category, group_name, group_master, group_member, 
+group_info, register_dt)
+VALUES(#{groupDTO.group_key}, #{groupDTO.group_category}, #{groupDTO.group_name}, #{id}, #{groupDTO.group_member}, #{groupDTO.group_info}, now())
+</insert>
 
 </mapper>

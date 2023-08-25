@@ -20,19 +20,19 @@
 		  <form action="/study/group/groupMadeComplete" method="post">
 			<div class="d-flex">
 				<p><b>모임명</b></p>
-				<input id="groupNameInput" type="text" class="form-control" placeholder="모임 이름을 입력해주세요!">
+				<input id="groupNameInput" type="text" class="form-control" placeholder="모임 이름을 입력해주세요!" name="group_name">
 				<button id="checkNameBtn" type="button" class="btn btn-secondary">중복 확인</button>
 
 			</div>
 			<div id="register" class="d-flex mt-5">
 				<p><b>모임 인원</b></p>
-				<input id="memberCount" type="text" class="form-control" name="user_id">
+				<input id="memberCount" type="text" class="form-control" name="group_member">
 				<p style="margin-left:15px"><b>명</b></p> 
 			</div>
 			
 			<div id="registerName" class="d-flex mt-5">
 				<p><b>모임 유형</b></p>
-				<select id="groupCategory" class="form-select">
+				<select id="groupCategory" class="form-select" name="group_category">
 					<option>취업스터디</option>
 					<option>취미모임</option>
 					<option>학술회</option>
@@ -45,7 +45,7 @@
 			
 			<div class="mt-5 d-flex">
 				<p><b>모임 설명</b></p>
-				<textarea id="groupIntro" class="form-control" placeholder="30자 내외로 작성해주세요! 작성해주신 내용은 초대할 친구들에게 전해집니다!"></textarea>
+				<textarea name="group_info" id="groupIntro" class="form-control" placeholder="30자 내외로 작성해주세요! 작성해주신 내용은 초대할 친구들에게 전해집니다!"></textarea>
 			</div>
 			
 
