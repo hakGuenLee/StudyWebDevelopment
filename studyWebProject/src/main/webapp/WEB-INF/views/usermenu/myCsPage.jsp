@@ -93,11 +93,8 @@ function deleteConfirm(e){
 		
 	}else{
 		console.log("취소")
-	}
-	
+	}	
 }
-
-
 
 </script>
 

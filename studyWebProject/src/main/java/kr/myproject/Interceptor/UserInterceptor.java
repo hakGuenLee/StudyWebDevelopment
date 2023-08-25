@@ -1,6 +1,5 @@
 package kr.myproject.Interceptor;
 
-import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +13,7 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-		
-		System.out.println("하이~~");
+			throws Exception {	
 
 		HttpSession session = request.getSession();
 		
@@ -25,7 +22,6 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 		//인터셉터 발동 전 페이지 주소값을 session에 셋팅
 		String path = (String)request.getHeader("REFERER");
 		session.setAttribute("prev_url", path);
-		System.out.println("이전페이지 : " + path);
 		
 		//로그인되지 않은 상태에서 접근 시 로그인 페이지 띄우기
 		if(UserDTO == null) {
