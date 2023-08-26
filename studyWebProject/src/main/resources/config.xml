@@ -8,6 +8,7 @@
   	<typeAlias type="kr.myproject.domain.UserDTO" alias="UserDTO"/>
   	<typeAlias type="kr.myproject.domain.CsDTO" alias="CsDTO"/>
   	<typeAlias type="kr.myproject.domain.PlaceDTO" alias="PlaceDTO"/>
+  	<typeAlias type="kr.myproject.domain.GroupDTO" alias="GroupDTO"/>
 
   </typeAliases>
 </configuration>

@@ -35,8 +35,9 @@ group_key varchar(30) not null  ,
 group_category varchar(30) not null  ,
 group_name varchar(40) not null,
 group_maker varchar(30) not null,
-group_member int   ,
+group_boundary int not null   ,
 group_info varchar(300)   ,
+member_count int default 1,
 use_yn varchar(5)   default 'Y',
 register_dt datetime   default now());
 
