@@ -15,4 +15,37 @@ addr_jibun varchar(100)   ,
 addr_road varchar(200) not null  ,
 addr_detail varchar(200)   ,
 use_yn varchar(1)   default 'Y',
-register_dt datetime   default now())
+register_dt datetime   default now());
+
+
+
+drop table space_wish;
+create table space_wish(
+wish_no int not null primary key auto_increment,
+user_id varchar(30) not null  ,
+space_name varchar(50) not null,
+space_addr varchar(100) not null,
+space_tel varchar(50)
+  );
+  
+  drop table studygroup_master;
+create table studygroup_master(
+group_no int not null primary key auto_increment,
+group_key varchar(30) not null  ,
+group_category varchar(30) not null  ,
+group_name varchar(40) not null,
+group_maker varchar(30) not null,
+group_member int   ,
+group_info varchar(300)   ,
+use_yn varchar(5)   default 'Y',
+register_dt datetime   default now());
+
+drop table studygroup_detail;
+create table studygroup_detail(
+no int not null primary key auto_increment,
+group_key varchar(30) not null  ,
+member_id varchar(30) not null  ,
+member_nickname varchar(30) not null,
+member_role varchar(30) not null,
+join_dt datetime default now()
+);
