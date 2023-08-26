@@ -64,17 +64,18 @@
 						<th>No.</th>
 						<th>구분</th>
 						<th>모임명</th>
-						<th>개설일자</th>
-						<th>제한인원 설정</th>
-						<th>현재 참가인원</th>
-						<th>모임설정</th>
-						<th>삭제</th>
+						<th>대표자</th>
+						<th>모임인원</th>
+						<th>가입일자</th>
+						<th>탈퇴</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:if test="${list == null || list.size()==0 }">
 						<tr>
-							<td colspan="7"><span>아직 개설한 모임이 없습니다. 모임을 만들어보세요!</span> <a href="<c:url value="/location/movetoMap"/>" id="movetomap" type="button" class="btn">모임 만들기</a> </td>
+							<td colspan="7"><span>아직 참여한 모임이 없습니다. 모임에 참가해보세요!</span> 
+							<a href="<c:url value=""/>" id="" type="button" class="btn btn-success">모임 찾기</a> 
+							<a href="<c:url value=""/>" id="" type="button" class="btn btn-primary">나의 알림 메세지</a> </td>
 						</tr>
 					</c:if>
 					<c:if test="${list != null || list.size()!=0 }">	
@@ -86,8 +87,7 @@
 								<td>${dto.register_dt}</td>
 								<td>${dto.group_boundary}</td>
 								<td>${dto.member_count}/${dto.group_boundary}</td>
-								<td><button type="button" class="btn btn-primary">모임설정</button></td>
-								<td><button type="button" class="btn btn-danger">삭제</button></td>
+								<td><button type="button" class="btn btn-danger">탈퇴</button></td>
 							</tr>
 						</c:forEach>
 					</c:if>	

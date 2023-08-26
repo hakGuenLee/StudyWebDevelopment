@@ -19,8 +19,8 @@ VALUES(#{groupDTO.group_key}, #{groupDTO.group_category}, #{groupDTO.group_name}
 
 <!-- 스터디 모임 만들 시 group_detail에도 넣기 -->
 <insert id="InsertNewGroupDetail">
-INSERT INTO studygroup_detail(group_key, member_id, member_nickname, member_role)
-VALUES(#{groupDTO.group_key}, #{id}, #{nickName}, '방장')
+INSERT INTO studygroup_detail(group_key, member_id, member_nickname, member_role, member_code)
+VALUES(#{groupDTO.group_key}, #{id}, #{nickName}, '방장', '개설자')
 </insert>
 
 <!-- 나의 모임 페이지 이동 시 모임 리스트 가져오기 -->

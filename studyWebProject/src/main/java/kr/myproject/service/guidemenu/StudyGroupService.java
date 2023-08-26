@@ -17,4 +17,7 @@ public interface StudyGroupService {
 	//나의 모임 페이지 이동 시 모임 리스트 가져오기
 	List<GroupDTO> getStudyGroupList(HttpServletRequest request);
 
+	//나의 모임 페이지 이동 시 내가 참여한 모임 리스트 가져오기
+	List<GroupDTO> groupJoinList(HttpServletRequest request);
+
 }

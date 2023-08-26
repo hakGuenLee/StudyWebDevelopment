@@ -22,6 +22,7 @@ public class GroupDTO {
 	private String member_id; //참가인원 아이디
 	private String member_nickname; //참가인원 닉네임
 	private String member_role; //멤버 권한
+	private String member_code; //멤버 구분(개설자, 참여자)
 	private Date join_dt; //가입일자
 
 }

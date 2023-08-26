@@ -55,7 +55,11 @@ public class StudyGroupController {
 	@GetMapping("/myGroupManager")
 	public String groupManagerPage(HttpServletRequest request, Model model) {
 		
+		//내가 개설한 모임 리스트 가져오기
 		List<GroupDTO> groupList = studyGroupService.getStudyGroupList(request);
+		
+		//내가 참여한 모임 리스트 가져오기
+		List<GroupDTO> myJoinList = studyGroupService.groupJoinList(request);
 		
 		model.addAttribute("list", groupList);
 		

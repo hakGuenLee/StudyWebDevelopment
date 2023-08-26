@@ -73,4 +73,13 @@ public class StudyGroupServiceImpl implements StudyGroupService {
 		return studyGroupMapper.selectMyGroupList(userId);
 	}
 
+	//나의 모임 페이지 이동시 내가 참여한 모임 리스트 가져오기
+	@Override
+	public List<GroupDTO> groupJoinList(HttpServletRequest request) {
+		
+		String myId = userInfoHandler.getUserId(request);
+		
+		return studyGroupMapper.selectMyJoinList(myId);
+	}
+
 }

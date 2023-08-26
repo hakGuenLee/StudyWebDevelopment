@@ -23,4 +23,7 @@ public interface StudyGroupMapper {
 	void InsertNewGroupDetail(@Param("groupDTO")GroupDTO groupDTO, @Param("id")String id, 
 			@Param("nickName")String nickName, @Param("userName") String userName);
 
+	//나의 모임 페이지 이동시 내가 참여한 모임 리스트 가져오기
+	List<GroupDTO> selectMyJoinList(String myId);
+
 }
