@@ -74,8 +74,8 @@
 					<c:if test="${list2 == null || list2.size()==0 }">
 						<tr>
 							<td colspan="7"><span>아직 참여한 모임이 없습니다. 모임에 참가해보세요!</span> 
-							<a href="<c:url value=""/>" id="" type="button" class="btn btn-success">모임 찾기</a> 
-							<a href="<c:url value=""/>" id="" type="button" class="btn btn-primary">나의 알림 메세지</a> </td>
+							<a href="<c:url value=""/>" id="searchNewGroup" type="button" class="btn btn-success">모임 찾기</a> 
+							<a href="<c:url value=""/>" id="myNewMsg" type="button" class="btn btn-primary">나의 알림 메세지</a> </td>
 						</tr>
 					</c:if>
 					<c:if test="${list2 != null || list2.size()!=0 }">	
