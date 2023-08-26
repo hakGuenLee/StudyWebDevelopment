@@ -87,19 +87,27 @@
 								<td>${dto2.group_maker}</td>
 								<td>${dto2.member_count}</td>
 								<td>${dto2.join_dt}</td>
-								<td><button type="button" class="btn btn-danger">탈퇴</button></td>
+								<td><button id="outMyGroupBtn" type="button" class="btn btn-danger">탈퇴</button></td>
 							</tr>
 						</c:forEach>
 					</c:if>	
 				</tbody>
 			</table>
 		</div>
-		
-		
-		
-
 </section>
+<script>
 
+
+//그룹 탈퇴 버튼 클릭 시 체크 후 탈퇴 처리 진행
+$("#outMyGroupBtn").on("click",function(){
+	if(window.confirm("모임을 정말 탈퇴하시겠습니까?")){
+		alert("탈퇴가 완료되었습니다!")
+	}else{
+		
+	}
+})
+
+</script>
 
 </body>
 </html>

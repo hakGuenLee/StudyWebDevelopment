@@ -64,7 +64,7 @@ public class StudyGroupController {
 		model.addAttribute("list", groupList);
 		model.addAttribute("list2", myJoinList);
 		
-		return "guidemenu/myStudyGroup";
+		return "usermenu/myStudyGroup";
 	}
 	
 

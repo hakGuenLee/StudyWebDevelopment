@@ -8,7 +8,7 @@
 
 <section>
 	
-	<div class="d-flex">
+	<div class="d-flex justify-content-center">
 		<div id="mentBox">
 			<div>
 				<h3><b>모임 만들기</b></h3>	
