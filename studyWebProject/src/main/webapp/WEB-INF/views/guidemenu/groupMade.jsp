@@ -25,7 +25,7 @@
 
 			</div>
 			<div id="register" class="d-flex mt-5">
-				<p><b>모임 인원</b></p>
+				<p><b>최대 인원</b></p>
 				<input id="memberCount" type="text" class="form-control" name="group_boundary">
 				<p style="margin-left:15px"><b>명</b></p> 
 			</div>

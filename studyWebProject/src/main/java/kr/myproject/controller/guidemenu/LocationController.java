@@ -48,7 +48,7 @@ public class LocationController {
 		
 		locationService.addWishPlaceInfo(name, addr, tel, request);
 
-		return "home";
+		return "redirect:/location/myWishList";
 	}
 	
 	

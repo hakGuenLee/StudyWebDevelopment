@@ -56,7 +56,7 @@ var mapTypes = {
 	    terrain : kakao.maps.MapTypeId.TERRAIN,    
 	    traffic :  kakao.maps.MapTypeId.TRAFFIC,
 	    bicycle : kakao.maps.MapTypeId.BICYCLE,
-	    useDistrict : kakao.maps.MapTypeId.USE_DISTRICT
+	    useDistrict : kakao.maps.MapTypeId.USE_DISTRICT,
 	};
 
 	// 체크 박스를 선택하면 호출되는 함수입니다
@@ -90,6 +90,7 @@ var mapTypes = {
 	    if (chkBicycle.checked) {
 	        map.addOverlayMapTypeId(mapTypes.bicycle);    
 	    }
+
 	    
 	} 
 
@@ -207,13 +208,14 @@ function getListItem(index, places){
       itemStr += '  <span class="tel">' + places.phone  + '</span>' +
                 '</div>';       
                 
-       itemStr += '<a href="<c:url value="/location/addWishPlace?name='+places.place_name+'&addr='+places.address_name+'&tel='+places.phone+'"/>" type="button" class="btn btn-success rounded-0 sm">WISH</a>';         
+       itemStr += '<a id="wishBtn" href="<c:url value="/location/addWishPlace?name='+places.place_name+'&addr='+places.address_name+'&tel='+places.phone+'"/>" type="button" class="btn btn-success rounded-0 sm">WISH</a>';         
 
     el.innerHTML = itemStr;
     el.className = 'item';
 
     return el;
 }
+
 
 //마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, idx, title) {
