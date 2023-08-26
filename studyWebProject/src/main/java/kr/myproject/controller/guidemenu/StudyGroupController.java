@@ -62,6 +62,7 @@ public class StudyGroupController {
 		List<GroupDTO> myJoinList = studyGroupService.groupJoinList(request);
 		
 		model.addAttribute("list", groupList);
+		model.addAttribute("list2", myJoinList);
 		
 		return "guidemenu/myStudyGroup";
 	}

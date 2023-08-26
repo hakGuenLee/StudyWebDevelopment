@@ -71,22 +71,22 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:if test="${list == null || list.size()==0 }">
+					<c:if test="${list2 == null || list2.size()==0 }">
 						<tr>
 							<td colspan="7"><span>아직 참여한 모임이 없습니다. 모임에 참가해보세요!</span> 
 							<a href="<c:url value=""/>" id="" type="button" class="btn btn-success">모임 찾기</a> 
 							<a href="<c:url value=""/>" id="" type="button" class="btn btn-primary">나의 알림 메세지</a> </td>
 						</tr>
 					</c:if>
-					<c:if test="${list != null || list.size()!=0 }">	
-						<c:forEach var="dto" items="${list}">		
+					<c:if test="${list2 != null || list2.size()!=0 }">	
+						<c:forEach var="dto2" items="${list2}">		
 							<tr>
-								<td>${dto.group_no}</td>
-								<td>${dto.group_category}</td>
-								<td>${dto.group_name}</td>
-								<td>${dto.register_dt}</td>
-								<td>${dto.group_boundary}</td>
-								<td>${dto.member_count}/${dto.group_boundary}</td>
+								<td>${dto2.group_no}</td>
+								<td>${dto2.group_category}</td>
+								<td>${dto2.group_name}</td>
+								<td>${dto2.group_maker}</td>
+								<td>${dto2.member_count}</td>
+								<td>${dto2.join_dt}</td>
 								<td><button type="button" class="btn btn-danger">탈퇴</button></td>
 							</tr>
 						</c:forEach>

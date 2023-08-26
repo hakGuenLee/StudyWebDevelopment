@@ -12,7 +12,7 @@ public class GroupDTO {
 	private String group_key; //모임 고유번호
 	private String group_category; //모임 카테고리
 	private String group_name; //모임명
-	private String gorup_maker; //모임 개설자 아이디
+	private String group_maker; //모임 개설자 아이디
 	private int group_boundary; //모임 인원 설정
 	private String group_info; //모임 소개 내용
 	private String member_count; //모임의 참가인원 숫자
