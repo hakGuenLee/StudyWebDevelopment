@@ -18,10 +18,31 @@
 		</div>
 	</div>
 	
+	<hr style="width:1300px; margin-left:340px; margin-top:40px;">
 	
-	<div id="csListBox" class="d-flex justify-content-around">
+<!-- 	<div id="csListBox" class="d-flex justify-content-around"> -->
+	<div id="csListBox">
 		<div>
 			<h4>나의 1:1문의 내역</h4>	
+		</div>
+		<!-- <div>
+			<form action="/study/userCs/searchMyCsList" method="post">
+				<div id="searchGroup" class="input-group mb-3">
+				  <input type="text" name="searchValue" class="form-control" placeholder="제목을 검색해보세요">
+				  <button class="btn btn-secondary" type="submit">검색하기</button>
+				</div>
+			</form>
+		</div> -->
+	</div>
+	
+<!-- 	<div class="d-flex justify-content-around mt-3"> -->	
+	<div id="arrayMenu" class="d-flex mt-5">	
+		<div>
+			<select style="width:160px" class="form-select">
+					<option selected>사이트이용</option>
+					<option>회원정보</option>
+					<option>컴플레인</option>
+			</select>
 		</div>
 		<div>
 			<form action="/study/userCs/searchMyCsList" method="post">
@@ -33,7 +54,7 @@
 		</div>
 	</div>
 	
-	<div id="tableBox" class="container w-75 mt-5">
+	<div id="tableBox" class="container w-75 mt-3">
 		<table class="table mt-3">
 			<thead class="table-secondary">
 				<tr>
