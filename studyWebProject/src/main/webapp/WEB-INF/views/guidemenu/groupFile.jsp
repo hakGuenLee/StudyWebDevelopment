@@ -14,7 +14,7 @@
 			<p>스터디 자료를 올리고, 다운로드 할 수 있습니다.<br>친구들과 함께 자료를 공유하고 관리해보세요!</p>
 		</div>
 		<div>
-			<a href="<c:url value="/userCs/csRegisterPage"/>" id="csRegisterBtn" type="button" class="btn">파일 업로드</a>
+			<a href="<c:url value="/file/groupFileRegister"/>" id="csRegisterBtn" type="button" class="btn">파일 업로드</a>
 		</div>
 	</div>
 	

@@ -16,5 +16,12 @@ public class GroupFileController {
 		
 		return "guidemenu/groupFile";
 	}
+	
+	//자료 등록 페이지 이동
+	@GetMapping("/groupFileRegister")
+	public String fileRegisterPage() {
+		
+		return "guidemenu/groupFileRegister";
+	}
 
 }
