@@ -42,6 +42,26 @@
 				</select>
 			</div>
 			
+			<div id="location" class="d-flex mt-5">
+				<p><b>지역 설정</b></p>
+				<select id="groupCategory" class="form-select" name="group_location">
+					<option>서울</option>
+					<option>경기</option>
+					<option>인천</option>
+					<option>강원</option>
+					<option>충남</option>
+					<option>충북</option>
+					<option>경북</option>
+					<option>경남</option>
+					<option>전북</option>
+					<option>전남</option>
+					<option>광주</option>
+					<option>대구</option>
+					<option>부산</option>
+					<option>광주</option>
+				</select>
+			</div>
+			
 			
 			<div class="mt-5 d-flex">
 				<p><b>모임 설명</b></p>

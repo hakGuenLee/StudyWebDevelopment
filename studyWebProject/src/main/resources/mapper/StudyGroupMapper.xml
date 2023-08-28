@@ -12,9 +12,8 @@ WHERE group_name = #{name}
 
 <!-- 스터디 모임 만들기 -->
 <insert id="InsertNewGroup">
-INSERT INTO studygroup_master(group_key, group_category, group_name, group_maker, group_boundary, 
-group_info, register_dt)
-VALUES(#{groupDTO.group_key}, #{groupDTO.group_category}, #{groupDTO.group_name}, #{id}, #{groupDTO.group_boundary}, #{groupDTO.group_info}, now())
+INSERT INTO studygroup_master(group_key, group_category, group_name, group_maker, group_boundary, group_location, group_info, register_dt)
+VALUES(#{groupDTO.group_key}, #{groupDTO.group_category}, #{groupDTO.group_name}, #{id}, #{groupDTO.group_boundary}, #{groupDTO.group_location}, #{groupDTO.group_info}, now())
 </insert>
 
 <!-- 스터디 모임 만들 시 group_detail에도 넣기 -->
