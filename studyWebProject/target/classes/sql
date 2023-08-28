@@ -63,3 +63,14 @@ content varchar(300)   ,
 user_id varchar(30) not null  ,
 hit int not null  default 0,
 upload_dt datetime not null  default now());
+
+create table cmmn_cd(
+cm_no int not null primary key auto_increment,
+cm_cd varchar(10) not null  ,
+cm_nm varchar(100) not null  ,
+item_cd varchar(10) not null  ,
+item_nm varchar(50) not null  ,
+use_yn varchar(2) not null  default 'Y',
+proc_id varchar(30) not null  ,
+proc_dt datetime   default now()
+);
