@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.myproject.mapper.guidemenu.GroupFileMapper">
+
+<!-- 자료실 페이지 이동 시 유저의 그룹 리스트 가져오기 -->
+<select id="selectStudyList" resultType="GroupDTO">
+SELECT * FROM studygroup_detail WHERE member_id = #{id}
+</select>
+
+
+</mapper>

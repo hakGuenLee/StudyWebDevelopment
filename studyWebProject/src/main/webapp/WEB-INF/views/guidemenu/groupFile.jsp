@@ -7,6 +7,7 @@
 
 
 <section>
+	<input id="userId" type="hidden" value="${sessionScope.userDTO.user_id}">
 	
 	<div id="guideBox" class="d-flex justify-content-around">
 		<div>
@@ -25,20 +26,18 @@
 		<div>
 			<h4>모임별 자료 확인</h4>	
 		</div>
-		<!-- <div>
-			<form action="/study/userCs/searchMyCsList" method="post">
-				<div id="searchGroup" class="input-group mb-3">
-				  <input type="text" name="searchValue" class="form-control" placeholder="제목을 검색해보세요">
-				  <button class="btn btn-secondary" type="submit">검색하기</button>
-				</div>
-			</form>
-		</div> -->
 	</div>
 	
-<!-- 	<div class="d-flex justify-content-around mt-3"> -->	
+
 	<div id="arrayMenu" class="d-flex mt-5">	
+		<div >
+			<select id="myGroupList" style="width:160px" class="form-select">
+					<option></option>
+			</select>
+		</div>
+		
 		<div>
-			<select style="width:160px" class="form-select">
+			<select style="width:160px; margin-left:20px;" class="form-select">
 					<option selected>텍스트</option>
 					<option>PDF</option>
 					<option>Exel</option>
@@ -69,7 +68,7 @@
 					<th>삭제</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="fileList">
 <%-- 				<c:if test="${list == null || list.size()==0}">
 					<tr>
 						<td colspan="8">문의 내역이 존재하지 않습니다!</td>
@@ -84,7 +83,6 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td><a href="<c:url value=""/>" type="button" class="btn btn-primary">상세보기</a></td>
 						<td><button value=""  type="button" class="btn btn-danger">삭제하기</button></td>
 					</tr>
 <%-- 					</c:forEach>
@@ -94,6 +92,38 @@
 	</div>
 </section>
 <script>
+$(document).ready(function(){
+	
+	let id = $("#userId").val();
+	console.log(id);
+	
+	$.ajax({
+		url: "/study/file/myGroupList",
+		type: "post",
+		data: {"id" : id},
+		success:function(result){
+			console.log(result);
+			let list = result;
+			
+			let str = "";
+			
+			for(let i=0; i<list.length; i++){
+				str += "<option>"+list[i].group_name+"</option>";
+			}
+			
+			$("#myGroupList").html(str);
+			
+			
+		},
+		error:function(){
+			alert("요청실패!");
+		}
+
+	})
+
+})
+
+</script>
 
 
 </body>
