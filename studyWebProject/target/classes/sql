@@ -36,6 +36,7 @@ group_category varchar(30) not null  ,
 group_name varchar(40) not null,
 group_maker varchar(30) not null,
 group_boundary int not null   ,
+group_location varchar(30) not null,
 group_info varchar(300)   ,
 member_count int default 1,
 use_yn varchar(5)   default 'Y',
@@ -45,8 +46,20 @@ drop table studygroup_detail;
 create table studygroup_detail(
 no int not null primary key auto_increment,
 group_key varchar(30) not null  ,
+group_name varchar(40) not null,
 member_id varchar(30) not null  ,
 member_nickname varchar(30) not null,
 member_role varchar(30) not null,
+member_code varchar(30) not null,
 join_dt datetime default now()
 );
+
+create table file_master(
+file_no int not null primary key auto_increment,
+group_key varchar(30) not null  ,
+group_name varchar(40) not null  ,
+file_name varchar(300) not null  ,
+content varchar(300)   ,
+user_id varchar(30) not null  ,
+hit int not null  default 0,
+upload_dt datetime not null  default now());

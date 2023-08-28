@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
-		 
+
+<script  src="<c:url value="/js/common.js"/>"></script>		 
 <link  href="<c:url value="/css/myCsPage.css"/>" rel="stylesheet"/> 		 
 <jsp:include page="../include/header.jsp"/> 
 
@@ -31,7 +32,7 @@
 
 	<div id="arrayMenu" class="d-flex mt-5">	
 		<div >
-			<select id="myGroupList" style="width:160px" class="form-select">
+			<select id="myGroupList" style="width:160px" class="form-select" name="groupList">
 					<option></option>
 			</select>
 		</div>
@@ -69,13 +70,6 @@
 				</tr>
 			</thead>
 			<tbody id="fileList">
-<%-- 				<c:if test="${list == null || list.size()==0}">
-					<tr>
-						<td colspan="8">문의 내역이 존재하지 않습니다!</td>
-					</tr>
-				</c:if> --%>
-<%-- 				<c:if test="${list != null || list.size()!=0}">
-					<c:forEach var="cs" items="${list }"> --%>
 					<tr>
 						<td></td>
 						<td></td>
@@ -96,7 +90,8 @@ $(document).ready(function(){
 	
 	let id = $("#userId").val();
 	console.log(id);
-	
+
+	//자료실 페이지 이동 시 회원이 참여 중인 스터디 모임 목록 가져오기
 	$.ajax({
 		url: "/study/file/myGroupList",
 		type: "post",
@@ -118,9 +113,30 @@ $(document).ready(function(){
 		error:function(){
 			alert("요청실패!");
 		}
-
 	})
 
+	//스터디 모임 목록에 따라 자료 정렬하기
+	let groupSelect = $("#myGroupList").val();
+	$.ajax({
+		url: "/study/file/getFileList",
+		type: "post",
+		data: {"groupName" : groupSelect},
+		success:function(result){
+			console.log(result);
+		},
+		error:function(){
+			alert("요청 실패!!")
+		}
+		
+		
+	})
+	
+	
+	
+	
+	
+	
+	
 })
 
 </script>

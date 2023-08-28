@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.myproject.domain.FileDTO;
 import kr.myproject.domain.GroupDTO;
 import kr.myproject.service.guidemenu.GroupFileService;
 
@@ -44,7 +45,20 @@ public class GroupFileController {
 		
 		List<GroupDTO> myGroupList = groupFileService.getUserGroupList(id);
 		
-		return myGroupList;
+		return myGroupList;		
+	}
+	
+	//유저가 선택한 그룹 이름에 따라서 그에 맞는 자료 가져오기
+	@PostMapping("/getFileList")
+	@ResponseBody
+	public List<FileDTO> fileList(@RequestParam("groupName") String groupName){
+		
+		List<FileDTO> fileList = groupFileService.getFileList(groupName);
+		
+		return fileList;
 		
 	}
+	
+	
+	
 }

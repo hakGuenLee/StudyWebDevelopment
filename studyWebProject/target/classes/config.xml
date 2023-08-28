@@ -9,6 +9,7 @@
   	<typeAlias type="kr.myproject.domain.CsDTO" alias="CsDTO"/>
   	<typeAlias type="kr.myproject.domain.PlaceDTO" alias="PlaceDTO"/>
   	<typeAlias type="kr.myproject.domain.GroupDTO" alias="GroupDTO"/>
+  	<typeAlias type="kr.myproject.domain.FileDTO" alias="FileDTO"/>
 
   </typeAliases>
 </configuration>

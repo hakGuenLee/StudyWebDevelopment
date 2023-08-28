@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.myproject.domain.FileDTO;
 import kr.myproject.domain.GroupDTO;
 import kr.myproject.mapper.guidemenu.GroupFileMapper;
 
@@ -19,6 +20,13 @@ public class GroupFileServiceImpl implements GroupFileService {
 	public List<GroupDTO> getUserGroupList(String id) {
 		
 		return groupFileMapper.selectStudyList(id);
+	}
+
+	//스터디 그룹별 파일 리스트 가져오기
+	@Override
+	public List<FileDTO> getFileList(String groupName) {
+	
+		return groupFileMapper.selectFileList(groupName);
 	}
 
 }
