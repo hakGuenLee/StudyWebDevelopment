@@ -19,7 +19,7 @@
 		<div id="registerBox">
 		  <form action="/study/userCs/csRegisterComplete" method="post">
 			<div class="d-flex">
-				<p><b>문의 유형 선택</b></p>
+				<p><b>게시 유형 선택</b></p>
 				<select id="csType" class="form-select" name="cs_code">
 					<option selected>사이트이용</option>
 					<option>회원정보</option>
@@ -65,18 +65,9 @@
 </section>
 
 <script>
-//빈 값 유효성 체크
 
-$("#registerConfirmBtn").on("click", function(){
-	let content = $("#contentText").val();
-	
-	if(content == 0){
-		alert("문의 내용을 입력해주세요!");
-	}else{
-		$("#registerConfirmBtn").attr("type","submit");
-	}
 
-})
+
 
 </script>
 
