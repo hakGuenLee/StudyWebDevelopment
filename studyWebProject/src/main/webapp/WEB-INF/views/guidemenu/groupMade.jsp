@@ -39,8 +39,8 @@
 			
 			<div id="location" class="d-flex mt-5">
 				<p><b>지역 설정</b></p>
-				<select id="locationlist" class="form-select" name="group_location">
-					<option></option>
+				<select id="locationlist" class="form-select" name="group_location" onchange="selectLocation()">
+					<option value=""></option>
 				</select>
 			</div>
 			
@@ -81,7 +81,7 @@ $(document).ready(function(){
 		let str = "";
 		
 		for(let i=0; i<list.length; i++){
-			str += "<option>"+list[i].item_nm+"</option>";
+			str += "<option value='"+list[i].item_nm+"'>"+list[i].item_nm+"</option>";
 		}
 		
 		$("#groupCategory").html(str);
@@ -95,18 +95,19 @@ $(document).ready(function(){
 		let str = "";
 		
 		for(let i=0; i<list.length; i++){
-			str += "<option>"+list[i].item_nm+"</option>";
+			str += "<option value='"+list[i].item_nm+"'>"+list[i].item_nm+"</option>";
 		}
 		
 		$("#locationlist").html(str);
 	
 	})
+
+	
 	
 	var cityCode = '300'
-	let location = $("select[name=group_location] option:selected").text();
-	console.log("지역명 : " + location)
-	
-	getLocationCity(cityCode, location, function(data){
+
+	//처음에는 바로 출력되는 서울의 행정구 가져오기
+	getLocationCity(cityCode, "서울", function(data){
 		console.log(data);
 		let cityList = data;
 		let str2 = "";
@@ -123,7 +124,6 @@ $(document).ready(function(){
 
 
 </script>
-
 
 
 <script>
@@ -147,6 +147,32 @@ $("#checkNameBtn").on("click", function(){
 	})
 
 })
+
+
+	
+	function selectLocation(){
+		let location = $("#locationlist option:selected").val();
+		console.log(location);
+		
+		
+ 		var cityCode = '300'
+
+			console.log("지역명 : " + location)
+			
+			getLocationCity(cityCode, location, function(data){
+				console.log(data);
+				let cityList = data;
+				let str2 = "";
+				
+				for(let i=0; i<cityList.length; i++){
+					str2 += "<option>"+cityList[i].item_nm+"</option>";
+				}
+				
+				$("#locationCity").html(str2);
+				
+			}) 
+	}
+	
 
 //빈 값 유효성 체크
 
