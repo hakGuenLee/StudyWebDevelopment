@@ -48,6 +48,16 @@ public class GroupFileController {
 		return myGroupList;		
 	}
 	
+	//파일 등록하기
+	
+	
+	
+	
+	
+	//파일 삭제하기
+	
+	
+	
 	//유저가 선택한 그룹 이름에 따라서 그에 맞는 자료 가져오기
 	@PostMapping("/getFileList")
 	@ResponseBody

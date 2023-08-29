@@ -26,6 +26,7 @@
 						<th>개설일자</th>
 						<th>제한인원 설정</th>
 						<th>현재 참가인원</th>
+						<th>친구초대</th>
 						<th>모임설정</th>
 						<th>삭제</th>
 					</tr>
@@ -45,6 +46,7 @@
 								<td>${dto.register_dt}</td>
 								<td>${dto.group_boundary}</td>
 								<td id="memberCount" onclick="memberList()">${dto.member_count}/${dto.group_boundary}</td>
+								<td><button type="button" class="btn btn-success">친구초대</button></td>
 								<td><button type="button" class="btn btn-primary">모임설정</button></td>
 								<td><button type="button" class="btn btn-danger">삭제</button></td>
 							</tr>
@@ -56,7 +58,7 @@
 		
 	
 <!-- 참가인원 보기 Modal -->
-<div class="modal fade" id="idSerchModal">
+<div class="modal fade" id="memberSearchModal">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -144,7 +146,7 @@ $("#outMyGroupBtn").on("click",function(){
 
 //참가인원 클릭 시 해당 그룹의 참가인원 목록 가져오기
 function memberList(){
-	$("#idSerchModal").modal("show");
+	$("#memberSearchModal").modal("show");
 	var groupName = document.getElementById("groupName").innerText;
 	console.log(groupName);
 	
