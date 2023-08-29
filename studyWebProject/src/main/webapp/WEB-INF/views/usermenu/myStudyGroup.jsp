@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 		 
@@ -40,7 +41,7 @@
 							<tr>
 								<td>${dto.group_no}</td>
 								<td>${dto.group_category}</td>
-								<td>${dto.group_name}</td>
+								<td id="groupName">${dto.group_name}</td>
 								<td>${dto.register_dt}</td>
 								<td>${dto.group_boundary}</td>
 								<td id="memberCount" onclick="memberList()">${dto.member_count}/${dto.group_boundary}</td>
@@ -71,13 +72,10 @@
         		<tr>
         			<th>No</th>
         			<th>참가자 닉네임</th>
-        			<th>가입일자</th>
         		</tr>
         	</thead>
-        	<tbody>
+        	<tbody id="memberModalBody">
         		<tr>
-        			<td></td>
-        			<td></td>
         			<td></td>
         		</tr>
         	</tbody>
@@ -144,8 +142,41 @@ $("#outMyGroupBtn").on("click",function(){
 	}
 })
 
+//참가인원 클릭 시 해당 그룹의 참가인원 목록 가져오기
 function memberList(){
 	$("#idSerchModal").modal("show");
+	var groupName = document.getElementById("groupName").innerText;
+	console.log(groupName);
+	
+	$.ajax({
+		url: "/study/group/getMemberList",
+		type:"post",
+		data:{"name" : groupName},
+		success:function(data){
+			console.log(data);
+			let list = data;
+			let str = "";
+			
+			var num = 1;
+			
+			for(let i=0; i<list.length; i++){
+				str += "<tr>";
+				str += "<td>"+num+"</td>";
+				str += "<td>"+list[i].member_nickname+"</td>";
+				str += "</tr>";
+				
+				num + 1;
+				
+				$("#memberModalBody").html(str);
+			}
+		},
+		error:function(){
+			alert("실패!");
+		}
+
+	})
+	
+	
 }
 </script>
 

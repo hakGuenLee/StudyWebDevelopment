@@ -26,4 +26,7 @@ public interface StudyGroupMapper {
 	//나의 모임 페이지 이동시 내가 참여한 모임 리스트 가져오기
 	List<GroupDTO> selectMyJoinList(String myId);
 
+	//나의 모임 페이지에서 현재 멤버 리스트 가져오기
+	List<GroupDTO> selectMemberList(String groupName);
+
 }

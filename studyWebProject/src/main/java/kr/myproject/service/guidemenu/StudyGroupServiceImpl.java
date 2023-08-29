@@ -82,4 +82,11 @@ public class StudyGroupServiceImpl implements StudyGroupService {
 		return studyGroupMapper.selectMyJoinList(myId);
 	}
 
+	//나의 모임 페이지에서 현재 참가인원 확인하기
+	@Override
+	public List<GroupDTO> getMemberList(String groupName) {
+
+		return studyGroupMapper.selectMemberList(groupName);
+	}
+
 }

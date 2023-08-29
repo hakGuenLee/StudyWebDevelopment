@@ -67,6 +67,17 @@ public class StudyGroupController {
 		return "usermenu/myStudyGroup";
 	}
 	
+	//나의 모임 페이지에서 현재 참가인원 확인하기
+	@PostMapping("/getMemberList")
+	@ResponseBody
+	public List<GroupDTO> memberList(@RequestParam("name") String groupName){
+		
+		List<GroupDTO> memberList = studyGroupService.getMemberList(groupName);
+		
+		return memberList;
+		
+	}
+	
 
 	
 	
