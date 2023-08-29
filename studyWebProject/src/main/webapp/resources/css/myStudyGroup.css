@@ -44,3 +44,8 @@ span{
 #myNewMsg{
 	margin-left:15px;
 }
+
+#memberCount:hover{
+	color:blue;
+	cursor:pointer;
+}

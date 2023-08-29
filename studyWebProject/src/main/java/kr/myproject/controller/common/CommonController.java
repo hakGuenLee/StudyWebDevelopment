@@ -38,8 +38,6 @@ public class CommonController {
 	public List<CommonCodeDTO> cityList(@RequestParam("code") String code,
 										@RequestParam("cityName") String city){
 		
-		System.out.println("넘어온 지역명" + city);
-		
 		List<CommonCodeDTO> cityList = commonCodeService.getCityList(code,city);
 		
 		return cityList;

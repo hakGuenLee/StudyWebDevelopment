@@ -43,7 +43,7 @@
 								<td>${dto.group_name}</td>
 								<td>${dto.register_dt}</td>
 								<td>${dto.group_boundary}</td>
-								<td>${dto.member_count}/${dto.group_boundary}</td>
+								<td id="memberCount" onclick="memberList()">${dto.member_count}/${dto.group_boundary}</td>
 								<td><button type="button" class="btn btn-primary">모임설정</button></td>
 								<td><button type="button" class="btn btn-danger">삭제</button></td>
 							</tr>
@@ -53,8 +53,45 @@
 			</table>
 		</div>
 		
-		
-		
+	
+<!-- 참가인원 보기 Modal -->
+<div class="modal fade" id="idSerchModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">참가인원 보기</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body" style="height:300px">
+        <p>참가인원 현황</p>
+        <table class="table">
+        	<thead class="table-secondary">
+        		<tr>
+        			<th>No</th>
+        			<th>참가자 닉네임</th>
+        			<th>가입일자</th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<tr>
+        			<td></td>
+        			<td></td>
+        			<td></td>
+        		</tr>
+        	</tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <button id="serchIdBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">닫기</button>
+      </div>
+
+    </div>
+  </div>
+</div> 	
+
 		<div id="myJoinGroup" class="container w-75">
 			<h5><b>참여 중인 모임</b></h5>
 			<p>내가 참여 중인 모임을 확인해보세요!</p>
@@ -107,6 +144,9 @@ $("#outMyGroupBtn").on("click",function(){
 	}
 })
 
+function memberList(){
+	$("#idSerchModal").modal("show");
+}
 </script>
 
 </body>
