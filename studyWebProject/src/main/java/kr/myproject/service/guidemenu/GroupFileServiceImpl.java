@@ -1,6 +1,9 @@
 package kr.myproject.service.guidemenu;
 
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,12 +39,23 @@ public class GroupFileServiceImpl implements GroupFileService {
 	@Override
 	public void upLoadFileAndPost(MultipartHttpServletRequest multipart, HttpServletRequest request) {
 		
-		String Name = (String) multipart.getAttribute("group_name");
-		System.out.println("그룹 : " + Name);
-		
-		String groupName = (String) request.getAttribute("group_name");
-		System.out.println("그룹이름 : " + groupName);
-		
+		Map<String, String> map = new HashMap<>();
+
+		// mhr 텍스트파일, 바이너리 파일의 저옵를 모두 얻어올 수 있다.
+
+		Enumeration<String> enu = multipart.getParameterNames();
+
+		// 일반 텍스트 파일의 파라미터명(key), 해당 key의 value값을 가져오기
+		while (enu.hasMoreElements()) {
+
+			String paramName = enu.nextElement();
+			String paramValue = multipart.getParameter(paramName);
+
+			System.out.println(paramName);
+			System.out.println(paramValue);
+
+			map.put(paramName, paramValue);
+		}
 		
 	}
 
