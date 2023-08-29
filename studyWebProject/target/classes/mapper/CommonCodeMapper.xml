@@ -5,8 +5,8 @@
 <mapper namespace="kr.myproject.mapper.common.CommonCodeMapper">
 
 <!-- 공통코드 테이블의 파일 타입 리스트 가져오기 -->
-<select id="selectFileTypeAll" resultType="CommonCodeDTO">
-SELECT * FROM cmmn_cd WHERE cm_cd = #{fileCode} AND use_yn = 'Y'
+<select id="selectCodeList" resultType="CommonCodeDTO">
+SELECT * FROM cmmn_cd WHERE cm_cd = #{code} AND use_yn = 'Y'
 </select>
 
 </mapper>

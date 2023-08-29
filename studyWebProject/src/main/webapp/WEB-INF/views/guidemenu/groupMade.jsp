@@ -33,12 +33,7 @@
 			<div id="registerName" class="d-flex mt-5">
 				<p><b>모임 유형</b></p>
 				<select id="groupCategory" class="form-select" name="group_category">
-					<option>취업스터디</option>
-					<option>취미모임</option>
-					<option>학술회</option>
-					<option>독서모임</option>
-					<option>팀플모임</option>
-					<option>토론회</option>
+					<option></option>
 				</select>
 			</div>
 			
@@ -83,7 +78,30 @@
 </section>
 
 <script>
+$(document).ready(function(){
+	
+	var studyCode = '200';
+	commonCodeList(studyCode, function(data){
+		console.log(data);
+		let list = data;
+		let str = "";
+		
+		for(let i=0; i<list.length; i++){
+			str += "<option>"+list[i].item_nm+"</option>";
+		}
+		
+		$("#groupCategory").html(str);
+	
+	})
+	
+})
 
+
+</script>
+
+
+
+<script>
 //모임명 중복검사
 $("#checkNameBtn").on("click", function(){
 	
@@ -105,7 +123,6 @@ $("#checkNameBtn").on("click", function(){
 
 })
 
-
 //빈 값 유효성 체크
 
 $("#registerConfirmBtn").on("click", function(){
@@ -123,7 +140,6 @@ $("#registerConfirmBtn").on("click", function(){
 	}
 
 })
-
 </script>
 
 

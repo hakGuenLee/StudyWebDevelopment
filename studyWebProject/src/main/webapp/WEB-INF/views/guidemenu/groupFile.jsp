@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 
-<script  src="<c:url value="/js/common.js"/>"></script>		 
+
 <link  href="<c:url value="/css/myCsPage.css"/>" rel="stylesheet"/> 		 
 <jsp:include page="../include/header.jsp"/> 
 
@@ -128,7 +128,7 @@ $(document).ready(function(){
 	
 	//파일 자료형에 따라 자료 정렬하기
 	var fileTypeCode = '100';
-	getFileType(fileTypeCode, function(data){
+	commonCodeList(fileTypeCode, function(data){
 		console.log(data);
 		let list = data;
 		

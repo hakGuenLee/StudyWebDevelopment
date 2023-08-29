@@ -22,16 +22,16 @@ public class CommonController {
 	@Autowired
 	private CommonCodeService commonCodeService;
 	
-	
-	@PostMapping("/getFileType")
+	//넘어온 공통코드에 맞는 코드 목록 가져오기
+	@PostMapping("/getCommonCodeList")
 	@ResponseBody
-	public List<CommonCodeDTO> fileType(@RequestParam("code") String fileCode){
+	public List<CommonCodeDTO> CodeList(@RequestParam("code") String code){
 		
-		System.out.println("filecode : " + fileCode);
+		List<CommonCodeDTO> codeList = commonCodeService.getCommonCodeList(code);
 		
-		List<CommonCodeDTO> fileList = commonCodeService.getFileTypeList(fileCode);
-		
-		return fileList;
+		return codeList;
 	}
+	
+	//
 
 }
