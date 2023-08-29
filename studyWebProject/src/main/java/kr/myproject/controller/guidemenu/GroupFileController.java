@@ -14,7 +14,7 @@ import kr.myproject.domain.FileDTO;
 import kr.myproject.domain.GroupDTO;
 import kr.myproject.service.guidemenu.GroupFileService;
 
-//모임 자료실
+//모임 자료실 기능 담당 컨트롤러
 
 @Controller
 @RequestMapping("/file")

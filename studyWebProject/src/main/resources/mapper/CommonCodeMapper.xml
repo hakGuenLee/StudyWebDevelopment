@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.myproject.mapper.common.CommonCodeMapper">
+
+<!-- 공통코드 테이블의 파일 타입 리스트 가져오기 -->
+<select id="selectFileTypeAll" resultType="CommonCodeDTO">
+SELECT * FROM cmmn_cd WHERE cm_cd = #{fileCode} AND use_yn = 'Y'
+</select>
+
+</mapper>

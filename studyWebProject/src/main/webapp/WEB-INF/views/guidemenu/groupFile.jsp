@@ -38,12 +38,8 @@
 		</div>
 		
 		<div>
-			<select style="width:160px; margin-left:20px;" class="form-select">
-					<option selected>텍스트</option>
-					<option>PDF</option>
-					<option>Exel</option>
-					<option>Word</option>
-					<option>hwp</option>
+			<select id="fileType" style="width:160px; margin-left:20px;" class="form-select">
+					<option>전체</option>
 			</select>
 		</div>
 		<div>
@@ -127,10 +123,27 @@ $(document).ready(function(){
 		error:function(){
 			alert("요청 실패!!")
 		}
-		
-		
+
 	})
 	
+	//파일 자료형에 따라 자료 정렬하기
+	var fileTypeCode = '100';
+	getFileType(fileTypeCode, function(data){
+		console.log(data);
+		let list = data;
+		
+		let str ="";
+		str += "<option>전체보기</option>";
+		
+		for(let i=0; i<list.length; i++){
+			str += "<option>"+list[i].item_nm+"</option>";
+		}
+		
+		str += "<option>파일없음</option>"
+		
+		$("#fileType").html(str);
+	
+	})
 	
 	
 	

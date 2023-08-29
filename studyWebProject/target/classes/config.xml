@@ -10,6 +10,7 @@
   	<typeAlias type="kr.myproject.domain.PlaceDTO" alias="PlaceDTO"/>
   	<typeAlias type="kr.myproject.domain.GroupDTO" alias="GroupDTO"/>
   	<typeAlias type="kr.myproject.domain.FileDTO" alias="FileDTO"/>
+  	<typeAlias type="kr.myproject.domain.CommonCodeDTO" alias="CommonCodeDTO"/>
 
   </typeAliases>
 </configuration>
