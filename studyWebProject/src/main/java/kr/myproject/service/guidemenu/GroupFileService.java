@@ -2,6 +2,10 @@ package kr.myproject.service.guidemenu;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import kr.myproject.domain.FileDTO;
 import kr.myproject.domain.GroupDTO;
 
@@ -12,5 +16,8 @@ public interface GroupFileService {
 
 	//스터디 그룹별 파일 리스트 가져오기
 	List<FileDTO> getFileList(String groupName);
+
+	//파일, 게시글 등록
+	void upLoadFileAndPost(MultipartHttpServletRequest multipart, HttpServletRequest request);
 
 }

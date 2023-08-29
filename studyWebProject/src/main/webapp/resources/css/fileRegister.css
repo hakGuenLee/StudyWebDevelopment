@@ -1,6 +1,7 @@
 
 section{
 	margin-top:120px;
+	height:1400px;
 }
 
 #mentBox{
@@ -26,6 +27,14 @@ section{
 	width:380px;
 }
 
+
+#fileType{
+
+	margin-left:60px;
+	width:380px;
+}
+
+
 #csType{
 
 	margin-left:60px;
@@ -37,7 +46,7 @@ section{
 }
 
 #registerId{
-	margin-left:90px;
+	margin-left:50px;
 	width:400px;
 	border:none;
 
@@ -58,13 +67,18 @@ section{
 	width:400px;
 }
 
+#fileInput{
+	margin-left:98px;
+	width:400px;
+}
+
 #contentText{
 	width:580px;
 	height:240px;
 }
 
 #buttonGroup{
-	margin-top:20px;
+	margin-top:30px;
 }
 
 #goBackBtn{

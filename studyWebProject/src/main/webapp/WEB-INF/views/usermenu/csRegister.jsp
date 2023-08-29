@@ -20,9 +20,7 @@
 			<div class="d-flex">
 				<p><b>문의 유형 선택</b></p>
 				<select id="csType" class="form-select" name="cs_code">
-					<option selected>사이트이용</option>
-					<option>회원정보</option>
-					<option>컴플레인</option>
+					<option></option>
 				</select>
 			</div>
 			<div id="register" class="d-flex">
@@ -62,6 +60,28 @@
 	</div>		
 
 </section>
+<script>
+$(document).ready(function(){
+	
+	var studyCode = '500';
+	commonCodeList(studyCode, function(data){
+		console.log(data);
+		let list = data;
+		let str = "";
+
+		
+		for(let i=0; i<list.length; i++){
+			str += "<option value='"+list[i].item_nm+"'>"+list[i].item_nm+"</option>";
+		}
+		
+		$("#csType").html(str);
+	
+	})
+
+})
+</script>
+
+
 
 <script>
 //빈 값 유효성 체크

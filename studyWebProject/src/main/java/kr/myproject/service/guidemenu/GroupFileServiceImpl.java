@@ -2,8 +2,11 @@ package kr.myproject.service.guidemenu;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.myproject.domain.FileDTO;
 import kr.myproject.domain.GroupDTO;
@@ -27,6 +30,19 @@ public class GroupFileServiceImpl implements GroupFileService {
 	public List<FileDTO> getFileList(String groupName) {
 	
 		return groupFileMapper.selectFileList(groupName);
+	}
+
+	//파일, 게시글 등록
+	@Override
+	public void upLoadFileAndPost(MultipartHttpServletRequest multipart, HttpServletRequest request) {
+		
+		String Name = (String) multipart.getAttribute("group_name");
+		System.out.println("그룹 : " + Name);
+		
+		String groupName = (String) request.getAttribute("group_name");
+		System.out.println("그룹이름 : " + groupName);
+		
+		
 	}
 
 }

@@ -38,10 +38,8 @@
 <!-- 	<div class="d-flex justify-content-around mt-3"> -->	
 	<div id="arrayMenu" class="d-flex mt-5">	
 		<div>
-			<select style="width:160px" class="form-select">
-					<option selected>사이트이용</option>
-					<option>회원정보</option>
-					<option>컴플레인</option>
+			<select id="csCategorySelect" style="width:160px" class="form-select">
+					<option></option>
 			</select>
 		</div>
 		<div>
@@ -92,6 +90,30 @@
 		</table>
 	</div>
 </section>
+
+
+<script>
+$(document).ready(function(){
+	
+	var studyCode = '500';
+	commonCodeList(studyCode, function(data){
+		console.log(data);
+		let list = data;
+		let str = "";
+		
+		str += "<option>전체보기</option>";
+		
+		for(let i=0; i<list.length; i++){
+			str += "<option value='"+list[i].item_nm+"'>"+list[i].item_nm+"</option>";
+		}
+		
+		$("#csCategorySelect").html(str);
+	
+	})
+
+})
+</script>
+
 <script>
 function deleteConfirm(e){
 	
