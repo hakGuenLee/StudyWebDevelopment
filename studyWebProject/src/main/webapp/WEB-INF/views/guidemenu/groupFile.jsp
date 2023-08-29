@@ -96,13 +96,17 @@ $(document).ready(function(){
 			console.log(result);
 			let list = result;
 			
-			let str = "";
 			
-			for(let i=0; i<list.length; i++){
-				str += "<option>"+list[i].group_name+"</option>";
+			if(list != null){
+				let str = "";
+				
+				for(let i=0; i<list.length; i++){
+					str += "<option>"+list[i].group_name+"</option>";
+				}
+				
+				$("#myGroupList").html(str);
 			}
-			
-			$("#myGroupList").html(str);
+	
 			
 			
 		},

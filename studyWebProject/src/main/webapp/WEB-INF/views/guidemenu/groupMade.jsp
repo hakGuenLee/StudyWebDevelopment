@@ -39,21 +39,15 @@
 			
 			<div id="location" class="d-flex mt-5">
 				<p><b>지역 설정</b></p>
-				<select id="groupCategory" class="form-select" name="group_location">
-					<option>서울</option>
-					<option>경기</option>
-					<option>인천</option>
-					<option>강원</option>
-					<option>충남</option>
-					<option>충북</option>
-					<option>경북</option>
-					<option>경남</option>
-					<option>전북</option>
-					<option>전남</option>
-					<option>광주</option>
-					<option>대구</option>
-					<option>부산</option>
-					<option>광주</option>
+				<select id="locationlist" class="form-select" name="group_location">
+					<option></option>
+				</select>
+			</div>
+			
+			<div id="location2" class="d-flex mt-5">
+				<p><b>행정구</b></p>
+				<select id="locationCity" class="form-select" name="group_locationCity">
+					<option></option>
 				</select>
 			</div>
 			
@@ -92,6 +86,37 @@ $(document).ready(function(){
 		
 		$("#groupCategory").html(str);
 	
+	})
+	
+	var locationCode = '400';
+	commonCodeList(locationCode, function(data){
+		console.log(data);
+		let list = data;
+		let str = "";
+		
+		for(let i=0; i<list.length; i++){
+			str += "<option>"+list[i].item_nm+"</option>";
+		}
+		
+		$("#locationlist").html(str);
+	
+	})
+	
+	var cityCode = '300'
+	let location = $("select[name=group_location] option:selected").text();
+	console.log("지역명 : " + location)
+	
+	getLocationCity(cityCode, location, function(data){
+		console.log(data);
+		let cityList = data;
+		let str2 = "";
+		
+		for(let i=0; i<cityList.length; i++){
+			str2 += "<option>"+cityList[i].item_nm+"</option>";
+		}
+		
+		$("#locationCity").html(str2);
+		
 	})
 	
 })

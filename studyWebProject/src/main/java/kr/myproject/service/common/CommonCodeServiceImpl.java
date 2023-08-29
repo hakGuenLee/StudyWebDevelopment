@@ -21,4 +21,11 @@ public class CommonCodeServiceImpl implements CommonCodeService {
 		return commonCodeMapper.selectCodeList(code);
 	}
 
+	//넘어온 지역명에 맞는 행정구 목록 가져오기
+	@Override
+	public List<CommonCodeDTO> getCityList(String code, String city) {
+
+		return commonCodeMapper.selectCityList(code,city);
+	}
+
 }

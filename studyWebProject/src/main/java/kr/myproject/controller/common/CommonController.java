@@ -32,6 +32,18 @@ public class CommonController {
 		return codeList;
 	}
 	
-	//
+	//넘어온 지역코드와 지역명에 맞는 행정구 목록 가져오기
+	@PostMapping("/getCityList")
+	@ResponseBody
+	public List<CommonCodeDTO> cityList(@RequestParam("code") String code,
+										@RequestParam("cityName") String city){
+		
+		System.out.println("넘어온 지역명" + city);
+		
+		List<CommonCodeDTO> cityList = commonCodeService.getCityList(code,city);
+		
+		return cityList;
+		
+	}
 
 }

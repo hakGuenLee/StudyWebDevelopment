@@ -35,6 +35,16 @@ section{
 	width:350px;
 }
 
+#locationlist{
+	margin-left: 35px;
+	width:350px;
+}
+
+#locationCity{
+	margin-left: 50px;
+	width:350px;
+}
+
 #groupIntro{
 	margin-left: 35px;
 	width:350px;

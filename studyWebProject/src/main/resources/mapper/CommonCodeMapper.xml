@@ -9,4 +9,9 @@
 SELECT * FROM cmmn_cd WHERE cm_cd = #{code} AND use_yn = 'Y'
 </select>
 
+<!-- 넘어온 지역명에 맞는 행정구 목록 가져오기  -->
+<select id="selectCityList" resultType="CommonCodeDTO">
+SELECT * FROM cmmn_cd WHERE cm_cd = #{code} AND cm_nm = #{city}
+</select>
+
 </mapper>
