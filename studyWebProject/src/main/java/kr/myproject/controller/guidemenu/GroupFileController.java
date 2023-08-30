@@ -65,7 +65,7 @@ public class GroupFileController {
 	
 	//파일 등록하기
 	@PostMapping("/fileRegisterComplete")
-	public String fileRegister(MultipartHttpServletRequest multipart, HttpServletRequest request) {
+	public String fileRegister(MultipartHttpServletRequest multipart, HttpServletRequest request) throws Exception {
 		
 		groupFileService.upLoadFileAndPost(multipart, request);
 		

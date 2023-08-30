@@ -18,6 +18,6 @@ public interface GroupFileService {
 	List<FileDTO> getFileList(String groupName);
 
 	//파일, 게시글 등록
-	void upLoadFileAndPost(MultipartHttpServletRequest multipart, HttpServletRequest request);
+	void upLoadFileAndPost(MultipartHttpServletRequest multipart, HttpServletRequest request) throws Exception;
 
 }

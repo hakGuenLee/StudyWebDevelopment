@@ -13,4 +13,11 @@ SELECT * FROM studygroup_detail WHERE member_id = #{id}
 <select id="selectFileList" resultType="FileDTO">
 SELECT * FROM file_master WHERE group_name = #{groupName}
 </select>
+
+<!-- 파일 및 게시글 내용 저장하기 -->
+<insert id="saveFileAndPost">
+INSERT INTO file_master(group_name, file_name, file_type, post_type, post_title, content, uploader)
+VALUES(#{group_name}, #{file_name}, #{file_type}, #{post_type}, #{post_title}, #{content}, #{uploader})
+</insert>
+
 </mapper>

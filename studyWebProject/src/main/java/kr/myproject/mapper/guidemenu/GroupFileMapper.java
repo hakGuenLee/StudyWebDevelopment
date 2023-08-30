@@ -1,6 +1,7 @@
 package kr.myproject.mapper.guidemenu;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,5 +16,8 @@ public interface GroupFileMapper {
 
 	//스터디그룹별 파일 리스트 가져오기
 	List<FileDTO> selectFileList(String groupName);
+
+	//파일 및 게시글 내용 저장하기
+	void saveFileAndPost(Map<String, String> map);
 
 }
