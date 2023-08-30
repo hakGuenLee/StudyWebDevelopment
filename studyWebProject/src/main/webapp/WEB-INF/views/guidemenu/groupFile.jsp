@@ -62,23 +62,23 @@
 					<th>제목</th>
 					<th>등록자</th>
 					<th>등록일자</th>
-					<th>파일첨부</th>
+					<th>조회수</th>
 					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody id="fileList">
+				<c:forEach var="dto" items="${list }">
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>${dto.file_no}</td>
+						<td>${dto.group_name}</td>
+						<td>${dto.post_type}</td>
+						<td>${dto.post_title}</td>
+						<td>${dto.uploader}</td>
+						<td>${dto.uploader}</td>
+						<td>${dto.hit}</td>
 						<td><button value=""  type="button" class="btn btn-danger">삭제하기</button></td>
 					</tr>
-<%-- 					</c:forEach>
-				</c:if> --%>
+				</c:forEach>	
 			</tbody>		
 		</table>
 	</div>
@@ -103,7 +103,7 @@ $(document).ready(function(){
 				let str = "";
 				str = "<option>전체보기</option>";
 				for(let i=0; i<list.length; i++){
-					str += "<option>"+list[i].group_name+"</option>";
+					str += "<option>"+list[i]+"</option>";
 				}
 				
 				$("#myGroupList").html(str);

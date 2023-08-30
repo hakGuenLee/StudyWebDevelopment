@@ -35,12 +35,16 @@ public class GroupFileServiceImpl implements GroupFileService {
 
 		String id = userInfoHandler.getUserId(request);
 		
-		return groupFileMapper.selectAllFile(id);
+		List<String> groupList = groupFileMapper.selectStudyList(id);
+		
+		System.out.println("페이지 첫 이동 : " + groupList);
+		
+		return groupFileMapper.selectAllFile(groupList);
 	}
 	
 	//자료실 페이지 이동 시 유저의 그룹 리스트 가져오기
 	@Override
-	public List<GroupDTO> getUserGroupList(String id) {
+	public List<String> getUserGroupList(String id) {
 		
 		return groupFileMapper.selectStudyList(id);
 	}

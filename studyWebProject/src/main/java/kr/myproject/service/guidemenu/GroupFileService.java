@@ -12,7 +12,7 @@ import kr.myproject.domain.GroupDTO;
 public interface GroupFileService {
 
 	//자료실 페이지 이동 시 유저의 그룹 리스트 가져오기
-	List<GroupDTO> getUserGroupList(String id);
+	List<String> getUserGroupList(String id);
 
 	//스터디 그룹별 파일 리스트 가져오기
 	List<FileDTO> getFileList(String groupName);

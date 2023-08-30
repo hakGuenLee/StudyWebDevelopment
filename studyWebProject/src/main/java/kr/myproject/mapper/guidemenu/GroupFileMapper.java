@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import kr.myproject.domain.FileDTO;
 import kr.myproject.domain.GroupDTO;
@@ -12,7 +13,7 @@ import kr.myproject.domain.GroupDTO;
 public interface GroupFileMapper {
 
 	//자료실 페이지 이동 시 유저의 그룹 리스트 가져오기
-	List<GroupDTO> selectStudyList(String id);
+	List<String> selectStudyList(String id);
 
 	//스터디그룹별 파일 리스트 가져오기
 	List<FileDTO> selectFileList(String groupName);
@@ -21,6 +22,6 @@ public interface GroupFileMapper {
 	void saveFileAndPost(Map<String, String> map);
 
 	//자료실 페이지 첫 이동 시 모든 파일 리스트 가져오기
-	List<FileDTO> selectAllFile(String id);
+	List<FileDTO> selectAllFile(@Param("groupList")List<String> groupList);
 
 }

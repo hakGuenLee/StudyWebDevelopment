@@ -5,8 +5,8 @@
 <mapper namespace="kr.myproject.mapper.guidemenu.GroupFileMapper">
 
 <!-- 자료실 페이지 이동 시 유저의 그룹 리스트 가져오기 -->
-<select id="selectStudyList" resultType="GroupDTO">
-SELECT * FROM studygroup_detail WHERE member_id = #{id}
+<select id="selectStudyList" resultType="String">
+SELECT group_name FROM studygroup_detail WHERE member_id = #{id}
 </select>
 
 <!-- 스터디그룹별 파일 리스트 가져오기 -->
@@ -19,5 +19,13 @@ SELECT * FROM file_master WHERE group_name = #{groupName}
 INSERT INTO file_master(group_name, file_name, file_type, post_type, post_title, content, uploader)
 VALUES(#{group_name}, #{file_name}, #{file_type}, #{post_type}, #{post_title}, #{content}, #{uploader})
 </insert>
+
+<!-- 자료실 페이지 첫 이동 시 모든 파일 리스트 가져오기 -->
+<select id="selectAllFile" parameterType="java.util.List" resultType="FileDTO">
+<foreach collection="groupList" item="item" separator=",">
+SELECT * FROM file_master WHERE group_name = 
+#{item}
+</foreach>
+</select>
 
 </mapper>

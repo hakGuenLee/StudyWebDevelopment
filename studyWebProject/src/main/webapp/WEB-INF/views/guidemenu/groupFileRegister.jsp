@@ -34,7 +34,7 @@
 				
 				<c:forEach var="dto" items="${list}">
 				<select id="myStudyGroup" class="form-select" name="group_name">
-					<option>${dto.group_name}</option>
+					<option>${dto}</option>
 				</select>
 				</c:forEach>
 			</div>

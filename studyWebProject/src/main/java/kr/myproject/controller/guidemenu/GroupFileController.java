@@ -51,7 +51,7 @@ public class GroupFileController {
 		
 		String id = userInfoHandler.getUserId(request);
 		
-		List<GroupDTO> groupList = groupFileService.getUserGroupList(id);
+		List<String> groupList = groupFileService.getUserGroupList(id);
 		
 		model.addAttribute("list", groupList);
 		
@@ -61,9 +61,9 @@ public class GroupFileController {
 	//유저의 스터디모임 리스트 가져오기
 	@PostMapping("/myGroupList")
 	@ResponseBody
-	public List<GroupDTO> groupList(@RequestParam("id") String id) {
+	public List<String> groupList(@RequestParam("id") String id) {
 		
-		List<GroupDTO> myGroupList = groupFileService.getUserGroupList(id);
+		List<String> myGroupList = groupFileService.getUserGroupList(id);
 		
 		return myGroupList;		
 	}
