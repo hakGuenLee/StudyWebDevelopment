@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.myproject.domain.FileDTO;
 import kr.myproject.domain.GroupDTO;
+import kr.myproject.handler.UserInfoHandler;
 import kr.myproject.mapper.guidemenu.GroupFileMapper;
 
 @Service
@@ -23,6 +24,19 @@ public class GroupFileServiceImpl implements GroupFileService {
 
 	@Autowired
 	private GroupFileMapper groupFileMapper;
+	
+	@Autowired
+	private UserInfoHandler userInfoHandler;
+	
+	
+	//자료실 페이지 첫 이동 시 모든 파일 리스트 가져오기
+	@Override
+	public List<FileDTO> getFileListAll(HttpServletRequest request) {
+
+		String id = userInfoHandler.getUserId(request);
+		
+		return groupFileMapper.selectAllFile(id);
+	}
 	
 	//자료실 페이지 이동 시 유저의 그룹 리스트 가져오기
 	@Override
@@ -137,5 +151,7 @@ public class GroupFileServiceImpl implements GroupFileService {
 
 		
 	}
+
+
 
 }

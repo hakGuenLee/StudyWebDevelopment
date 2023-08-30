@@ -35,7 +35,12 @@ public class GroupFileController {
 	
 	//자료실 페이지 이동
 	@GetMapping("/groupFilePage")
-	public String filePage() {
+	public String filePage(HttpServletRequest request, Model model) {
+		
+		//페이지 이동 시 처음에는 유저의 모든 목록 파일 가져오도록 처리
+		List<FileDTO> myEntireGroupFileList = groupFileService.getFileListAll(request);
+		
+		model.addAttribute("list", myEntireGroupFileList);
 		
 		return "guidemenu/groupFile";
 	}

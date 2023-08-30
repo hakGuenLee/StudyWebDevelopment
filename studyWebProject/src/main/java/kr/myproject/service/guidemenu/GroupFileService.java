@@ -20,4 +20,7 @@ public interface GroupFileService {
 	//파일, 게시글 등록
 	void upLoadFileAndPost(MultipartHttpServletRequest multipart, HttpServletRequest request) throws Exception;
 
+	//유저의 모든 스터디 모임 파일들 가져오기
+	List<FileDTO> getFileListAll(HttpServletRequest request);
+
 }

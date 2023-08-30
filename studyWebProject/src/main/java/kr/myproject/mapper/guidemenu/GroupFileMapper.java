@@ -20,4 +20,7 @@ public interface GroupFileMapper {
 	//파일 및 게시글 내용 저장하기
 	void saveFileAndPost(Map<String, String> map);
 
+	//자료실 페이지 첫 이동 시 모든 파일 리스트 가져오기
+	List<FileDTO> selectAllFile(String id);
+
 }

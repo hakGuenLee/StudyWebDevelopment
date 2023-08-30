@@ -57,7 +57,8 @@
 			<thead class="table-secondary">
 				<tr>
 					<th>No.</th>
-					<th>구분</th>
+					<th>모임명</th>
+					<th>게시유형</th>
 					<th>제목</th>
 					<th>등록자</th>
 					<th>등록일자</th>
@@ -67,6 +68,7 @@
 			</thead>
 			<tbody id="fileList">
 					<tr>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -99,7 +101,7 @@ $(document).ready(function(){
 			
 			if(list != null){
 				let str = "";
-				
+				str = "<option>전체보기</option>";
 				for(let i=0; i<list.length; i++){
 					str += "<option>"+list[i].group_name+"</option>";
 				}
@@ -116,7 +118,7 @@ $(document).ready(function(){
 	})
 
 	//스터디 모임 목록에 따라 자료 정렬하기
-	let groupSelect = $("#myGroupList").val();
+	let groupSelect = $("#myGroupList option:selected").val();
 	$.ajax({
 		url: "/study/file/getFileList",
 		type: "post",
@@ -130,7 +132,7 @@ $(document).ready(function(){
 
 	})
 	
-	//파일 자료형에 따라 자료 정렬하기
+	//파일 자료유형 목록 가져오기
 	var fileTypeCode = '100';
 	commonCodeList(fileTypeCode, function(data){
 		console.log(data);
