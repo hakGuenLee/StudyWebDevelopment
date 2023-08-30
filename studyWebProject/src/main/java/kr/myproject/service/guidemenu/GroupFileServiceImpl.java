@@ -1,7 +1,6 @@
 package kr.myproject.service.guidemenu;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -48,12 +47,20 @@ public class GroupFileServiceImpl implements GroupFileService {
 		
 		String groupName = multipart.getParameter("group_name");
 		System.out.println("그룹네임 : " + groupName);
-		String path = "/resources/FileAndPost/"+groupName;
+		String path =  "/resources/upload/"+groupName;
+		
+		/*
+		 * String folderPath = request.getServletContext().getRealPath("") + path;
+		 * 
+		 * File realFolder = new File(folderPath);
+		 * 
+		 * realFolder.mkdir();
+		 */
 		
 		File folder = new File(path);
 		
-		//해당 폴더가 없는 경우
-		if(!folder.exists()) {
+/*		//해당 폴더가 없는 경우
+		if(!folder.exists()) {*/
 			folder.mkdir();
 			
 			System.out.println("폴더 : " + folder);
@@ -117,9 +124,11 @@ public class GroupFileServiceImpl implements GroupFileService {
 				
 			}
 			
-		}else {
-			
-		}
+			/*
+			 * }else {
+			 * 
+			 * }
+			 */
 
 		
 	}

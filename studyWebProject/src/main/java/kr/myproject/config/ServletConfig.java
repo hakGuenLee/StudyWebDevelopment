@@ -15,7 +15,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages= {"kr.myproject.study","kr.myproject.controller"})
 public class ServletConfig implements WebMvcConfigurer {
-	private final int MAX_SIZE = 10*1024*1024;
+//	private final int MAX_SIZE = 10*1024*1024;
+	private final int MAX_SIZE = 41943040;
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {		
