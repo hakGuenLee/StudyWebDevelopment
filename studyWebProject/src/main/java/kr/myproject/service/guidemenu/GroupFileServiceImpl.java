@@ -47,7 +47,8 @@ public class GroupFileServiceImpl implements GroupFileService {
 		
 		String groupName = multipart.getParameter("group_name");
 		System.out.println("그룹네임 : " + groupName);
-		String path =  "/resources/upload/" + groupName;
+//		String path =  "/resources/upload/" + groupName;
+		String path =  "C:\\Users\\User\\Desktop\\개인포폴\\스터디모임 사이트\\StudyWebDevelopment\\studyWebProject\\src\\main\\webapp\\resources\\upload\\" + groupName;
 		
 		/*
 		 * String folderPath = request.getServletContext().getRealPath("") + path;
@@ -67,7 +68,9 @@ public class GroupFileServiceImpl implements GroupFileService {
 		 System.out.println("폴더 : " + folder);
 
 			
-			String savePath = request.getServletContext().getRealPath("") + File.separator + path;
+//			String savePath = request.getServletContext().getRealPath("") + File.separator + path;
+//			String savePath = "C:\\Users\\User\\Desktop\\개인포폴\\스터디모임 사이트\\StudyWebDevelopment\\studyWebProject" + File.separator + path;
+			String savePath = path;
 		
 			System.out.println("savePath : " + savePath);
 			
