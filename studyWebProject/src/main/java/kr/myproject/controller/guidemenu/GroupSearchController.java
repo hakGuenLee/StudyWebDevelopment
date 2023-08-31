@@ -54,9 +54,7 @@ public class GroupSearchController {
 	public String questionSender(@RequestParam("groupName") String groupName, @RequestParam("title") String title,
 			@RequestParam("message") String message, HttpServletRequest request) {
 		
-		System.out.println("문의하기 그룹 이름 : " + groupName);
-		System.out.println("문의 제목 : " + title);
-		System.out.println("문의하기 내용 : " + message);
+		
 		
 		groupSearchingService.massageSend(groupName, title, message, request);
 		
