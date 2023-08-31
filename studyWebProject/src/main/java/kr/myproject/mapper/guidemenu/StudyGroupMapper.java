@@ -14,7 +14,7 @@ public interface StudyGroupMapper {
 	String selectSameGroupName(String name);
 
 	//스터디모임 만들기
-	void InsertNewGroup(@Param("groupDTO")GroupDTO groupDTO, @Param("id")String id);
+	void InsertNewGroup(@Param("groupDTO")GroupDTO groupDTO, @Param("id")String id, @Param("nickname") String nickName);
 
 	//나의 모임 페이지 이동 시 모임 리스트 가져오기
 	List<GroupDTO> selectMyGroupList(String userId);

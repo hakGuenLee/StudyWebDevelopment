@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.myproject.domain.GroupDTO;
 import kr.myproject.service.guidemenu.GroupSearchingService;
@@ -26,6 +28,18 @@ public class GroupSearchController {
 		List<GroupDTO> groupList = groupSearchingService.getStudyListAll();
 		
 		model.addAttribute("list", groupList);
+		
+		return "guidemenu/groupSearching";
+		
+	}
+	
+	//모임명 검색하기
+	@PostMapping("/searchGroupName")
+	public String groupNameSearch(@RequestParam("searchValue") String groupName, Model model) {
+		
+		List<GroupDTO> findGroupList = groupSearchingService.findGroup(groupName);
+		
+		model.addAttribute("list", findGroupList);
 		
 		return "guidemenu/groupSearching";
 		

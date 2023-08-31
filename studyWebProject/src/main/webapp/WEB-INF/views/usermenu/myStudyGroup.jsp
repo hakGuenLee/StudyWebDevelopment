@@ -121,7 +121,7 @@
 								<td>${dto2.group_no}</td>
 								<td>${dto2.group_category}</td>
 								<td>${dto2.group_name}</td>
-								<td>${dto2.group_maker}</td>
+								<td>${dto2.maker_nickname}</td>
 								<td>${dto2.member_count}</td>
 								<td>${dto2.join_dt}</td>
 								<td><button id="outMyGroupBtn" type="button" class="btn btn-danger">탈퇴</button></td>

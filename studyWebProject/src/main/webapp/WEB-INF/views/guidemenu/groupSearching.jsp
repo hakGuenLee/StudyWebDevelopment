@@ -18,18 +18,18 @@
 
 	<div id="arrayMenu" class="d-flex mt-5">	
 		<div >
-			<select id="myGroupList" style="width:160px" class="form-select" name="groupList">
+			<select id="locationList" style="width:160px" class="form-select" name="groupList">
 					<option></option>
 			</select>
 		</div>
 		
 		<div>
-			<select id="fileType" style="width:160px; margin-left:20px;" class="form-select">
+			<select id="fileType" style="width:160px; margin-left:40px;" class="form-select">
 					<option>전체</option>
 			</select>
 		</div>
 		<div>
-			<form action="/study/userCs/searchMyCsList" method="post">
+			<form action="/study/groupSearch/searchGroupName" method="post">
 				<div id="searchGroup" class="input-group mb-3">
 				  <input type="text" name="searchValue" class="form-control" placeholder="모임명을 검색해보세요">
 				  <button class="btn btn-secondary" type="submit">검색하기</button>
@@ -49,30 +49,95 @@
 					<th>상세지역</th>
 					<th>대표자 닉네임</th>
 					<th>참가인원</th>
+					<th>활동상태</th>
 					<th>문의하기</th>
 					<th>가입신청</th>
 				</tr>
 			</thead>
 			<tbody id="fileList">
-				<c:forEach var="dto" items="${list }">
+				
+				<c:if test="${list == null}">
 					<tr>
-						<td>${dto.group_no}</td>
-						<td>${dto.group_name}</td>
-						<td>${dto.group_category}</td>
-						<td>${dto.group_location}</td>
-						<td>${dto.group_locationCity}</td>
-						<td>${dto.group_maker}</td>
-						<td>${dto.member_count}</td>
-						<td><button value=""  type="button" class="btn btn-success">문의하기</button></td>
-						<td><button value=""  type="button" class="btn btn-primary">가입신청</button></td>
+						<td colspan="10">모임이 존재하지 않습니다!</td>
 					</tr>
-				</c:forEach>	
+				</c:if>				
+				<c:if test="${list != null}">
+					<c:forEach var="dto" items="${list }">
+						<tr>
+							<td>${dto.group_no}</td>
+							<td>${dto.group_name}</td>
+							<td>${dto.group_category}</td>
+							<td>${dto.group_location}</td>
+							<td>${dto.group_locationCity}</td>
+							<td>${dto.maker_nickname}</td>
+							<td>${dto.member_count}</td>
+							<c:if test="${dto.use_yn == 'Y' }">
+							<td>활동 중</td>
+							</c:if>
+							<c:if test="${dto.use_yn == 'N' }">
+							<td>활동 중단</td>
+							</c:if>
+							<td><button id="questionBtn" type="button" class="btn btn-success">문의하기</button></td>
+							<td><button value=""  type="button" class="btn btn-primary">가입신청</button></td>
+						</tr>
+					</c:forEach>	
+				</c:if>	
 			</tbody>		
 		</table>
 	</div>
 </section>
 
 
+<!-- 문의하기 Modal -->
+<div class="modal fade" id="QuestionModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">문의하기</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body" style="height:400px">
+        <p>모임에 문의하실 내용을 적어주세요!</p>
+        <p style="color:gray; font-size:15px">문의하신 내용은 모임의 대표자에게 전달됩니다!</p>
+        <textarea id="QuestionArea" class="form-control w-100"></textarea>
+      </div>
+
+      <div class="modal-footer">
+        <button id="serchIdBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">문의 보내기</button>
+      </div>
+
+    </div>
+  </div>
+</div> 
+
+<script>
+$(document).ready(function(){
+	
+	var locationCode = '400';
+	
+	commonCodeList(locationCode, function(data){
+		console.log(data);
+		let list = data;
+		let str = "";
+		str = "<option>전체</option>"
+		
+		for(let i=0; i<list.length; i++){
+			str += "<option value='"+list[i].item_nm+"'>"+list[i].item_nm+"</option>";
+		}
+		
+		$("#locationList").html(str);
+	
+	})
+
+})
+</script>
+<script>
+$("#questionBtn").on("click", function(){
+	$("#QuestionModal").modal("show");
+})
+</script>
 
 </body>
 </html>

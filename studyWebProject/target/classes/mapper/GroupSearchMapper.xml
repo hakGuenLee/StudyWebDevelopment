@@ -9,4 +9,8 @@
 SELECT * FROM studygroup_master
 </select>
 
+<!-- 모임명으로 스터디그룹 검색하기 -->
+<select id="selectStudyByGroupName" resultType="GroupDTO">
+SELECT * FROM studygroup_master WHERE group_name LIKE CONCAT('%' #{groupName}, '%')
+</select>
 </mapper>

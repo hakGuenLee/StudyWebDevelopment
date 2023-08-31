@@ -58,7 +58,7 @@ public class StudyGroupServiceImpl implements StudyGroupService {
 		groupDTO.setGroup_key(serialNumber);
 		
 		//group_master 테이블에 모임 정보 넣기
-		studyGroupMapper.InsertNewGroup(groupDTO, id);
+		studyGroupMapper.InsertNewGroup(groupDTO, id, nickName);
 		
 		//group_detail 테이블에 모임 정보 넣기
 		studyGroupMapper.InsertNewGroupDetail(groupDTO, id, nickName, userName);

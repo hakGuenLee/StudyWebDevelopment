@@ -12,7 +12,8 @@ public class GroupDTO {
 	private String group_key; //모임 고유번호
 	private String group_category; //모임 카테고리
 	private String group_name; //모임명
-	private String group_maker; //모임 개설자 아이디
+	private String maker_id; //모임 개설자 아이디
+	private String maker_nickname; //모임 개설자 닉네임
 	private int group_boundary; //모임 인원 설정
 	private String group_location; //모임 지역 
 	private String group_locationCity; //선택한 지역의 행정구역

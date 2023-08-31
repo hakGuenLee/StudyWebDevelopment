@@ -12,8 +12,8 @@ WHERE group_name = #{name}
 
 <!-- 스터디 모임 만들기 -->
 <insert id="InsertNewGroup">
-INSERT INTO studygroup_master(group_key, group_category, group_name, group_maker, group_boundary, group_location, group_locationCity, group_info, register_dt)
-VALUES(#{groupDTO.group_key}, #{groupDTO.group_category}, #{groupDTO.group_name}, #{id}, #{groupDTO.group_boundary}, #{groupDTO.group_location}, 
+INSERT INTO studygroup_master(group_key, group_category, group_name, maker_id, maker_nickname, group_boundary, group_location, group_locationCity, group_info, register_dt)
+VALUES(#{groupDTO.group_key}, #{groupDTO.group_category}, #{groupDTO.group_name}, #{id}, #{nickname}, #{groupDTO.group_boundary}, #{groupDTO.group_location}, 
 #{groupDTO.group_locationCity}, #{groupDTO.group_info}, now())
 </insert>
 
@@ -25,7 +25,7 @@ VALUES(#{groupDTO.group_key}, #{groupDTO.group_name}, #{id}, #{nickName}, '방�
 
 <!-- 나의 모임 페이지 이동 시 모임 리스트 가져오기 -->
 <select id="selectMyGroupList" resultType="GroupDTO">
-SELECT * FROM studygroup_master WHERE group_maker = #{userId}
+SELECT * FROM studygroup_master WHERE maker_id = #{userId}
 </select>
 
 <!-- 나의 모임 페이지 이동 시 내가 참여한 모임 리스트 가져오기 -->
