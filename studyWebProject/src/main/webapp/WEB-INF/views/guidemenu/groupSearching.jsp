@@ -143,17 +143,18 @@ function messageSender(value){
 	console.log(value);
 	$("#QuestionModal").modal("show");
 	$("#title").html(value + "에 문의하기");
-	$("#senderBtn").val(value);
 	
 	
-	let title = $("#questionTitle").val();
-	console.log(title);
-	
-	let content = $("#QuestionArea").val();
-	console.log(content);
+
 
 	$("#senderBtn").on("click", function(){
+	let title = $("#questionTitle").val();
+		console.log(title);
+		
+		let content = $("#QuestionArea").val();
 		console.log(content);
+		
+		
 		
 		$.ajax({
 			url: "/study/groupSearch/sendQuestion",
