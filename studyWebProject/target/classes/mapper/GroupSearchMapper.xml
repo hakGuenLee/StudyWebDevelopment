@@ -25,4 +25,11 @@ WHERE group_name = #{groupName} AND member_role = '방장'
 INSERT INTO message_master(msg_sender, msg_category, msg_title, msg_content, msg_receiver)
 VALUES(#{senderNickName}, "문의하기", #{title}, #{message}, #{groupMasterNickName})
 </insert>
+
+<!-- 가입 요청 전 이미 가입되어 있는 모임인지 확인 -->
+<select id="checkGroupJoin" resultType="GroupDTO">
+SELECT * FROM studygroup_detail
+WHERE member_id = #{id} AND group_name = #{groupName}
+</select>
+
 </mapper>

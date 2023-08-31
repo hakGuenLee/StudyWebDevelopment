@@ -18,4 +18,7 @@ public interface GroupSearchingService {
 	//문의하기 메세지 보내기
 	void massageSend(String groupName, String title, String message, HttpServletRequest request);
 
+	//가입 요청 전 이미 가입되어 있는 모임인지 확인
+	boolean isAlreadyJoinCheck(String groupName, HttpServletRequest request);
+
 }

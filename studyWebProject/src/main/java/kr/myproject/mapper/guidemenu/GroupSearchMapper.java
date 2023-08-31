@@ -23,4 +23,7 @@ public interface GroupSearchMapper {
 	void sendQuestion(@Param("senderNickName")String senderNickName, @Param("title")String title, @Param("message")String message, 
 			@Param("groupMasterNickName")String groupMasterNickName);
 
+	//가입 요청 전 이미 가입되어 있는 모임인지 확인
+	GroupDTO checkGroupJoin(@Param("groupName")String groupName, @Param("id")String id);
+
 }

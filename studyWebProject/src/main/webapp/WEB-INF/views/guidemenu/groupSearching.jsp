@@ -79,7 +79,7 @@
 							<td>활동 중단</td>
 							</c:if>
 							<td><button value="${dto.group_name}" onclick="messageSender(this.value)" id="questionBtn" type="button" class="btn btn-success">문의하기</button></td>
-							<td><button value=""  type="button" class="btn btn-primary">가입신청</button></td>
+							<td><button value="${dto.group_name}" onclick="joinMessageSender(this.value)" type="button" class="btn btn-primary">가입신청</button></td>
 						</tr>
 					</c:forEach>	
 				</c:if>	
@@ -110,6 +110,35 @@
 
       <div class="modal-footer">
         <button id="senderBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">문의 보내기</button>
+      </div>
+
+    </div>
+  </div>
+</div> 
+
+
+
+<!-- 가입하기 Modal -->
+<div class="modal fade" id="joinModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 id="head" class="modal-title">가입 신청하기</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body" style="height:500px">
+        <p>가입 신청 메시지를 작성해보세요!</p>
+        <p style="color:gray; font-size:15px">문의하신 내용은 모임의 대표자에게 전달됩니다!</p>
+        <p>제목</p>
+        <input type="text" class="form-control w-100" id="joinRequestTitle">
+        <p>가입신청 내용</p>
+        <textarea id="requestArea" class="form-control w-100" style="height:300px; resize: none;"></textarea>
+      </div>
+
+      <div class="modal-footer">
+        <button id="senderBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">가입 신청하기</button>
       </div>
 
     </div>
@@ -151,18 +180,14 @@ function messageSender(value){
 			location.replace("/study/userAccount/loginPage")
 		}
 	}else{
-		
-	
-	
-	
+
 	
 	console.log(value);
 	$("#QuestionModal").modal("show");
 	$("#title").html(value + "에 문의하기");
+
 	
 	
-
-
 	$("#senderBtn").on("click", function(){
 	let title = $("#questionTitle").val();
 		console.log(title);
@@ -192,6 +217,54 @@ function messageSender(value){
 	}
 }
 
+
+//가입하기 처리
+function joinMessageSender(value){
+	
+	let user = $("#sessionId").val();
+	
+	if(user == 0){
+		var result = confirm("로그인이 필요한 서비스입니다! 로그인하시겠습니까?");
+		
+		if(result == true){
+			location.replace("/study/userAccount/loginPage")
+		}
+	}else{
+		
+		//이미 가입되어 있는지 확인하기
+		$.ajax({
+			url:"/study/groupSearch/joinCheck",
+			type:"post",
+			data:{"groupName":value},
+			success:function(result){
+				console.log(result)
+				if(result == true){
+					if(confirm("가입하실 수 있는 모임입니다! 가입 신청 하시겠습니까?")){
+						//가입 신청 진행	
+						$("#joinModal").modal("show");
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					}
+				}else{
+					alert("이미 가입하신 모임입니다!")
+				}
+			},
+			error:function(data){
+				alert("에러!");
+			}
+			
+		})
+		
+	}
+	
+}
 
 
 </script>

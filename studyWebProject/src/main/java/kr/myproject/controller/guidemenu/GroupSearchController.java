@@ -47,19 +47,29 @@ public class GroupSearchController {
 		return "guidemenu/groupSearching";
 		
 	}
+
+	
 	
 	//문의하기
 	@PostMapping("/sendQuestion")
 	@ResponseBody
 	public String questionSender(@RequestParam("groupName") String groupName, @RequestParam("title") String title,
 			@RequestParam("message") String message, HttpServletRequest request) {
-		
-		
-		
+
 		groupSearchingService.massageSend(groupName, title, message, request);
 		
 		return "성공!";
 		
+	}
+	
+	//가입 요청 전 이미 가입되어 있는 모임인지 확인하기
+	@PostMapping("/joinCheck")
+	@ResponseBody
+	public boolean joinCheck(@RequestParam("groupName")String groupName, HttpServletRequest request) {
+		
+		boolean result = groupSearchingService.isAlreadyJoinCheck(groupName, request);
+		
+		return result;
 	}
 
 

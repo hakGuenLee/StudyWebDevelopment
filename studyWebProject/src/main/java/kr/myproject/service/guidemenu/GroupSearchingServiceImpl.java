@@ -49,4 +49,19 @@ public class GroupSearchingServiceImpl implements GroupSearchingService {
 		
 	}
 
+	//가입 요청 전 이미 가입되어 있는 모임인지 확인
+	@Override
+	public boolean isAlreadyJoinCheck(String groupName, HttpServletRequest request) {
+		
+		String id = userInfoHandler.getUserId(request);
+		
+		GroupDTO groupDTO = groupSearchMapper.checkGroupJoin(groupName, id);
+		
+		if(groupDTO == null) {
+			return true;
+		}
+		
+		return false;
+	}
+
 }
