@@ -51,14 +51,14 @@ public class GroupSearchController {
 	
 	
 	//문의하기
-	@PostMapping("/sendQuestion")
+	@PostMapping(value = "/sendQuestion",  produces = "application/text; charset=UTF-8")
 	@ResponseBody
 	public String questionSender(@RequestParam("groupName") String groupName, @RequestParam("title") String title,
 			@RequestParam("message") String message, HttpServletRequest request) {
 
 		groupSearchingService.massageSend(groupName, title, message, request);
 		
-		return "성공!";
+		return groupName + "에 문의 메시지 발송이 완료되었습니다!";
 		
 	}
 	
@@ -70,6 +70,17 @@ public class GroupSearchController {
 		boolean result = groupSearchingService.isAlreadyJoinCheck(groupName, request);
 		
 		return result;
+	}
+	
+	//가입 요청 메시지 보내기
+	@PostMapping(value = "/joinComplete",  produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String joinComplete(@RequestParam("groupName") String groupName, @RequestParam("title") String title,
+			@RequestParam("content") String content, HttpServletRequest request) {
+		
+		groupSearchingService.sendJoinMessage(groupName, title, content, request);
+		
+		return groupName + " 가입 신청이 완료되었습니다!";
 	}
 
 

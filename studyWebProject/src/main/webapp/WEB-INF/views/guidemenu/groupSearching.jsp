@@ -138,7 +138,7 @@
       </div>
 
       <div class="modal-footer">
-        <button id="senderBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">가입 신청하기</button>
+        <button id="joinBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">가입 신청하기</button>
       </div>
 
     </div>
@@ -243,16 +243,33 @@ function joinMessageSender(value){
 						//가입 신청 진행	
 						$("#joinModal").modal("show");
 					
+						$("#head").html(value+"에 가입 신청하기")
 					
+						
+						
+						$("#joinBtn").on("click", function(){
+						
+							let title = $("#joinRequestTitle").val();
+							let joinContent = $("#requestArea").val();
+							
+							$.ajax({
+								url:"/study/groupSearch/joinComplete",
+								type:"post",
+								data:{"groupName" :value, "title":title, "content":joinContent},
+								success:function(result){
+									alert(result);
+								},
+								error:function(){
+									alert("요청 실패!");
+								}
+								
+							})
+							
+						}) //가입 진행 버튼 클릭시
+
+					} //confirm if 문
 					
-					
-					
-					
-					
-					
-					
-					}
-				}else{
+				}else{  //이미 가입되어 있는 경우
 					alert("이미 가입하신 모임입니다!")
 				}
 			},

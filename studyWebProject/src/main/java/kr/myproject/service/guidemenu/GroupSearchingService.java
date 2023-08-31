@@ -21,4 +21,7 @@ public interface GroupSearchingService {
 	//가입 요청 전 이미 가입되어 있는 모임인지 확인
 	boolean isAlreadyJoinCheck(String groupName, HttpServletRequest request);
 
+	//가입 요청 메시지 보내기
+	void sendJoinMessage(String groupName, String title, String content, HttpServletRequest request);
+
 }

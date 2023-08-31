@@ -43,9 +43,6 @@ public class GroupSearchingServiceImpl implements GroupSearchingService {
 		String groupMasterNickName = groupSearchMapper.selectGroupMasterNickName(groupName);
 		
 		groupSearchMapper.sendQuestion(senderNickName, title, message, groupMasterNickName);
-
-		
-		
 		
 	}
 
@@ -62,6 +59,18 @@ public class GroupSearchingServiceImpl implements GroupSearchingService {
 		}
 		
 		return false;
+	}
+
+	//가입 요청 메시지 보내기
+	@Override
+	public void sendJoinMessage(String groupName, String title, String content, HttpServletRequest request) {
+		
+		String requesterNickName = userInfoHandler.getUserId(request);
+		
+		String groupMaster = groupSearchMapper.selectGroupMasterNickName(groupName);
+		
+		groupSearchMapper.sendJoinMessage(requesterNickName, title, content, groupMaster);
+		
 	}
 
 }

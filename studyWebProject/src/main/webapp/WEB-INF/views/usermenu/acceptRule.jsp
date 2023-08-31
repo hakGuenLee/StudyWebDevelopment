@@ -51,7 +51,7 @@ $("#confirmBtn").on("click", function(){
 	
 	//모두 체크되었을 경우에만 가입 정보 입력 페이지로 이동
 	if(check1 == true && check2 == true){
-		$("#confirmBtn").attr("href", "<c:url value='/usermenu/registerInfo'/>");
+		$("#confirmBtn").attr("href", "<c:url value='/userRegister/registerInfo'/>");
 	}
 	
 	if(check1 == false){

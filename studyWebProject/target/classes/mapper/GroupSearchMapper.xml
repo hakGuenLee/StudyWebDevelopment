@@ -32,4 +32,9 @@ SELECT * FROM studygroup_detail
 WHERE member_id = #{id} AND group_name = #{groupName}
 </select>
 
+<!-- 가입 요청 메시지 보내기 -->
+<insert id="sendJoinMessage">
+INSERT INTO message_master(msg_sender, msg_category, msg_title, msg_content, msg_receiver)
+VALUES(#{requesterNickName}, "가입요청", #{title}, #{content}, #{groupMaster})
+</insert>
 </mapper>
