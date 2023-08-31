@@ -1,0 +1,42 @@
+
+section{
+	margin-top:5%;
+}
+
+#guideBox{
+	margin-left:60px;
+}
+
+#guideBox p{
+	color:gray;
+	margin-top:30px;
+}
+
+#csRegisterBtn{
+	margin-top:30px;
+	background-color:dodgerBlue;
+	font-size:18px;
+	color:white;
+	width:300px;
+	height:60px;
+}
+
+#guideText{
+	margin-top:80px;
+	margin-left:350px;
+}
+
+
+#searchGroup{
+	margin-left:70px;
+}
+
+#tableBox{
+	margin-left:340px;
+}
+
+#arrayMenu{
+	
+	margin-left:350px;	
+}
+

@@ -17,7 +17,7 @@ import kr.myproject.domain.GroupDTO;
 import kr.myproject.service.guidemenu.StudyGroupService;
 
 
-//모임 개설 및 참가 등 모임 관련 기능 담당 컨트롤러
+//모임 개설 및 참가 등 모임 관리 기능 담당 컨트롤러
 @Controller
 @RequestMapping("/group")
 public class StudyGroupController {

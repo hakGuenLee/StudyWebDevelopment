@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kr.myproject.domain.PlaceDTO;
 import kr.myproject.service.guidemenu.LocationService;
 
-//모임장소 둘러보기
+//모임장소 담당 컨트롤러
 
 @Controller
 @RequestMapping("/location")

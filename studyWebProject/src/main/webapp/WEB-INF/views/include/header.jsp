@@ -22,7 +22,7 @@
 			<div id="guidemenu">
 				<ul>
 					<li class="submenu"><a>이용안내</a></li>
-					<li class="submenu"><a>모임찾기</a></li>
+					<li class="submenu"><a href="<c:url value="/groupSearch/groupSearchPage"/>">모임찾기</a></li>
 					<li class="submenu"><a href="<c:url value="/group/groupOpenPage"/>">모임 만들기</a></li>
 					<li class="submenu"><a href="<c:url value="/file/groupFilePage"/>">자료실</a></li>
 					<li>일정관리
