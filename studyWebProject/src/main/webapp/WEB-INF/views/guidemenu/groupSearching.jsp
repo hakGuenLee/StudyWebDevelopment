@@ -180,23 +180,14 @@ function messageSender(value){
 			location.replace("/study/userAccount/loginPage")
 		}
 	}else{
-
-	
-	console.log(value);
 	$("#QuestionModal").modal("show");
 	$("#title").html(value + "에 문의하기");
 
-	
-	
 	$("#senderBtn").on("click", function(){
 	let title = $("#questionTitle").val();
-		console.log(title);
 		
 		let content = $("#QuestionArea").val();
-		console.log(content);
-		
-		
-		
+
 		$.ajax({
 			url: "/study/groupSearch/sendQuestion",
 			type: "post",
@@ -206,11 +197,9 @@ function messageSender(value){
 			},
 			error:function(){
 				alert("요청실패!")
-			}
-			
+			}			
 			
 		})		
-		
 		
 	})
 	
@@ -238,16 +227,14 @@ function joinMessageSender(value, a){
 			type:"post",
 			data:{"groupName":value},
 			success:function(result){
-				console.log(result)
+
 				if(result == true){
 					if(confirm("가입하실 수 있는 모임입니다! 가입 신청 하시겠습니까?")){
 						//가입 신청 진행	
 						$("#joinModal").modal("show");
 					
 						$("#head").html(value+"에 가입 신청하기")
-					
-						
-						
+
 						$("#joinBtn").on("click", function(){
 						
 							let title = $("#joinRequestTitle").val();
@@ -287,7 +274,6 @@ function joinMessageSender(value, a){
 //지역에 따라 행정구역 정렬
 function selectLocationCity(){
 	let location = $("#locationList option:selected").val();
-	console.log(location);
 	
 	if(location == '전체'){
 		let str = "";
@@ -310,10 +296,8 @@ function selectLocationCity(){
 				$("#locationCity").html(str2);
 				
 			}) 
-		
 	}
-	
-	
+		
 }
 
 
