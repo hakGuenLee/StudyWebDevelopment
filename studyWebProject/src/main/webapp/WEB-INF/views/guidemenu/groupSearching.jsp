@@ -19,13 +19,13 @@
 
 	<div id="arrayMenu" class="d-flex mt-5">	
 		<div >
-			<select id="locationList" style="width:160px" class="form-select" name="groupList">
+			<select id="locationList" style="width:160px" class="form-select" name="groupList" onchange="selectLocationCity()">
 					<option></option>
 			</select>
 		</div>
 		
 		<div>
-			<select id="fileType" style="width:160px; margin-left:40px;" class="form-select">
+			<select id="locationCity" style="width:160px; margin-left:40px;" class="form-select">
 					<option>전체</option>
 			</select>
 		</div>
@@ -259,9 +259,6 @@ function joinMessageSender(value, a){
 								data:{"groupName" :value, "title":title, "content":joinContent},
 								success:function(result){
 									alert(result);
-									let str = ""
-									str = "<button type='button' class='btn btn-seccondary'>가입 신청 완료</button>"
-									a.html(str);
 								},
 								error:function(){
 									alert("요청 실패!");
@@ -284,6 +281,38 @@ function joinMessageSender(value, a){
 		})
 		
 	}
+	
+}
+
+//지역에 따라 행정구역 정렬
+function selectLocationCity(){
+	let location = $("#locationList option:selected").val();
+	console.log(location);
+	
+	if(location == '전체'){
+		let str = "";
+		str += "<option>전체</option>";
+		$("#locationCity").html(str);
+	}else{
+		var cityCode = '300'
+
+			console.log("지역명 : " + location)
+			
+			getLocationCity(cityCode, location, function(data){
+				console.log(data);
+				let cityList = data;
+				let str2 = "";
+				
+				for(let i=0; i<cityList.length; i++){
+					str2 += "<option>"+cityList[i].item_nm+"</option>";
+				}
+				
+				$("#locationCity").html(str2);
+				
+			}) 
+		
+	}
+	
 	
 }
 
