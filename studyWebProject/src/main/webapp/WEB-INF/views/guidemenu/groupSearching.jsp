@@ -6,6 +6,7 @@
 <link  href="<c:url value="/css/groupSearching.css"/>" rel="stylesheet"/> 		 
 <jsp:include page="../include/header.jsp"/> 
 
+<input type="hidden" id="sessionId" value="${sessionScope.userDTO}">
 
 <section>
 	<div id="guideText">
@@ -140,6 +141,21 @@ $(document).ready(function(){
 
 //문의하기 창 열기
 function messageSender(value){
+	
+	let user = $("#sessionId").val();
+	
+	if(user == 0){
+		var result = confirm("로그인이 필요한 서비스입니다! 로그인하시겠습니까?");
+		
+		if(result == true){
+			location.replace("/study/userAccount/loginPage")
+		}
+	}else{
+		
+	
+	
+	
+	
 	console.log(value);
 	$("#QuestionModal").modal("show");
 	$("#title").html(value + "에 문의하기");
@@ -173,7 +189,7 @@ function messageSender(value){
 		
 	})
 	
-	
+	}
 }
 
 
