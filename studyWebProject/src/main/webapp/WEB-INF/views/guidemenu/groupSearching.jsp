@@ -222,6 +222,7 @@ function messageSender(value){
 function joinMessageSender(value, a){
 	
 	let user = $("#sessionId").val();
+	console.log(a);
 	
 	if(user == 0){
 		var result = confirm("로그인이 필요한 서비스입니다! 로그인하시겠습니까?");
@@ -258,7 +259,9 @@ function joinMessageSender(value, a){
 								data:{"groupName" :value, "title":title, "content":joinContent},
 								success:function(result){
 									alert(result);
-									a.html("<button type='button' class='btn btn-seccondary'>가입 신청 완료</button")
+									let str = ""
+									str = "<button type='button' class='btn btn-seccondary'>가입 신청 완료</button>"
+									a.html(str);
 								},
 								error:function(){
 									alert("요청 실패!");
