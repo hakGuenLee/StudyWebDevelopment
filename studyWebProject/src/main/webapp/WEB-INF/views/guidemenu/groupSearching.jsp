@@ -79,7 +79,7 @@
 							<td>활동 중단</td>
 							</c:if>
 							<td><button value="${dto.group_name}" onclick="messageSender(this.value)" id="questionBtn" type="button" class="btn btn-success">문의하기</button></td>
-							<td><button value="${dto.group_name}" onclick="joinMessageSender(this.value)" type="button" class="btn btn-primary">가입신청</button></td>
+							<td><button value="${dto.group_name}" onclick="joinMessageSender(this.value, this)" type="button" class="btn btn-primary">가입신청</button></td>
 						</tr>
 					</c:forEach>	
 				</c:if>	
@@ -219,7 +219,7 @@ function messageSender(value){
 
 
 //가입하기 처리
-function joinMessageSender(value){
+function joinMessageSender(value, a){
 	
 	let user = $("#sessionId").val();
 	
@@ -258,6 +258,7 @@ function joinMessageSender(value){
 								data:{"groupName" :value, "title":title, "content":joinContent},
 								success:function(result){
 									alert(result);
+									a.html("<button type='button' class='btn btn-seccondary'>가입 신청 완료</button")
 								},
 								error:function(){
 									alert("요청 실패!");
