@@ -13,4 +13,10 @@ SELECT * FROM studygroup_master
 <select id="selectStudyByGroupName" resultType="GroupDTO">
 SELECT * FROM studygroup_master WHERE group_name LIKE CONCAT('%' #{groupName}, '%')
 </select>
+
+<!-- 모임 찾기에서 문의하기 보내기 -->
+<insert id="sendQuestion">
+INSERT INTO message_master(msg_sender, msg_categry, msg_title, msg_content, msg_receiver)
+VALUES(#{senderNickName}, "문의하기", #{title}, #{message}, #{groupMasterNickName})
+</insert>
 </mapper>

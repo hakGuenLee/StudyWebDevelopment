@@ -2,6 +2,8 @@ package kr.myproject.controller.guidemenu;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.myproject.domain.GroupDTO;
 import kr.myproject.service.guidemenu.GroupSearchingService;
@@ -42,6 +45,22 @@ public class GroupSearchController {
 		model.addAttribute("list", findGroupList);
 		
 		return "guidemenu/groupSearching";
+		
+	}
+	
+	//문의하기
+	@PostMapping("/sendQuestion")
+	@ResponseBody
+	public String questionSender(@RequestParam("groupName") String groupName, @RequestParam("title") String title,
+			@RequestParam("message") String message, HttpServletRequest request) {
+		
+		System.out.println("문의하기 그룹 이름 : " + groupName);
+		System.out.println("문의 제목 : " + title);
+		System.out.println("문의하기 내용 : " + message);
+		
+		groupSearchingService.massageSend(groupName, title, message, request);
+		
+		return "성공!";
 		
 	}
 
