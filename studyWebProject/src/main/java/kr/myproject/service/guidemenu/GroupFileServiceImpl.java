@@ -1,6 +1,7 @@
 package kr.myproject.service.guidemenu;
 
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -93,7 +94,22 @@ public class GroupFileServiceImpl implements GroupFileService {
 	//게시물 삭제하기
 	@Override
 	public void deleteFileAndPost(String no, String groupName, HttpServletRequest request) {
-		// TODO Auto-generated method stub
+		
+		
+		String deletePath =  "C:\\Users\\User\\Desktop\\개인포폴\\스터디모임 사이트\\StudyWebDevelopment\\studyWebProject\\src\\main\\webapp\\resources\\upload\\" + groupName + "\\";
+		
+		FileDTO fileDTO = groupFileMapper.selectFileAndPost(no);
+		
+		String fileName = fileDTO.getFile_name();
+		
+		File file = new File(deletePath + fileName);
+		
+		System.gc();
+		System.runFinalization();
+		
+		file.delete();
+		
+		groupFileMapper.deleteFileAndPost(no);
 		
 	}
 

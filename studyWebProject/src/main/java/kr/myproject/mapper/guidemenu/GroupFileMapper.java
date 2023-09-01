@@ -32,4 +32,7 @@ public interface GroupFileMapper {
 	//파일 삭제하기 전 업로더 본인이 작성한 게시물이 맞는지 확인
 	FileDTO uploaderCheckByNickName(@Param("no")String no, @Param("uploaderNickName")String uploaderNickName);
 
+	//게시물 삭제
+	void deleteFileAndPost(String no);
+
 }

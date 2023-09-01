@@ -175,6 +175,7 @@ function fileAndPostDelete(no, groupName){
 						data:{"no":no, "groupName":groupName},
 						success:function(result){
 							alert(result);
+							location.replace("/study/file/groupFilePage");
 						},
 						error:function(){
 							alert("삭제 실패!");

@@ -46,4 +46,9 @@ SELECT * FROM file_master
 WHERE file_no = #{no} AND uploader = #{uploaderNickName}
 </select>
 
+<!-- 게시물 삭제 -->
+<delete id="deleteFileAndPost">
+DELETE FROM file_master WHERE file_no = #{no}
+</delete>
+
 </mapper>
