@@ -25,7 +25,7 @@
 		</div>
 		
 		<div>
-			<select id="locationCity" style="width:160px; margin-left:40px;" class="form-select">
+			<select id="locationCity" style="width:160px; margin-left:40px;" class="form-select" onchange="selectLocationCity2()">
 					<option>전체</option>
 			</select>
 		</div>
@@ -272,7 +272,7 @@ function joinMessageSender(value, a){
 	
 }
 
-//지역에 따라 행정구역 정렬 &  모임 리스트 정렬
+//지역에 따라 모임 리스트 정렬
 function selectLocationCity(){
 	let location = $("#locationList option:selected").val();
 	let locationCity = $("#locationCity option:selected").val();
@@ -357,6 +357,74 @@ function selectLocationCity(){
 	})
 		
 }
+
+
+
+
+//행정구역에 따라 모임 리스트 정렬
+function selectLocationCity2(){
+	let location = $("#locationList option:selected").val();
+	let locationCity = $("#locationCity option:selected").val();
+
+	//지역에 따라 모임 리스트 가져오기
+	$.ajax({
+		url:"/study/groupSearch/getStudyListByLocation",
+		type:"post",
+		data: {"location":location, "city":locationCity},
+		success:function(data){
+			console.log(data)
+			let anotherStr ="";
+			let y = "Y";
+			let N = "N";
+			let studyList = data;
+			
+			if(data == 0){
+				anotherStr += "<tr>";
+				anotherStr += "<td colspan='10'>스터디 모임이 존재하지 않습니다!</td>";
+				$("#fileList").html(anotherStr);
+			}else{
+				for(let i=0; i<studyList.length; i++){
+					anotherStr += "<tr>"
+					anotherStr += "<td>"+studyList[i].group_no+"</td>";	
+					anotherStr += "<td>"+studyList[i].group_name+"</td>";	
+					anotherStr += "<td>"+studyList[i].group_category+"</td>";	
+					anotherStr += "<td>"+studyList[i].group_location+"</td>";	
+					anotherStr += "<td>"+studyList[i].group_locationCity+"</td>";	
+					anotherStr += "<td>"+studyList[i].maker_nickname+"</td>";	
+					anotherStr += "<td>"+studyList[i].member_count+"</td>";	
+					if(studyList[i].use_yn == "Y"){
+						anotherStr += "<td>활동 중</td>";		
+					}
+					if(studyList[i].use_yn == "N"){
+						anotherStr += "<td>활동 중단</td>";		
+					}
+	/* 				anotherStr += "<c:if test='"+studyList[i].use_yn+" =="+y+"'>";	
+					anotherStr += "<td>활동 중</td>";	
+					anotherStr += "</c:if>";	
+					anotherStr += "<c:if test='"+studyList[i].use_yn+"=="+N+"'>";	
+					anotherStr += "<td>활동 중단</td>";	
+					anotherStr += "</c:if>";	 */
+					anotherStr += "<td><button value='"+studyList[i].group_name+"' onclick='messageSender(this.value)' type='button' class='btn btn-success'>문의하기</button></td>";
+					anotherStr += "<td><button value='"+studyList[i].group_name+"' onclick='joinMessageSender(this.value)' type='button' class='btn btn-primary'>가입신청</button></td>";
+					anotherStr += "</tr>"
+					
+					$("#fileList").html(anotherStr);
+					
+				}
+			}
+			
+
+		},
+		error:function(){
+			alert("지역 정렬 실패!!");
+		}
+		
+		
+	})
+		
+}
+
+
 
 
 </script>
