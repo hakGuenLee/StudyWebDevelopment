@@ -150,13 +150,43 @@ $(document).ready(function(){
 		$("#fileType").html(str);
 	
 	})
-	
-	
-	
-	
-	
-	
+
 })
+
+</script>
+<script>
+function fileAndPostDelete(no){
+	
+	//회원이 작성한 게시물인지 확인하기
+	$.ajax({
+		url:"/study/file/uploaderCheck",
+		type:"post",
+		data:{"no":no},
+		success:function(result){
+			if(result == false){
+				alert("자신이 작성한 게시글만 삭제 가능합니다!!");
+			}else{ //자신이 작성한 게시물이 아닌 경우(삭제 가능)
+				if(confirm("삭제하시면 다른 친구들도 볼 수 없게 됩니다! 그래도 삭제하시겠습니까?")){
+					//삭제 처리 진행
+					console.log("yes");
+					$.ajax({
+						url:"/study/file/fileAndPostDelete",
+						type:"post",
+						data:{"no":no},
+						success:function(result){
+							alert(result);
+						},
+						error:function(){
+							alert("삭제 실패!");
+						}
+					})
+				}
+			}//else
+		}
+	})
+	
+
+}
 
 </script>
 

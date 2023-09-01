@@ -39,4 +39,11 @@ UPDATE file_master
 SET hit = hit + 1
 WHERE file_no = #{fileNumber}
 </update>
+
+<!-- 파일 삭제 전 업로더 본인이 작성한 게시물이 맞는지 확인 -->
+<select id="uploaderCheckByNickName" resultType="FileDTO">
+SELECT * FROM file_master
+WHERE file_no = #{no} AND uploader = #{uploaderNickName}
+</select>
+
 </mapper>

@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import kr.myproject.domain.FileDTO;
-import kr.myproject.domain.GroupDTO;
 
 @Mapper
 public interface GroupFileMapper {
@@ -29,5 +28,8 @@ public interface GroupFileMapper {
 
 	//해당 번호의 게시글 조회수 + 1
 	void addHitByFileNum(String fileNumber);
+
+	//파일 삭제하기 전 업로더 본인이 작성한 게시물이 맞는지 확인
+	FileDTO uploaderCheckByNickName(@Param("no")String no, @Param("uploaderNickName")String uploaderNickName);
 
 }

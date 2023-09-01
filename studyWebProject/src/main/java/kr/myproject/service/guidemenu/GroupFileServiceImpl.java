@@ -77,6 +77,23 @@ public class GroupFileServiceImpl implements GroupFileService {
 		return groupFileMapper.selectFileAndPost(fileNumber);
 	}
 
+	//파일 삭제하기 전 업로더 본인이 작성한 게시물이 맞는지 확인
+	@Override
+	public boolean uploaderCheck(String no, HttpServletRequest request) {
+		
+		String uploaderNickName = userInfoHandler.getUserNickName(request);
+		
+		FileDTO fileDTO = groupFileMapper.uploaderCheckByNickName(no, uploaderNickName);
+		System.out.println("확인한 파일 디티오 : " + fileDTO);
+		
+		if(fileDTO == null) {
+			System.out.println("파일삭제 불가능~~");
+			return false;
+		}
+		
+		return true;
+	}
+
 
 
 }

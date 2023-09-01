@@ -26,4 +26,7 @@ public interface GroupFileService {
 	//게시글 제목에 해당하는 글과 파일 가져오기
 	FileDTO getFileAndPostInfo(String fileNumber);
 
+	//파일 삭제하기 전 업로더 본인이 작성한 게시물이 맞는지 확인
+	boolean uploaderCheck(String no, HttpServletRequest request);
+
 }

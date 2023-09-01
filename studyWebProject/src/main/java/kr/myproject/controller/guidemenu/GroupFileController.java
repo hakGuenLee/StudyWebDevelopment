@@ -89,7 +89,15 @@ public class GroupFileController {
 		
 	}
 	
-	
+	//삭제하기 전 업로더 본인이 맞는지 확인
+	@PostMapping("/uploaderCheck")
+	@ResponseBody
+	public boolean uploaderCheck(@RequestParam("no")String no, HttpServletRequest request){
+		
+		boolean result = groupFileService.uploaderCheck(no, request);
+		
+		return result;
+	}
 	
 	
 	//파일 삭제하기
