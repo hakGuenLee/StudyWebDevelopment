@@ -36,6 +36,23 @@ public class GroupSearchController {
 		
 	}
 	
+	//지역과 행정구역에 따라 모임 리스트 정렬하기
+	@PostMapping("/getStudyListByLocation")
+	@ResponseBody
+	public List<GroupDTO> studyListByLocation(@RequestParam("location") String location, @RequestParam("city") String city){
+		
+		System.out.println("지역:" + location);
+		
+
+		
+		List<GroupDTO> groupList = groupSearchingService.getStudyListByLocation(location,city);
+		
+		System.out.println("모임지역 정렬 : " + groupList);
+		
+		return groupList;
+				
+	}
+	
 	//모임명 검색하기
 	@PostMapping("/searchGroupName")
 	public String groupNameSearch(@RequestParam("searchValue") String groupName, Model model) {
@@ -44,12 +61,9 @@ public class GroupSearchController {
 		
 		model.addAttribute("list", findGroupList);
 		
-		return "guidemenu/groupSearching";
-		
+		return "guidemenu/groupSearching";		
 	}
 
-	
-	
 	//문의하기
 	@PostMapping(value = "/sendQuestion",  produces = "application/text; charset=UTF-8")
 	@ResponseBody

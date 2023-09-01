@@ -29,6 +29,9 @@ public interface GroupSearchMapper {
 	//가입 요청 메시지 보내기
 	void sendJoinMessage(@Param("requesterNickName")String requesterNickName, @Param("title")String title, 
 			@Param("content")String content, @Param("groupMaster")String groupMaster);
+
+	//지역에 따라 모임 리스트 가져오기
+	List<GroupDTO> selectStudyListByLocation(@Param("location")String location, @Param("city")String city);
 	
 	
 

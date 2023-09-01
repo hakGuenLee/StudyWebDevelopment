@@ -73,4 +73,16 @@ public class GroupSearchingServiceImpl implements GroupSearchingService {
 		
 	}
 
+	//지역에 따라 모임 리스트 가져오기
+	@Override
+	public List<GroupDTO> getStudyListByLocation(String location, String city) {
+		
+		if(location.equals("전체")) {
+
+			return groupSearchMapper.selectStudyListAll();
+		}
+
+		return groupSearchMapper.selectStudyListByLocation(location, city);
+	}
+
 }

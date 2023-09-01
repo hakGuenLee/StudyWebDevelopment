@@ -24,4 +24,7 @@ public interface GroupSearchingService {
 	//가입 요청 메시지 보내기
 	void sendJoinMessage(String groupName, String title, String content, HttpServletRequest request);
 
+	//지역에 따라 모임 리스트 가져오기
+	List<GroupDTO> getStudyListByLocation(String location, String city);
+
 }

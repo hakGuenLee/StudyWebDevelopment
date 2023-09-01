@@ -150,6 +150,7 @@ $(document).ready(function(){
 	
 	var locationCode = '400';
 	
+	//지역 목록 가져오기
 	commonCodeList(locationCode, function(data){
 		console.log(data);
 		let list = data;
@@ -271,9 +272,10 @@ function joinMessageSender(value, a){
 	
 }
 
-//지역에 따라 행정구역 정렬
+//지역에 따라 행정구역 정렬 &  모임 리스트 정렬
 function selectLocationCity(){
 	let location = $("#locationList option:selected").val();
+	let locationCity = $("#locationCity option:selected").val();
 	
 	if(location == '전체'){
 		let str = "";
@@ -297,6 +299,21 @@ function selectLocationCity(){
 				
 			}) 
 	}
+	
+	//지역에 따라 모임 리스트 가져오기
+	$.ajax({
+		url:"/study/groupSearch/getStudyListByLocation",
+		type:"post",
+		data: {"location":location, "city":locationCity},
+		success:function(data){
+			console.log(data)
+		},
+		error:function(){
+			alert("지역 정렬 실패!!");
+		}
+		
+		
+	})
 		
 }
 
