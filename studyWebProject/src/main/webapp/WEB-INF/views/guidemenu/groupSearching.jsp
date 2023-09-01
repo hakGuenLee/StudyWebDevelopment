@@ -326,12 +326,18 @@ function selectLocationCity(){
 					anotherStr += "<td>"+studyList[i].group_locationCity+"</td>";	
 					anotherStr += "<td>"+studyList[i].maker_nickname+"</td>";	
 					anotherStr += "<td>"+studyList[i].member_count+"</td>";	
-					anotherStr += "<c:if test='"+studyList[i].use_yn+" =="+y+"'>";	
+					if(studyList[i].use_yn == "Y"){
+						anotherStr += "<td>활동 중</td>";		
+					}
+					if(studyList[i].use_yn == "N"){
+						anotherStr += "<td>활동 중단</td>";		
+					}
+	/* 				anotherStr += "<c:if test='"+studyList[i].use_yn+" =="+y+"'>";	
 					anotherStr += "<td>활동 중</td>";	
 					anotherStr += "</c:if>";	
 					anotherStr += "<c:if test='"+studyList[i].use_yn+"=="+N+"'>";	
 					anotherStr += "<td>활동 중단</td>";	
-					anotherStr += "</c:if>";	
+					anotherStr += "</c:if>";	 */
 					anotherStr += "<td><button value='"+studyList[i].group_name+"' onclick='messageSender(this.value)' type='button' class='btn btn-success'>문의하기</button></td>";
 					anotherStr += "<td><button value='"+studyList[i].group_name+"' onclick='joinMessageSender(this.value)' type='button' class='btn btn-primary'>가입신청</button></td>";
 					anotherStr += "</tr>"
