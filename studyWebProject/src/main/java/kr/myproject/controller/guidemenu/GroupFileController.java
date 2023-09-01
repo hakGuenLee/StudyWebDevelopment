@@ -101,7 +101,14 @@ public class GroupFileController {
 	
 	
 	//파일 삭제하기
-	
+	@PostMapping(value = "/fileAndPostDelete",  produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String postDelete(@RequestParam("no") String no, @RequestParam("groupName") String groupName, HttpServletRequest request) {
+		
+		groupFileService.deleteFileAndPost(no, groupName, request);
+		
+		return "게시물 삭제가 완료 되었습니다!";
+	}
 	
 	
 	//유저가 선택한 그룹 이름에 따라서 그에 맞는 자료 가져오기

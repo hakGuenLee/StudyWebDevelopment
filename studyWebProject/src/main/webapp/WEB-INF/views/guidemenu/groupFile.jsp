@@ -76,7 +76,7 @@
 						<td>${dto.uploader}</td>
 						<td>${dto.upload_dt}</td>
 						<td>${dto.hit}</td>
-						<td><button onclick="fileAndPostDelete(this.value)" value="${dto.file_no}"  type="button" class="btn btn-danger">삭제하기</button></td>
+						<td><button onclick="fileAndPostDelete(this.value, '${dto.group_name}')" value="${dto.file_no}"  type="button" class="btn btn-danger">삭제하기</button></td>
 					</tr>
 				</c:forEach>	
 			</tbody>		
@@ -155,8 +155,8 @@ $(document).ready(function(){
 
 </script>
 <script>
-function fileAndPostDelete(no){
-	
+function fileAndPostDelete(no, groupName){
+	console.log(groupName);
 	//회원이 작성한 게시물인지 확인하기
 	$.ajax({
 		url:"/study/file/uploaderCheck",
@@ -172,7 +172,7 @@ function fileAndPostDelete(no){
 					$.ajax({
 						url:"/study/file/fileAndPostDelete",
 						type:"post",
-						data:{"no":no},
+						data:{"no":no, "groupName":groupName},
 						success:function(result){
 							alert(result);
 						},

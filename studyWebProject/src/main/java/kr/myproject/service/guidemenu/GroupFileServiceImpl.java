@@ -22,11 +22,9 @@ import kr.myproject.mapper.guidemenu.GroupFileMapper;
 public class GroupFileServiceImpl implements GroupFileService {
 
 	@Autowired
-	private GroupFileMapper groupFileMapper;
-	
+	private GroupFileMapper groupFileMapper;	
 	@Autowired
-	private UserInfoHandler userInfoHandler;
-	
+	private UserInfoHandler userInfoHandler;	
 	@Autowired
 	private CustomFileHandler fileHandler;
 	
@@ -63,7 +61,6 @@ public class GroupFileServiceImpl implements GroupFileService {
 	public void upLoadFileAndPost(MultipartHttpServletRequest multipart, HttpServletRequest request) throws Exception {
 		
 		Map<String, String> map =	fileHandler.fileAndPostUploader(multipart, request);
-
 		groupFileMapper.saveFileAndPost(map);
 		
 	}
@@ -84,7 +81,6 @@ public class GroupFileServiceImpl implements GroupFileService {
 		String uploaderNickName = userInfoHandler.getUserNickName(request);
 		
 		FileDTO fileDTO = groupFileMapper.uploaderCheckByNickName(no, uploaderNickName);
-		System.out.println("확인한 파일 디티오 : " + fileDTO);
 		
 		if(fileDTO == null) {
 			System.out.println("파일삭제 불가능~~");
@@ -92,6 +88,13 @@ public class GroupFileServiceImpl implements GroupFileService {
 		}
 		
 		return true;
+	}
+
+	//게시물 삭제하기
+	@Override
+	public void deleteFileAndPost(String no, String groupName, HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

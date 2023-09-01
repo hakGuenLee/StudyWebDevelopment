@@ -29,4 +29,7 @@ public interface GroupFileService {
 	//파일 삭제하기 전 업로더 본인이 작성한 게시물이 맞는지 확인
 	boolean uploaderCheck(String no, HttpServletRequest request);
 
+	//게시물 삭제하기
+	void deleteFileAndPost(String no, String groupName, HttpServletRequest request);
+
 }
