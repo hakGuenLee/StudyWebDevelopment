@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 import kr.myproject.domain.FileDTO;
-import kr.myproject.domain.GroupDTO;
+
 import kr.myproject.handler.UserInfoHandler;
 import kr.myproject.service.guidemenu.GroupFileService;
 
