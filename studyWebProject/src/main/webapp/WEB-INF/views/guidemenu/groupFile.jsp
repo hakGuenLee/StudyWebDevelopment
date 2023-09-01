@@ -72,9 +72,9 @@
 						<td>${dto.file_no}</td>
 						<td>${dto.group_name}</td>
 						<td>${dto.post_type}</td>
-						<td>${dto.post_title}</td>
+						<td><a href="<c:url value="/file/fileAndPostDetail?no=${dto.file_no}"/>">${dto.post_title}</a></td>
 						<td>${dto.uploader}</td>
-						<td>${dto.uploader}</td>
+						<td>${dto.upload_dt}</td>
 						<td>${dto.hit}</td>
 						<td><button value=""  type="button" class="btn btn-danger">삭제하기</button></td>
 					</tr>

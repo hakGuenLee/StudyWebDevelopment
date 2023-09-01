@@ -41,14 +41,7 @@ public class GroupSearchController {
 	@ResponseBody
 	public List<GroupDTO> studyListByLocation(@RequestParam("location") String location, @RequestParam("city") String city){
 		
-		System.out.println("지역:" + location);
-		System.out.println("행정구:" + city);
-		
-
-		
 		List<GroupDTO> groupList = groupSearchingService.getStudyListByLocation(location,city);
-		
-		System.out.println("모임지역 정렬 : " + groupList);
 		
 		return groupList;
 				

@@ -24,4 +24,10 @@ public interface GroupFileMapper {
 	//자료실 페이지 첫 이동 시 모든 파일 리스트 가져오기
 	List<FileDTO> selectAllFile(@Param("groupList")List<String> groupList);
 
+	//게시글 제목에 해당하는 글과 파일 가져오기
+	FileDTO selectFileAndPost(String fileNumber);
+
+	//해당 번호의 게시글 조회수 + 1
+	void addHitByFileNum(String fileNumber);
+
 }

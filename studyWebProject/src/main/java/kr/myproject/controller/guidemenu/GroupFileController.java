@@ -58,6 +58,17 @@ public class GroupFileController {
 		return "guidemenu/groupFileRegister";
 	}
 	
+	//자료 및 공지 상세보기 페이지 이동
+	@GetMapping("/fileAndPostDetail")
+	public String fileAndPostDetailPage(String no, Model model) {
+		
+		FileDTO fileDTO = groupFileService.getFileAndPostInfo(no);
+		System.out.println("파일 상세 : " + fileDTO);
+		model.addAttribute("post", fileDTO);
+		
+		return "guidemenu/fileAndPostDetail";
+	}
+	
 	//유저의 스터디모임 리스트 가져오기
 	@PostMapping("/myGroupList")
 	@ResponseBody

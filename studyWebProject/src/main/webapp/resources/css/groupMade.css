@@ -45,10 +45,13 @@ section{
 	width:350px;
 }
 
+
+
 #groupIntro{
 	margin-left: 35px;
 	width:350px;
 	height:200px;
+	resize:none;
 }
 
 

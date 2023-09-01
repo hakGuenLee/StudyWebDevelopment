@@ -50,7 +50,7 @@
 					<option></option>
 				</select>
 			</div>
-			
+
 			
 			<div class="mt-5 d-flex">
 				<p><b>모임 설명</b></p>

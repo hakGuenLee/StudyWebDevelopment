@@ -89,6 +89,29 @@
 </section>
 
 
+<!-- 모임 정보 Modal -->
+<div class="modal fade" id="GroupInfoModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header" id="groupModalHeader">
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="groupModal-body" style="height:500px">
+
+      </div>
+
+      <div class="modal-footer">
+        <button id="senderBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">문의 보내기</button>
+      </div>
+
+    </div>
+  </div>
+</div> 
+
+
 <!-- 문의하기 Modal -->
 <div class="modal fade" id="QuestionModal">
   <div class="modal-dialog">
@@ -134,7 +157,7 @@
         <p>제목</p>
         <input type="text" class="form-control w-100" id="joinRequestTitle">
         <p>가입신청 내용</p>
-        <textarea id="requestArea" class="form-control w-100" style="height:300px; resize: none;"></textarea>
+        <textarea id="requestArea" class="form-control w-100" style="height:300px; resize: none;" placeholder="자신에 대한 소개를 꼭! 함께 적어주세요!"></textarea>
       </div>
 
       <div class="modal-footer">
@@ -169,10 +192,14 @@ $(document).ready(function(){
 </script>
 <script>
 
+
+
 //문의하기 창 열기
 function messageSender(value){
 	
 	let user = $("#sessionId").val();
+	
+	
 	
 	if(user == 0){
 		var result = confirm("로그인이 필요한 서비스입니다! 로그인하시겠습니까?");

@@ -156,6 +156,15 @@ public class GroupFileServiceImpl implements GroupFileService {
 		
 	}
 
+	//게시글 제목에 해당하는 글과 파일 가져오기&조회수 1 증가
+	@Override
+	public FileDTO getFileAndPostInfo(String fileNumber) {
+		
+		groupFileMapper.addHitByFileNum(fileNumber);
+
+		return groupFileMapper.selectFileAndPost(fileNumber);
+	}
+
 
 
 }

@@ -23,4 +23,7 @@ public interface GroupFileService {
 	//유저의 모든 스터디 모임 파일들 가져오기
 	List<FileDTO> getFileListAll(HttpServletRequest request);
 
+	//게시글 제목에 해당하는 글과 파일 가져오기
+	FileDTO getFileAndPostInfo(String fileNumber);
+
 }
