@@ -308,9 +308,17 @@ function selectLocationCity(){
 		success:function(data){
 			console.log(data)
 			let anotherStr ="";
+			let y = "Y";
+			let N = "N";
 			let studyList = data;
 			
+			if(data == null){
+				anotherStr += "<tr>";
+				anotherStr += "<td colspan='10'>스터디 모임이 존재하지 않습니다!</td>";
+			}
+			
 			for(let i=0; i<studyList.length; i++){
+				anotherStr += "<tr>"
 				anotherStr += "<td>"+studyList[i].group_no+"</td>";	
 				anotherStr += "<td>"+studyList[i].group_name+"</td>";	
 				anotherStr += "<td>"+studyList[i].group_category+"</td>";	
@@ -318,12 +326,18 @@ function selectLocationCity(){
 				anotherStr += "<td>"+studyList[i].group_locationCity+"</td>";	
 				anotherStr += "<td>"+studyList[i].maker_nickname+"</td>";	
 				anotherStr += "<td>"+studyList[i].member_count+"</td>";	
-				anotherStr += "<c:if test='"+studyList[i].use_yn+"== 'Y' '>";	
+				anotherStr += "<c:if test='"+studyList[i].use_yn+" =="+y+"'>";	
 				anotherStr += "<td>활동 중</td>";	
 				anotherStr += "</c:if>";	
-				anotherStr += "<c:if test='"+studyList[i].use_yn+"== 'N' '>";	
+				anotherStr += "<c:if test='"+studyList[i].use_yn+"=="+N+"'>";	
 				anotherStr += "<td>활동 중단</td>";	
 				anotherStr += "</c:if>";	
+				anotherStr += "<td><button value='"+studyList[i].group_name"' onclick='messageSender(this.value)' type='button' class='btn btn-success'>문의하기</button></td>";
+				anotherStr += "<td><button value='"+studyList[i].group_name"' onclick='joinMessageSender(this.value)' type='button' class='btn btn-primary'>가입신청</button></td>";
+				anotherStr += "</tr>"
+				
+				$("#fileList").html(anotherStr);
+				
 			}
 		},
 		error:function(){
