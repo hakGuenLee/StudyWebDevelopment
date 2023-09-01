@@ -30,7 +30,7 @@ SELECT * FROM studygroup_master WHERE maker_id = #{userId}
 
 <!-- 나의 모임 페이지 이동 시 내가 참여한 모임 리스트 가져오기 -->
 <select id="selectMyJoinList" resultType="GroupDTO">
-SELECT m.group_key, m.group_category, m.group_name, m.group_maker, m.member_count, d.join_dt
+SELECT m.group_key, m.group_category, m.group_name, m.maker_nickname, m.member_count, d.join_dt
 FROM studygroup_master AS m, studygroup_detail AS d
 WHERE m.group_key = d.group_key
 AND d.member_id = #{myId}
