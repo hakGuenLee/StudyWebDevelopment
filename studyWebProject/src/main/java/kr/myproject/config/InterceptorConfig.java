@@ -28,6 +28,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		.addPathPatterns("/userCs/**")
 		.addPathPatterns("/group/**")
 		.addPathPatterns("/file/**")
+		.addPathPatterns("/userMessage/**")
 		.addPathPatterns("/location/addWishPlace")
 		.addPathPatterns("/location/myWishList");
 	}
