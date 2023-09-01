@@ -15,7 +15,7 @@
 		</div>
 	</div>
 	
-	<div class="d-flex" style="margin-left:20%; margin-top:40px;">
+	<div class="d-flex" style="margin-left:16%; margin-top:40px;">
 		<p style="margin-left:80px">게시번호 : ${post.file_no}</p>
 		<p style="margin-left:80px">제목 : ${post.post_title}</p>
 		<p style="margin-left:80px">등록자 : ${post.uploader}</p>
@@ -24,7 +24,7 @@
 	</div>
 	
 	<div style="margin-left:20%; margin-top:30px;">
-		<textarea  style="width:1200px; height:200px; background-color:Cornsilk" 
+		<textarea  style="width:1200px; height:200px; resize:none;" 
 		class="form-control" readonly>${post.content}
 		</textarea>
 	</div>
@@ -48,7 +48,7 @@
 	
 	<div style="margin-left:44%; margin-top:40px;">
 		<a href="<c:url value="/"/>" type="button" style="background-color:gray;color:white; width:120px; height:50px;" class="btn">Home</a>
-		<a href="<c:url value="/userCs/myCsPage"/>" type="button" style="background-color:dodgerBlue;color:white; height:50px; margin-left:12px;" class="btn">나의 1:1 문의 보기</a>
+		<a href="<c:url value="/file/groupFilePage"/>" type="button" style="background-color:dodgerBlue;color:white; width:120px; height:50px; margin-left:12px;" class="btn">자료실 이동</a>
 	</div>
 	
 

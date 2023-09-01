@@ -76,7 +76,7 @@
 						<td>${dto.uploader}</td>
 						<td>${dto.upload_dt}</td>
 						<td>${dto.hit}</td>
-						<td><button value=""  type="button" class="btn btn-danger">삭제하기</button></td>
+						<td><button onclick="fileAndPostDelete(this.value)" value="${dto.file_no}"  type="button" class="btn btn-danger">삭제하기</button></td>
 					</tr>
 				</c:forEach>	
 			</tbody>		
