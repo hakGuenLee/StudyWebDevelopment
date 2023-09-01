@@ -307,6 +307,24 @@ function selectLocationCity(){
 		data: {"location":location, "city":locationCity},
 		success:function(data){
 			console.log(data)
+			let anotherStr ="";
+			let studyList = data;
+			
+			for(let i=0; i<studyList.length; i++){
+				anotherStr += "<td>"+studyList[i].group_no+"</td>";	
+				anotherStr += "<td>"+studyList[i].group_name+"</td>";	
+				anotherStr += "<td>"+studyList[i].group_category+"</td>";	
+				anotherStr += "<td>"+studyList[i].group_location+"</td>";	
+				anotherStr += "<td>"+studyList[i].group_locationCity+"</td>";	
+				anotherStr += "<td>"+studyList[i].maker_nickname+"</td>";	
+				anotherStr += "<td>"+studyList[i].member_count+"</td>";	
+				anotherStr += "<c:if test='"+studyList[i].use_yn+"== 'Y' '>";	
+				anotherStr += "<td>활동 중</td>";	
+				anotherStr += "</c:if>";	
+				anotherStr += "<c:if test='"+studyList[i].use_yn+"== 'N' '>";	
+				anotherStr += "<td>활동 중단</td>";	
+				anotherStr += "</c:if>";	
+			}
 		},
 		error:function(){
 			alert("지역 정렬 실패!!");
