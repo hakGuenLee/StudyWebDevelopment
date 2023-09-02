@@ -37,7 +37,7 @@ function getLocationCity(a,b,cb){
 }
 
 /* 유저가 받은 메시지함, 보낸 메시지함에서 메시지 삭제하기 */
-function deletMessageByNumber(messageNumber){
+function deletMessageByNumber(messageNumber, cb){
 	
 			$.ajax({
 			url: "/study/userMessage/deleteMessage",
