@@ -19,6 +19,23 @@ function deleteMessage(messageNumber){
 	}
 }
 </script>
+<script>
+$(document).ready(function(){
+	var msgCode = '700';
+	commonCodeList(msgCode, function(data){
+		let str = "";
+		let list = data;
+		str = "<option>전체</option>";
+		
+		for(let i=0; i<list.length; i++){
+			str += "<option value='"+list[i].item_nm+"'>"+list[i].item_nm+"</option>";
+		}
+		
+		$("#messageCategory").html(str);
+	})
+
+})
+</script>
 
 <section>
 
@@ -29,7 +46,25 @@ function deleteMessage(messageNumber){
 
 		<div id="myGroupBox" class="container w-75">
 			<h5><b>내게 도착한 메시지</b></h5>
-			<table class="table mt-5">
+			
+			<div class="d-flex">
+				<div >
+					<select id="messageCategory" style="width:160px" class="form-select" name="messageCategory" onchange="selectLocationCity()">
+							<option></option>
+					</select>
+				</div>
+				<div>
+					<form action="/study/userMessage/searchingMessageForMe" method="post">
+						<div id="searchGroup" class="input-group mb-3">
+						  <input id="searchText" type="text" name="searchValue" class="form-control" placeholder="제목을 검색해보세요">
+						  <button  class="btn btn-secondary" type="submit">검색하기</button>
+						</div>
+					</form>
+				</div>
+				
+			</div>
+			
+			<table class="table mt-3">
 				<thead class="table-secondary">
 					<tr>
 						<th>No.</th>
