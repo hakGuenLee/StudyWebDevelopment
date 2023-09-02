@@ -60,6 +60,8 @@ public class UserMessageController {
 		
 		return "메시지를 삭제하였습니다!";
 	}
+	
+
 
 
 }
