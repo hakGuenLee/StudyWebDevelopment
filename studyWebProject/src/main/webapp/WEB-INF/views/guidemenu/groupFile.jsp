@@ -43,10 +43,10 @@
 			</select>
 		</div>
 		<div>
-			<form action="/study/userCs/searchMyCsList" method="post">
+			<form action="/study/file/searchGroupFileList" method="post">
 				<div id="searchGroup" class="input-group mb-3">
-				  <input type="text" name="searchValue" class="form-control" placeholder="제목을 검색해보세요">
-				  <button class="btn btn-secondary" type="submit">검색하기</button>
+				  <input type="text" id="postName" name="searchValue" class="form-control" placeholder="제목을 검색해보세요">
+				  <button id="searchBtn" class="btn btn-secondary" type="submit">검색하기</button>
 				</div>
 			</form>
 		</div>
@@ -67,24 +67,38 @@
 				</tr>
 			</thead>
 			<tbody id="fileList">
-				<c:forEach var="dto" items="${list }">
+				<c:if test="${list == null || list.size()==0 }">
 					<tr>
-						<td>${dto.file_no}</td>
-						<td>${dto.group_name}</td>
-						<td>${dto.post_type}</td>
-						<td><a href="<c:url value="/file/fileAndPostDetail?no=${dto.file_no}"/>">${dto.post_title}</a></td>
-						<td>${dto.uploader}</td>
-						<td>${dto.upload_dt}</td>
-						<td>${dto.hit}</td>
-						<td><button onclick="fileAndPostDelete(this.value, '${dto.group_name}')" value="${dto.file_no}"  type="button" class="btn btn-danger">삭제하기</button></td>
+						<td colspan="8">게시물이 존재하지 않습니다!</td>
 					</tr>
-				</c:forEach>	
+				</c:if>
+				<c:if test="${list != null || list.size()!=0 }">
+					<c:forEach var="dto" items="${list }">
+						<tr>
+							<td>${dto.file_no}</td>
+							<td>${dto.group_name}</td>
+							<td>${dto.post_type}</td>
+							<td><a href="<c:url value="/file/fileAndPostDetail?no=${dto.file_no}"/>">${dto.post_title}</a></td>
+							<td>${dto.uploader}</td>
+							<td>${dto.upload_dt}</td>
+							<td>${dto.hit}</td>
+							<td><button onclick="fileAndPostDelete(this.value, '${dto.group_name}')" value="${dto.file_no}"  type="button" class="btn btn-danger">삭제하기</button></td>
+						</tr>
+					</c:forEach>	
+				</c:if>	
 			</tbody>		
 		</table>
 	</div>
 </section>
 <script>
 $(document).ready(function(){
+	
+	//게시글 검색어 입력 후 엔터키 시 버튼 클릭 처리 이벤트
+	$("#postName").keyup(function(event){
+		if(event.which === 13){
+			$("#searchBtn").click();
+		}
+	})
 	
 	let id = $("#userId").val();
 	console.log(id);

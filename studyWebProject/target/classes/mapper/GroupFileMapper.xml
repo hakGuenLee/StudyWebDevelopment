@@ -51,4 +51,9 @@ WHERE file_no = #{no} AND uploader = #{uploaderNickName}
 DELETE FROM file_master WHERE file_no = #{no}
 </delete>
 
+<!-- 자료 검색하기 -->
+<select id="findPostAndFileList" resultType="FileDTO">
+SELECT * FROM file_master WHERE post_title = #{searchValue}
+</select>
+
 </mapper>

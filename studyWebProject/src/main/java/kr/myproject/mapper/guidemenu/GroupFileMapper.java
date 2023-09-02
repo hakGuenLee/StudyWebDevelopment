@@ -35,4 +35,7 @@ public interface GroupFileMapper {
 	//게시물 삭제
 	void deleteFileAndPost(String no);
 
+	//자료 검색하기
+	List<FileDTO> findPostAndFileList(String searchValue);
+
 }

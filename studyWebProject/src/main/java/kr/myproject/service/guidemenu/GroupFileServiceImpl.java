@@ -113,6 +113,13 @@ public class GroupFileServiceImpl implements GroupFileService {
 		
 	}
 
+	//자료 검색하기
+	@Override
+	public List<FileDTO> searchList(String searchValue) {
+
+		return groupFileMapper.findPostAndFileList(searchValue);
+	}
+
 
 
 }

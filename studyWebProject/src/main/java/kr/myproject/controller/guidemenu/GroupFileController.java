@@ -122,6 +122,17 @@ public class GroupFileController {
 		
 	}
 	
+	//자료 검색하기
+	@PostMapping("/searchGroupFileList")
+	public String searchFileAndPost(String searchValue, Model model) {
+		
+		List<FileDTO> findList = groupFileService.searchList(searchValue);
+		
+		model.addAttribute("list", findList);
+		
+		return "guidemenu/groupFile";
+	}
+	
 	
 	
 }

@@ -32,4 +32,7 @@ public interface GroupFileService {
 	//게시물 삭제하기
 	void deleteFileAndPost(String no, String groupName, HttpServletRequest request);
 
+	//자료 검색하기
+	List<FileDTO> searchList(String searchValue);
+
 }
