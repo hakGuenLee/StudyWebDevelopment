@@ -6,7 +6,7 @@
 <link  href="<c:url value="/css/myStudyGroup.css"/>" rel="stylesheet"/> 	
 <jsp:include page="../include/header.jsp"/> 
 
-<!-- 나의 모임 공간 위시리스트 -->
+<!-- 받은 메시지함 페이지 -->
 <script>
 //메시지 삭제
 function deleteMessage(messageNumber){
