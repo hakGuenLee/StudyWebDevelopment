@@ -10,7 +10,7 @@ SELECT count(*) FROM message_master WHERE msg_receiver = #{userNickName}
 </select>
 
 <!-- 나에게 도착한 메시지 가져오기 -->
-<select id="selectMyMessageFromOther" resultType="MessageDTO">
+<select id="selectMyMessageFromOther" resultType="hashmap">
 SELECT * FROM message_master WHERE msg_receiver = #{userNickName}
 ORDER BY msg_no DESC
 LIMIT #{pageDTO.startIndex}, #{pageDTO.cntPerPage}
@@ -20,4 +20,9 @@ LIMIT #{pageDTO.startIndex}, #{pageDTO.cntPerPage}
 <select id="selectMessageForOther" resultType="MessageDTO">
 SELECT * FROM message_master WHERE msg_sender = #{senderNickName}
 </select>
+
+<!-- 메시지 삭제 -->
+<delete id="deleteMessage">
+DELETE FROM message_master WHERE msg_no = #{no}
+</delete>
 </mapper>

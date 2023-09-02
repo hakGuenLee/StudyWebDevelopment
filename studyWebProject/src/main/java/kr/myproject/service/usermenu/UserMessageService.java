@@ -15,4 +15,7 @@ public interface UserMessageService {
 	//내가 보낸 메시지 가져오기
 	List<MessageDTO> getMessageForOther(HttpServletRequest request);
 
+	//메시지 삭제
+	void deleteMessage(String no);
+
 }

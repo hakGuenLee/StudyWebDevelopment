@@ -17,9 +17,11 @@ public interface UserMessageMapper {
 	//받은 메시지 총 개수 카운트
 	int countMessageAllToMe(String userNickName);
 
-
 	//내가 보낸 메시지 가져오기
 	List<MessageDTO> selectMessageForOther(String senderNickName);
+
+	//메시지 삭제
+	void deleteMessage(String no);
 
 
 }

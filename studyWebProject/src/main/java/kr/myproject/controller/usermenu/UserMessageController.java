@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.myproject.domain.MessageDTO;
 import kr.myproject.domain.PageDTO;
@@ -46,6 +49,16 @@ public class UserMessageController {
 		
 		return "usermenu/messageForOther";
 		
+	}
+	
+	//메시지 삭제(받은 메시지함, 보낸 메시지함에서 모두 사용
+	@PostMapping(value = "/deleteMessage", produces = "application/text; charset=UTF-8")
+	@ResponseBody
+	public String deleteMessage(@RequestParam("messageNumber") String no) {
+		
+		userMessageService.deleteMessage(no);
+		
+		return "메시지를 삭제하였습니다!";
 	}
 
 }

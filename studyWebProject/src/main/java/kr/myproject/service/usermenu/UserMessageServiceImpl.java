@@ -44,4 +44,11 @@ public class UserMessageServiceImpl implements UserMessageService {
 		return userMessageMapper.selectMessageForOther(senderNickName);
 	}
 
+	//메시지 삭제
+	@Override
+	public void deleteMessage(String no) {
+		userMessageMapper.deleteMessage(no);
+		
+	}
+
 }
