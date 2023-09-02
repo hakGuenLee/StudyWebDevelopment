@@ -165,14 +165,23 @@ $("#loginBtn").on("click", function(){
 
 })
 
-//일치하는 계정이 없을 경우 에러 메세지 alert
+
 $(document).ready(function(){
 	
 	let error = $("#errorMessage").val();
 	
+	//일치하는 계정이 없을 경우 에러 메세지 alert
 	if(error != 0){
 		alert(error);
 	}
+	
+	//비밀번호까지 입력 후 엔터 키 누르면 로그인 버튼 클릭 실행
+	$("#pwInput").keyup(function(event){
+		  if (event.which === 13) {
+	            $("#loginBtn").click();
+	        }
+	})
+
 })
 
 //아이디찾기 Modal 열기

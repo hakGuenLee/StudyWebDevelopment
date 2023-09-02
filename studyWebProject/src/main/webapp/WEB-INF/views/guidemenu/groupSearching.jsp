@@ -32,8 +32,8 @@
 		<div>
 			<form action="/study/groupSearch/searchGroupName" method="post">
 				<div id="searchGroup" class="input-group mb-3">
-				  <input type="text" name="searchValue" class="form-control" placeholder="모임명을 검색해보세요">
-				  <button class="btn btn-secondary" type="submit">검색하기</button>
+				  <input id="searchText" type="text" name="searchValue" class="form-control" placeholder="모임명을 검색해보세요">
+				  <button  class="btn btn-secondary" type="submit">검색하기</button>
 				</div>
 			</form>
 		</div>
@@ -188,6 +188,15 @@ $(document).ready(function(){
 	
 	})
 
+	//키보드 이벤트 
+	//모임 명 입력 후 Enter 누를 시 검색 실행
+	$("#searchText").keyup(function(event){
+	      if (event.which === 13) {
+	            $("#submit").click();
+	        }
+	})
+	
+	
 })
 </script>
 <script>
