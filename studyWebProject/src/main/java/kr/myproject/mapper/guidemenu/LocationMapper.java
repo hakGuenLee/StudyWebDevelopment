@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import kr.myproject.domain.PageDTO;
 import kr.myproject.domain.PlaceDTO;
 
 @Mapper
@@ -15,9 +16,12 @@ public interface LocationMapper {
 			@Param("tel")String tel, @Param("id")String id);
 
 	//회원의 모임 위시리스트 가져오기
-	List<PlaceDTO> selectWishList(String userId);
+	List<PlaceDTO> selectWishList(@Param("userId")String userId, @Param("pageDTO")PageDTO pageDTO);
 
 	//찜한 모임 장소 삭제하기
 	void deleteWishPlace(int no);
+
+	//회원이 찜한 장소 총 개수 카운트
+	int countWishLocationAll(String userId);
 
 }

@@ -45,6 +45,24 @@
 				</tbody>
 			</table>
 		</div>
+		
+				<!-- paging area -->
+		<ul class="pagination justify-content-center my-5">
+	        <li class="page-item ${pageDTO.prevPage <= 0 ? 'disabled' : ''}">
+	            <a class="page-link" href="<c:url value="/location/myWishList?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}"/>">이전</a>
+	        </li>
+	
+	        <c:forEach var="i" begin="${pageDTO.blockStart}" end="${pageDTO.blockEnd}">
+	            <li class="page-item ${pageDTO.viewPage == i ? 'active' : ''}">
+	                <a class="page-link"
+	                   href="<c:url value="/location/myWishList?viewPage=${i}&cntPerPage=${pageDTO.cntPerPage}"/>">${i}</a>
+	            </li>
+	        </c:forEach>
+	
+	        <li class="page-item ${pageDTO.blockEnd >= pageDTO.totalPage ? 'disabled' : ''}">
+	            <a class="page-link" href="<c:url value="/location/myWishList?viewPage=${pageDTO.nextPage}&cntPerPage=${pageDTO.cntPerPage}"/>">다음</a>
+	        </li>
+   	   </ul>
 
 
 </section>

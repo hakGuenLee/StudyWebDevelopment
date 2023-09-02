@@ -10,10 +10,10 @@
 <script>
 //메시지 삭제
 function deleteMessage(messageNumber){
-	if(confirm("메시지를 삭제하시면 답변을 할 수 없습니다! 그래도 삭제하시겠습니까?")){
+	if(confirm("삭제하시면 친구의 메시지를 볼 수 없습니다! 그래도 삭제하시겠습니까?")){
 		deletMessageByNumber(messageNumber, function(result){
 			alert(result);
-			location.replace("/study/userMessage/messageArived");
+			location.replace("/study/userMessage/sendMessagePage");
 		});
 		
 	}
@@ -80,7 +80,7 @@ $(document).ready(function(){
 				<tbody>
 					<c:if test="${list == null || list.size()==0 }">
 						<tr>
-							<td colspan="8"><span>보낸 메시지가 존재하지 않습니다.</span> <a href="<c:url value="/location/movetoMap"/>" id="movetomap" type="button" class="btn">모임 만들기</a> </td>
+							<td colspan="8"><span>보낸 메시지가 존재하지 않습니다.</span></td>
 						</tr>
 					</c:if>
 					<c:if test="${myMessage != null || list.size()!=0 }">	
@@ -109,18 +109,18 @@ $(document).ready(function(){
 		<!-- paging area -->
 		<ul class="pagination justify-content-center my-5">
 	        <li class="page-item ${pageDTO.prevPage <= 0 ? 'disabled' : ''}">
-	            <a class="page-link" href="<c:url value="/userMessage/messageArived?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}"/>">이전</a>
+	            <a class="page-link" href="<c:url value="/userMessage/sendMessagePage?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}"/>">이전</a>
 	        </li>
 	
 	        <c:forEach var="i" begin="${pageDTO.blockStart}" end="${pageDTO.blockEnd}">
 	            <li class="page-item ${pageDTO.viewPage == i ? 'active' : ''}">
 	                <a class="page-link"
-	                   href="<c:url value="/userMessage/messageArived?viewPage=${i}&cntPerPage=${pageDTO.cntPerPage}"/>">${i}</a>
+	                   href="<c:url value="/userMessage/sendMessagePage?viewPage=${i}&cntPerPage=${pageDTO.cntPerPage}"/>">${i}</a>
 	            </li>
 	        </c:forEach>
 	
 	        <li class="page-item ${pageDTO.blockEnd >= pageDTO.totalPage ? 'disabled' : ''}">
-	            <a class="page-link" href="<c:url value="/userMessage/messageArived?viewPage=${pageDTO.nextPage}&cntPerPage=${pageDTO.cntPerPage}"/>">다음</a>
+	            <a class="page-link" href="<c:url value="/userMessage/sendMessagePage?viewPage=${pageDTO.nextPage}&cntPerPage=${pageDTO.cntPerPage}"/>">다음</a>
 	        </li>
    	   </ul>
 </section>

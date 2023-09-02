@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.myproject.domain.PageDTO;
 import kr.myproject.domain.PlaceDTO;
 import kr.myproject.service.guidemenu.LocationService;
 
@@ -24,9 +25,9 @@ public class LocationController {
 	
 	//마이페이지 나의 위시리스트 이동
 	@GetMapping("/myWishList")
-	public String myWish(HttpServletRequest request, Model model) {
+	public String myWish(HttpServletRequest request, Model model, PageDTO pageDTO) {
 		
-		List<PlaceDTO> placeList = locationService.getWishList(request);
+		List<PlaceDTO> placeList = locationService.getWishList(request, pageDTO);
 		
 		model.addAttribute("list", placeList);
 		

@@ -12,12 +12,19 @@ VALUES(#{id}, #{name}, #{addr}, #{tel})
 
 <!-- 회원의 모임 위시리스트 가져오기 -->
 <select id="selectWishList" resultType="PlaceDTO">
-SELECT * FROM space_wish WHERE user_id = #{userId};
+SELECT * FROM space_wish WHERE user_id = #{userId}
+ORDER BY wish_no DESC
+LIMIT #{pageDTO.startIndex}, #{pageDTO.cntPerPage}
 </select>
 
 <!-- 찜한 모임 장소 삭제하기 -->
 <delete id="deleteWishPlace">
 DELETE FROM space_wish WHERE wish_no = #{no}
 </delete>
+
+<!-- 회원이 찜한 장소 총 개수 카운트 -->
+<select id="countWishLocationAll" resultType="Integer">
+SELECT count(*) FROM space_wish WHERE user_id = #{userId}
+</select>
 
 </mapper>

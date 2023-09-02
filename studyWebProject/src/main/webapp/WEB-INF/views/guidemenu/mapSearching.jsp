@@ -7,6 +7,17 @@
 <link  href="<c:url value="/css/kakaomapAPI.css"/>" rel="stylesheet"/> 
 
 <jsp:include page="../include/header.jsp"/> 
+<script>
+//장소 검색 후 엔터 키 입력 시 검색 버튼 클릭 이벤트
+$(document).ready(function(){
+	$("#keyword").keyup(function(event){
+		if(event.which === 13){
+			$("#searchBtn").click();
+		}
+	})
+	
+})
+</script>
 
 
 	<section class="mt-5">
@@ -32,10 +43,10 @@
 		
 		<div id="mapTypeSelectButton" style="margin-left:45%; margin-top:30px;">
 		<p>
-    <input type="checkbox" id="chkUseDistrict" onclick="setOverlayMapTypeId()" /> 지적편집도 정보 보기
-    <input type="checkbox" id="chkTerrain" onclick="setOverlayMapTypeId()" /> 지형정보 보기 
-    <input type="checkbox" id="chkTraffic" onclick="setOverlayMapTypeId()" /> 교통정보 보기       
-    <input type="checkbox" id="chkBicycle" onclick="setOverlayMapTypeId()" /> 자전거도로 정보 보기
+		    <input type="checkbox" id="chkUseDistrict" onclick="setOverlayMapTypeId()" /> 지적편집도 정보 보기
+		    <input type="checkbox" id="chkTerrain" onclick="setOverlayMapTypeId()" /> 지형정보 보기 
+		    <input type="checkbox" id="chkTraffic" onclick="setOverlayMapTypeId()" /> 교통정보 보기       
+		    <input type="checkbox" id="chkBicycle" onclick="setOverlayMapTypeId()" /> 자전거도로 정보 보기
 		</p> 
 		</div>
 		

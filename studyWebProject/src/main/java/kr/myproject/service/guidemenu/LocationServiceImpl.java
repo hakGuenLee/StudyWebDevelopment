@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.myproject.domain.PageDTO;
 import kr.myproject.domain.PlaceDTO;
 import kr.myproject.handler.UserInfoHandler;
 import kr.myproject.mapper.guidemenu.LocationMapper;
@@ -32,10 +33,14 @@ public class LocationServiceImpl implements LocationService {
 
 	//회원의 모임 위시리스트 가져오기
 	@Override
-	public List<PlaceDTO> getWishList(HttpServletRequest request) {
+	public List<PlaceDTO> getWishList(HttpServletRequest request, PageDTO pageDTO) {
 		String userId = userInfoHandler.getUserId(request);
 		
-		return locationMapper.selectWishList(userId);
+		int totalNumber = locationMapper.countWishLocationAll(userId);
+		
+		pageDTO.setValue(totalNumber, pageDTO.getCntPerPage());
+		
+		return locationMapper.selectWishList(userId, pageDTO);
 	}
 
 	//찜한 모임 장소 삭제하기
