@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.myproject.domain.MessageDTO;
+import kr.myproject.domain.PageDTO;
 import kr.myproject.handler.UserInfoHandler;
 import kr.myproject.mapper.usermenu.UserMessageMapper;
 
@@ -23,11 +24,15 @@ public class UserMessageServiceImpl implements UserMessageService {
 	
 	//나에게 도착한 메시지 가져오기
 	@Override
-	public List<MessageDTO> getMyMessage(HttpServletRequest request) {
+	public List<MessageDTO> getMyMessage(HttpServletRequest request, PageDTO pageDTO) {
 		
 		String userNickName = userInfoHandler.getUserNickName(request);
 		
-		return userMessageMapper.selectMyMessageFromOther(userNickName);
+		int totalNumber = userMessageMapper.countMessageAllToMe(userNickName);
+		
+		pageDTO.setValue(totalNumber, pageDTO.getCntPerPage());
+		
+		return userMessageMapper.selectMyMessageFromOther(userNickName, pageDTO);
 	}
 
 	//내가 보낸 메시지 가져오기
