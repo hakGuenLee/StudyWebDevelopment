@@ -86,8 +86,11 @@ public class GroupSearchingServiceImpl implements GroupSearchingService {
 
 			return groupSearchMapper.selectStudyListAll(pageDTO);
 		}
-
-		return groupSearchMapper.selectStudyListByLocation(location, city);
+		
+		int groupTotalCountByLocationAndCity = groupSearchMapper.countStudyByLocationAndCity(location, city);
+		pageDTO.setValue(groupTotalCountByLocationAndCity, pageDTO.getCntPerPage());
+		
+		return groupSearchMapper.selectStudyListByLocation(location, city, pageDTO);
 	}
 
 }

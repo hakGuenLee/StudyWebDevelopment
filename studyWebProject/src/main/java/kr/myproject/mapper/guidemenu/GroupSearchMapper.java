@@ -32,10 +32,13 @@ public interface GroupSearchMapper {
 			@Param("content")String content, @Param("groupMaster")String groupMaster);
 
 	//지역에 따라 모임 리스트 가져오기
-	List<GroupDTO> selectStudyListByLocation(@Param("location")String location, @Param("city")String city);
+	List<GroupDTO> selectStudyListByLocation(@Param("location")String location, @Param("city")String city, @Param("pageDTO")PageDTO pageDTO);
 
 	//스터디 그룹 총 개수 카운트
 	int countAllStudyGroup();
+
+	//지역, 행정구역 별 스터디 그룹 개수 세기
+	int countStudyByLocationAndCity(@Param("location")String location, @Param("city")String city);
 	
 	
 

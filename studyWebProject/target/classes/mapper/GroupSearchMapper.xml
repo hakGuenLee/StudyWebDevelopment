@@ -9,7 +9,11 @@
 SELECT count(*) FROM studygroup_master
 </select>
 
-
+<!-- 지역, 행정구역 별 스터디그룹 개수 세기 -->
+<select id="countStudyByLocationAndCity" resultType="Integer">
+SELECT count(*) FROM studygroup_master
+WHERE group_location = #{location} AND group_locationCity = #{city}
+</select>
 
 <!-- 모임 찾기 페이지 이동 시 스터디 모임 전체 리스트 가져오기 -->
 <select id="selectStudyListAll" resultType="GroupDTO">
@@ -50,6 +54,8 @@ VALUES(#{requesterNickName}, "가입요청", #{title}, #{content}, #{groupMaster
 <!-- 지역에 따라 모임 리스트 가져오기 -->
 <select id="selectStudyListByLocation" resultType="GroupDTO">
 SELECT * FROM studygroup_master WHERE group_location = #{location} AND group_locationCity = #{city}
+ORDER BY group_no DESC
+LIMIT #{pageDTO.startIndex}, #{pageDTO.cntPerPage}
 </select>
 
 </mapper>

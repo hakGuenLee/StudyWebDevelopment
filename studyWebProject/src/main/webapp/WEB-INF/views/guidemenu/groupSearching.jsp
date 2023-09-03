@@ -90,18 +90,18 @@
 	
 			<!-- paging area -->
 		<ul class="pagination justify-content-center my-5">
-	        <li class="page-item ${pageDTO.prevPage <= 0 ? 'disabled' : ''}">
+	        <li class="page-item ${pageDTO.prevPage <= 0 ? 'disabled' : ''}" id="beforePage">
 	            <a class="page-link" href="<c:url value="/groupSearch/groupSearchPage?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}"/>">이전</a>
 	        </li>
 	
 	        <c:forEach var="i" begin="${pageDTO.blockStart}" end="${pageDTO.blockEnd}">
-	            <li class="page-item ${pageDTO.viewPage == i ? 'active' : ''}">
+	            <li class="page-item ${pageDTO.viewPage == i ? 'active' : ''}" >
 	                <a class="page-link"
 	                   href="<c:url value="/groupSearch/groupSearchPage?viewPage=${i}&cntPerPage=${pageDTO.cntPerPage}"/>">${i}</a>
 	            </li>
 	        </c:forEach>
 	
-	        <li class="page-item ${pageDTO.blockEnd >= pageDTO.totalPage ? 'disabled' : ''}">
+	        <li class="page-item ${pageDTO.blockEnd >= pageDTO.totalPage ? 'disabled' : ''}" id="nextPage">
 	            <a class="page-link" href="<c:url value="/groupSearch/groupSearchPage?viewPage=${pageDTO.nextPage}&cntPerPage=${pageDTO.cntPerPage}"/>">다음</a>
 	        </li>
    	   </ul>
