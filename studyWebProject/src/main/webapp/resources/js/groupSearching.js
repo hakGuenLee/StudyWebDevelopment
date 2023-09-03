@@ -44,7 +44,6 @@ function messageSender(value){
 function joinMessageSender(value, a){
 	
 	let user = $("#sessionId").val();
-	console.log(a);
 	
 	if(user == 0){
 		var result = confirm("로그인이 필요한 서비스입니다! 로그인하시겠습니까?");

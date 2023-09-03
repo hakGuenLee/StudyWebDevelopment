@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.myproject.domain.GroupDTO;
+import kr.myproject.domain.PageDTO;
 import kr.myproject.handler.UserInfoHandler;
 import kr.myproject.mapper.guidemenu.GroupSearchMapper;
 
@@ -22,9 +23,13 @@ public class GroupSearchingServiceImpl implements GroupSearchingService {
 	
 	//모임 찾기 페이지 이동 시 스터디 모임 전체 리스트 가져오기
 	@Override
-	public List<GroupDTO> getStudyListAll() {
+	public List<GroupDTO> getStudyListAll(PageDTO pageDTO) {
 
-		return groupSearchMapper.selectStudyListAll();
+		int groupTotalCount = groupSearchMapper.countAllStudyGroup();
+		
+		pageDTO.setValue(groupTotalCount, pageDTO.getCntPerPage());
+		
+		return groupSearchMapper.selectStudyListAll(pageDTO);
 	}
 
 	//모임명으로 스터디 그룹 검색하기
@@ -75,11 +80,11 @@ public class GroupSearchingServiceImpl implements GroupSearchingService {
 
 	//지역에 따라 모임 리스트 가져오기
 	@Override
-	public List<GroupDTO> getStudyListByLocation(String location, String city) {
+	public List<GroupDTO> getStudyListByLocation(String location, String city, PageDTO pageDTO) {
 		
 		if(location.equals("전체")) {
 
-			return groupSearchMapper.selectStudyListAll();
+			return groupSearchMapper.selectStudyListAll(pageDTO);
 		}
 
 		return groupSearchMapper.selectStudyListByLocation(location, city);

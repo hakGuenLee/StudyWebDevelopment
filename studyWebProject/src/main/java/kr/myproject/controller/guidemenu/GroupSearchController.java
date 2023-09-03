@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.myproject.domain.GroupDTO;
+import kr.myproject.domain.PageDTO;
 import kr.myproject.service.guidemenu.GroupSearchingService;
 
 @Controller
@@ -25,10 +26,10 @@ public class GroupSearchController {
 	
 	//모임 찾기 페이지 이동
 	@GetMapping("/groupSearchPage")
-	public String groupSearchPage(Model model) {
+	public String groupSearchPage(Model model, PageDTO pageDTO) {
 		
 		//모임 찾기 페이지 이동 시 스터디그룹 목록 전체 가져오기
-		List<GroupDTO> groupList = groupSearchingService.getStudyListAll();
+		List<GroupDTO> groupList = groupSearchingService.getStudyListAll(pageDTO);
 		
 		model.addAttribute("list", groupList);
 		
@@ -39,9 +40,10 @@ public class GroupSearchController {
 	//지역과 행정구역에 따라 모임 리스트 정렬하기
 	@PostMapping("/getStudyListByLocation")
 	@ResponseBody
-	public List<GroupDTO> studyListByLocation(@RequestParam("location") String location, @RequestParam("city") String city){
+	public List<GroupDTO> studyListByLocation(@RequestParam("location") String location, 
+			@RequestParam("city") String city, PageDTO pageDTO){
 		
-		List<GroupDTO> groupList = groupSearchingService.getStudyListByLocation(location,city);
+		List<GroupDTO> groupList = groupSearchingService.getStudyListByLocation(location,city,pageDTO);
 		
 		return groupList;
 				

@@ -6,12 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import kr.myproject.domain.GroupDTO;
+import kr.myproject.domain.PageDTO;
 
 @Mapper
 public interface GroupSearchMapper {
 
 	//모임 찾기 페이지 이동 시 스터디 모임 전체 리스트 가져오기
-	List<GroupDTO> selectStudyListAll();
+	List<GroupDTO> selectStudyListAll(PageDTO pageDTO);
 
 	//모임명으로 스터디 그룹 검색하기
 	List<GroupDTO> selectStudyByGroupName(String groupName);
@@ -32,6 +33,9 @@ public interface GroupSearchMapper {
 
 	//지역에 따라 모임 리스트 가져오기
 	List<GroupDTO> selectStudyListByLocation(@Param("location")String location, @Param("city")String city);
+
+	//스터디 그룹 총 개수 카운트
+	int countAllStudyGroup();
 	
 	
 

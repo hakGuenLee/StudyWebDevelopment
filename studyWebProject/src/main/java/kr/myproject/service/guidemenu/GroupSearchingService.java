@@ -5,12 +5,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import kr.myproject.domain.GroupDTO;
+import kr.myproject.domain.PageDTO;
 
 //모임 찾기 담당
 public interface GroupSearchingService {
 
 	//모임 찾기 페이지 이동 시 스터디 모임 전체 리스트 가져오기
-	List<GroupDTO> getStudyListAll();
+	List<GroupDTO> getStudyListAll(PageDTO pageDTO);
 
 	//모임명으로 스터디 그룹 검색하기
 	List<GroupDTO> findGroup(String groupName);
@@ -25,6 +26,6 @@ public interface GroupSearchingService {
 	void sendJoinMessage(String groupName, String title, String content, HttpServletRequest request);
 
 	//지역에 따라 모임 리스트 가져오기
-	List<GroupDTO> getStudyListByLocation(String location, String city);
+	List<GroupDTO> getStudyListByLocation(String location, String city, PageDTO pageDTO);
 
 }
