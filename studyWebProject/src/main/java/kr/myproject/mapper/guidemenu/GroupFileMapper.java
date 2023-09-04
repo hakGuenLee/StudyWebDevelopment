@@ -38,4 +38,5 @@ public interface GroupFileMapper {
 	//자료 검색하기
 	List<FileDTO> findPostAndFileList(String searchValue);
 
+
 }

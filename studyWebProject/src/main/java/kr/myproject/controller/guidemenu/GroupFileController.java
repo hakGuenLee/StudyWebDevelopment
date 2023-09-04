@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 import kr.myproject.domain.FileDTO;
-
+import kr.myproject.domain.PageDTO;
 import kr.myproject.handler.UserInfoHandler;
 import kr.myproject.service.guidemenu.GroupFileService;
 
@@ -35,10 +35,10 @@ public class GroupFileController {
 	
 	//자료실 페이지 이동
 	@GetMapping("/groupFilePage")
-	public String filePage(HttpServletRequest request, Model model) {
+	public String filePage(HttpServletRequest request, Model model, PageDTO pageDTO) {
 		
 		//페이지 이동 시 처음에는 유저의 모든 목록 파일 가져오도록 처리
-		List<FileDTO> myEntireGroupFileList = groupFileService.getFileListAll(request);
+		List<FileDTO> myEntireGroupFileList = groupFileService.getFileListAll(request, pageDTO);
 		
 		model.addAttribute("list", myEntireGroupFileList);
 		

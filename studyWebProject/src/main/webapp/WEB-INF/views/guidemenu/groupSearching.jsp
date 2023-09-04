@@ -19,17 +19,19 @@
 	
 
 	<div id="arrayMenu" class="d-flex mt-5">	
-		<div >
+
+		<div>
 			<select id="locationList" style="width:160px" class="form-select" name="groupList" onchange="selectLocationCity()">
 					<option></option>
 			</select>
 		</div>
-		
+			
 		<div>
 			<select id="locationCity" style="width:160px; margin-left:40px;" class="form-select" onchange="selectLocationCity2()">
 					<option>전체</option>
 			</select>
 		</div>
+
 		<div>
 			<form action="/study/groupSearch/searchGroupName" method="post">
 				<div id="searchGroup" class="input-group mb-3">

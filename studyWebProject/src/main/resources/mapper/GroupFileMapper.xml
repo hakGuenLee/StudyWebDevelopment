@@ -56,4 +56,5 @@ DELETE FROM file_master WHERE file_no = #{no}
 SELECT * FROM file_master WHERE post_title = #{searchValue}
 </select>
 
+
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,18 +38,51 @@ public class GroupSearchController {
 		
 	}
 	
+	
+
+	
 	//지역과 행정구역에 따라 모임 리스트 정렬하기
 	@PostMapping("/getStudyListByLocation")
 	@ResponseBody
 	public List<GroupDTO> studyListByLocation(@RequestParam("location") String location, 
-			@RequestParam("city") String city, PageDTO pageDTO){
+			@RequestParam("city") String city, PageDTO pageDTO, Model model){
 		
 		
-		List<GroupDTO> groupList = groupSearchingService.getStudyListByLocation(location,city,pageDTO);
+		List<GroupDTO> groupList = groupSearchingService.getStudyListByLocation(location,city,pageDTO);	
 		
 		return groupList;
 				
 	}
+
+	//지역, 행정구에 따른 모임을 바인딩하여 다시 보내기
+	@PostMapping("/regorupSearch")
+	@ResponseBody
+	public String moveAgainGroupSearch(@RequestParam("list") List<GroupDTO> group, Model model ) {
+		System.out.println("다시 넘어온 그룹 : " + group);
+		model.addAttribute("list", group);
+		
+		return "guidemenu/groupSearching";
+	}
+	
+	
+	
+//	//지역과 행정구역에 따라 모임 리스트 정렬하기
+//	@PostMapping("/getStudyListByLocation")
+//	@ResponseBody
+//	public String studyListByLocation(@RequestParam("location") String location, 
+//			@RequestParam("city") String city, PageDTO pageDTO, Model model){
+//		
+//		System.out.println(location);
+//		
+//		List<GroupDTO> groupList = groupSearchingService.getStudyListByLocation(location,city,pageDTO);
+//		
+//		model.addAttribute("list", groupList);
+//		
+//		return "guidemenu/groupSearching";
+//				
+//	}
+	
+	
 	
 	//모임명 검색하기
 	@PostMapping("/searchGroupName")

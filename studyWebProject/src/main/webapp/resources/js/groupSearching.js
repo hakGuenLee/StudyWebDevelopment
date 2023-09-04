@@ -53,7 +53,7 @@ function messageSender(value, usernickname){
 //가입하기 처리
 function joinMessageSender(value, a){
 	
-	let user = $("#sessionId").val();
+	let user = $("#sessionNickName").val();
 	
 	if(user == 0){
 		var result = confirm("로그인이 필요한 서비스입니다! 로그인하시겠습니까?");
@@ -149,7 +149,15 @@ function selectLocationCity(){
 		type:"post",
 		data: {"location":location, "city":locationCity},
 		success:function(data){
-			console.log(data)
+			console.log(data);
+			
+			$.ajax({
+				url:"/study/groupSearch/regorupSearch",
+				type:"post",
+				data: {"list":data}
+			})
+		
+/*			console.log(data)
 			let anotherStr ="";
 			let y = "Y";
 			let N = "N";
@@ -168,7 +176,15 @@ function selectLocationCity(){
 					anotherStr += "<td>"+studyList[i].group_location+"</td>";	
 					anotherStr += "<td>"+studyList[i].group_locationCity+"</td>";	
 					anotherStr += "<td>"+studyList[i].maker_nickname+"</td>";	
-					anotherStr += "<td>"+studyList[i].member_count+"</td>";	
+					anotherStr += "<td>"+studyList[i].member_count+"/"+studyList[i].group_boundary+"</td>";	
+					
+					if(studyList[i].member_count == studyList[i].group_boundary){
+						anotherStr += "<td>가입불가</td>";		
+					}
+					if(studyList[i].member_count != studyList[i].group_boundary){
+						anotherStr += "<td>가입가능</td>";		
+					}
+
 					if(studyList[i].use_yn == "Y"){
 						anotherStr += "<td>활동 중</td>";		
 					}
@@ -183,18 +199,8 @@ function selectLocationCity(){
 					
 				}
 				
-				let beforeStr = "";
-				let pageNumber = "";
-				let nextPage = "";
-				beforeStr += "<a class='page-link' href='<c:url value='/groupSearch/getStudyListByLocation?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}'/>'>이전</a>";
-				$("#beforePage").html(beforeStr);
-
-				pageNumber +="<a class='page-link' href='<c:url value='/groupSearch/getStudyListByLocation?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}'/>'>${i}</a>";
-				$("#pageNumberArea").html(pageNumber); 
 				
-				nextPage += "<a class='page-link' href='<c:url value='/groupSearch/getStudyListByLocation?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}'/>'>다음</a>";
-				$("#nextPage").html(nextPage);
-			}
+			} */
 			
 
 		},
@@ -240,19 +246,21 @@ function selectLocationCity2(){
 					anotherStr += "<td>"+studyList[i].group_location+"</td>";	
 					anotherStr += "<td>"+studyList[i].group_locationCity+"</td>";	
 					anotherStr += "<td>"+studyList[i].maker_nickname+"</td>";	
-					anotherStr += "<td>"+studyList[i].member_count+"</td>";	
+					anotherStr += "<td>"+studyList[i].member_count+"/"+studyList[i].group_boundary+"</td>";	
+					
+					if(studyList[i].member_count == studyList[i].group_boundary){
+						anotherStr += "<td>가입불가</td>";		
+					}
+					if(studyList[i].member_count != studyList[i].group_boundary){
+						anotherStr += "<td>가입가능</td>";		
+					}
+
 					if(studyList[i].use_yn == "Y"){
 						anotherStr += "<td>활동 중</td>";		
 					}
 					if(studyList[i].use_yn == "N"){
 						anotherStr += "<td>활동 중단</td>";		
 					}
-	/* 				anotherStr += "<c:if test='"+studyList[i].use_yn+" =="+y+"'>";	
-					anotherStr += "<td>활동 중</td>";	
-					anotherStr += "</c:if>";	
-					anotherStr += "<c:if test='"+studyList[i].use_yn+"=="+N+"'>";	
-					anotherStr += "<td>활동 중단</td>";	
-					anotherStr += "</c:if>";	 */
 					anotherStr += "<td><button value='"+studyList[i].group_name+"' onclick='messageSender(this.value)' type='button' class='btn btn-success'>문의하기</button></td>";
 					anotherStr += "<td><button value='"+studyList[i].group_name+"' onclick='joinMessageSender(this.value)' type='button' class='btn btn-primary'>가입신청</button></td>";
 					anotherStr += "</tr>"
