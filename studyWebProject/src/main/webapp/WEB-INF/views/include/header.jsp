@@ -22,11 +22,11 @@
 			<div id="guidemenu">
 				<ul>
 					<li class="submenu"><a>이용안내</a></li>
-					<li class="submenu"><a href="<c:url value="/groupSearch/groupSearchPage"/>">Study 검색</a></li>
-					<li class="submenu"><a href="<c:url value="/group/groupOpenPage"/>">Study 등록</a></li>
+					<li class="submenu"><a href="<c:url value="/groupSearch/groupSearchPage"/>">스터디 검색</a></li>
+					<li class="submenu"><a href="<c:url value="/group/groupOpenPage"/>">스터디 등록</a></li>
 					
-					<li><a href="<c:url value="/location/movetoMap"/>">Study 장소</a></li>
-					<li><a href="<c:url value="/location/movetoMap"/>">Study 물품</a>
+					<li><a href="<c:url value="/location/movetoMap"/>">스터디 장소</a></li>
+					<li><a href="<c:url value="/location/movetoMap"/>">스터디 용품</a>
 						<ul>
 							<li class="submenu"><a>도서</a></li>
 							<li class="submenu"><a>필기구/노트</a></li>
