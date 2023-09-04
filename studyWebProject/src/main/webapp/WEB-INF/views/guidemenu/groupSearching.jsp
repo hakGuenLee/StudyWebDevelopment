@@ -7,7 +7,7 @@
   <script  src="<c:url value="/js/groupSearching.js"/>"></script>		 
 <jsp:include page="../include/header.jsp"/> 
 
-<input type="hidden" id="sessionId" value="${sessionScope.userDTO}">
+<input type="hidden" id="sessionNickName" value="${sessionScope.userDTO.user_nickname}">
 
 <section>
 	<div id="guideText">
@@ -79,7 +79,7 @@
 							<c:if test="${dto.use_yn == 'N' }">
 							<td>활동 중단</td>
 							</c:if>
-							<td><button value="${dto.group_name}" onclick="messageSender(this.value)" id="questionBtn" type="button" class="btn btn-success">문의하기</button></td>
+							<td><button value="${dto.group_name}" onclick="messageSender(this.value, '${dto.maker_nickname}')" id="questionBtn" type="button" class="btn btn-success">문의하기</button></td>
 							<td><button value="${dto.group_name}" onclick="joinMessageSender(this.value, this)" type="button" class="btn btn-primary">가입신청</button></td>
 						</tr>
 					</c:forEach>	

@@ -1,8 +1,15 @@
 
 //문의하기 창 열기
-function messageSender(value){
+function messageSender(value, usernickname){
 	
-	let user = $("#sessionId").val();
+	let user = $("#sessionNickName").val();
+	console.log(user);
+	
+		if(user === usernickname){
+		
+		alert("회원님께서 개설하신 모임입니다!");	
+		return;
+	}
 	
 	
 	
@@ -13,6 +20,9 @@ function messageSender(value){
 			location.replace("/study/userAccount/loginPage")
 		}
 	}else{
+	
+
+	
 	$("#QuestionModal").modal("show");
 	$("#title").html(value + "에 문의하기");
 
