@@ -163,12 +163,6 @@ function selectLocationCity(){
 					if(studyList[i].use_yn == "N"){
 						anotherStr += "<td>활동 중단</td>";		
 					}
-	/* 				anotherStr += "<c:if test='"+studyList[i].use_yn+" =="+y+"'>";	
-					anotherStr += "<td>활동 중</td>";	
-					anotherStr += "</c:if>";	
-					anotherStr += "<c:if test='"+studyList[i].use_yn+"=="+N+"'>";	
-					anotherStr += "<td>활동 중단</td>";	
-					anotherStr += "</c:if>";	 */
 					anotherStr += "<td><button value='"+studyList[i].group_name+"' onclick='messageSender(this.value)' type='button' class='btn btn-success'>문의하기</button></td>";
 					anotherStr += "<td><button value='"+studyList[i].group_name+"' onclick='joinMessageSender(this.value)' type='button' class='btn btn-primary'>가입신청</button></td>";
 					anotherStr += "</tr>"
@@ -176,7 +170,18 @@ function selectLocationCity(){
 					$("#fileList").html(anotherStr);
 					
 				}
+				
+				let beforeStr = "";
+				let pageNumber = "";
+				let nextPage = "";
+				beforeStr += "<a class='page-link' href='<c:url value='/groupSearch/getStudyListByLocation?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}'/>'>이전</a>";
+				$("#beforePage").html(beforeStr);
 
+				pageNumber +="<a class='page-link' href='<c:url value='/groupSearch/getStudyListByLocation?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}'/>'>${i}</a>";
+				$("#pageNumberArea").html(pageNumber); 
+				
+				nextPage += "<a class='page-link' href='<c:url value='/groupSearch/getStudyListByLocation?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}'/>'>다음</a>";
+				$("#nextPage").html(nextPage);
 			}
 			
 

@@ -43,6 +43,7 @@ public class GroupSearchController {
 	public List<GroupDTO> studyListByLocation(@RequestParam("location") String location, 
 			@RequestParam("city") String city, PageDTO pageDTO){
 		
+		
 		List<GroupDTO> groupList = groupSearchingService.getStudyListByLocation(location,city,pageDTO);
 		
 		return groupList;

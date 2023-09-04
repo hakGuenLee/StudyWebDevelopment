@@ -89,13 +89,13 @@
 	</div>
 	
 			<!-- paging area -->
-		<ul class="pagination justify-content-center my-5">
+		<ul class="pagination justify-content-center my-5" id="pagenationArea">
 	        <li class="page-item ${pageDTO.prevPage <= 0 ? 'disabled' : ''}" id="beforePage">
 	            <a class="page-link" href="<c:url value="/groupSearch/groupSearchPage?viewPage=${pageDTO.prevPage}&cntPerPage=${pageDTO.cntPerPage}"/>">이전</a>
 	        </li>
 	
 	        <c:forEach var="i" begin="${pageDTO.blockStart}" end="${pageDTO.blockEnd}">
-	            <li class="page-item ${pageDTO.viewPage == i ? 'active' : ''}" >
+	            <li class="page-item ${pageDTO.viewPage == i ? 'active' : ''}" id="pageNumberArea">
 	                <a class="page-link"
 	                   href="<c:url value="/groupSearch/groupSearchPage?viewPage=${i}&cntPerPage=${pageDTO.cntPerPage}"/>">${i}</a>
 	            </li>
