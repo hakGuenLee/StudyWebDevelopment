@@ -62,6 +62,8 @@ function joinMessageSender(value, a){
 			location.replace("/study/userAccount/loginPage")
 		}
 	}else{
+	
+		
 		
 		//이미 가입되어 있는지 확인하기
 		$.ajax({

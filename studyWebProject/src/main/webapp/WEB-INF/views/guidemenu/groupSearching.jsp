@@ -51,6 +51,7 @@
 					<th>상세지역</th>
 					<th>대표자 닉네임</th>
 					<th>참가인원</th>
+					<th>가입가능여부</th>
 					<th>활동상태</th>
 					<th>문의하기</th>
 					<th>가입신청</th>
@@ -72,7 +73,13 @@
 							<td>${dto.group_location}</td>
 							<td>${dto.group_locationCity}</td>
 							<td>${dto.maker_nickname}</td>
-							<td>${dto.member_count}</td>
+							<td>${dto.member_count}/${dto.group_boundary}</td>
+							<c:if test="${dto.member_count == dto.group_boundary}">
+								<td>가입불가</td>
+							</c:if>							
+							<c:if test="${dto.member_count != dto.group_boundary}">
+								<td>가입가능</td>
+							</c:if>
 							<c:if test="${dto.use_yn == 'Y' }">
 							<td>활동 중</td>
 							</c:if>
