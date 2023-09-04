@@ -86,9 +86,9 @@ public class GroupSearchController {
 	
 	//모임명 검색하기
 	@PostMapping("/searchGroupName")
-	public String groupNameSearch(@RequestParam("searchValue") String groupName, Model model) {
+	public String groupNameSearch(@RequestParam("searchValue") String groupName, Model model, PageDTO pageDTO) {
 		
-		List<GroupDTO> findGroupList = groupSearchingService.findGroup(groupName);
+		List<GroupDTO> findGroupList = groupSearchingService.findGroup(groupName, pageDTO);
 		
 		model.addAttribute("list", findGroupList);
 		

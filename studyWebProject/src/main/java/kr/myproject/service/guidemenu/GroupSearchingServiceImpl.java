@@ -34,9 +34,13 @@ public class GroupSearchingServiceImpl implements GroupSearchingService {
 
 	//모임명으로 스터디 그룹 검색하기
 	@Override
-	public List<GroupDTO> findGroup(String groupName) {
+	public List<GroupDTO> findGroup(String groupName, PageDTO pageDTO) {
+		
+		int findByGroupName = groupSearchMapper.countByGroupName(groupName);
+		
+		pageDTO.setValue(findByGroupName, pageDTO.getCntPerPage());
 
-		return groupSearchMapper.selectStudyByGroupName(groupName);
+		return groupSearchMapper.selectStudyByGroupName(groupName, pageDTO);
 	}
 
 	//문의하기 메세지 보내기

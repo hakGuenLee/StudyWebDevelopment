@@ -15,7 +15,7 @@ public interface GroupSearchMapper {
 	List<GroupDTO> selectStudyListAll(PageDTO pageDTO);
 
 	//모임명으로 스터디 그룹 검색하기
-	List<GroupDTO> selectStudyByGroupName(String groupName);
+	List<GroupDTO> selectStudyByGroupName(@Param("groupName")String groupName, @Param("pageDTO")PageDTO pageDTO);
 
 	//해당 그룹의 대표자 닉네임 가져오기
 	String selectGroupMasterNickName(String groupName);
@@ -39,6 +39,9 @@ public interface GroupSearchMapper {
 
 	//지역, 행정구역 별 스터디 그룹 개수 세기
 	int countStudyByLocationAndCity(@Param("location")String location, @Param("city")String city);
+
+	//그룹 명에 따라서 개수 세기
+	int countByGroupName(String groupName);
 	
 	
 

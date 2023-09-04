@@ -14,7 +14,7 @@ public interface GroupSearchingService {
 	List<GroupDTO> getStudyListAll(PageDTO pageDTO);
 
 	//모임명으로 스터디 그룹 검색하기
-	List<GroupDTO> findGroup(String groupName);
+	List<GroupDTO> findGroup(String groupName, PageDTO pageDTO);
 
 	//문의하기 메세지 보내기
 	void massageSend(String groupName, String title, String message, HttpServletRequest request);

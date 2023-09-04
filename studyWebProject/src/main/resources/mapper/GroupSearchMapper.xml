@@ -25,6 +25,8 @@ LIMIT #{startIndex}, #{cntPerPage}
 <!-- 모임명으로 스터디그룹 검색하기 -->
 <select id="selectStudyByGroupName" resultType="GroupDTO">
 SELECT * FROM studygroup_master WHERE group_name LIKE CONCAT('%' #{groupName}, '%')
+ORDER BY group_no DESC
+LIMIT #{pageDTO.startIndex}, #{pageDTO.cntPerPage}
 </select>
 
 <!-- 모임 대표자의 닉네임 가져오기 -->
@@ -56,6 +58,12 @@ VALUES(#{requesterNickName}, "가입요청", #{title}, #{content}, #{groupMaster
 SELECT * FROM studygroup_master WHERE group_location = #{location} AND group_locationCity = #{city}
 ORDER BY group_no DESC
 LIMIT #{pageDTO.startIndex}, #{pageDTO.cntPerPage}
+</select>
+
+<!-- 그룹 명에 따라서 개수 세기 -->
+<select id="countByGroupName" resultType="Integer">
+SELECT count(*) FROM studygroup_master 
+WHERE group_name = #{gorupName}
 </select>
 
 </mapper>
