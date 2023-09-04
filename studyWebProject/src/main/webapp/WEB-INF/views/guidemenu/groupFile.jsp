@@ -12,11 +12,11 @@
 	
 	<div id="guideBox" class="d-flex justify-content-around">
 		<div>
-			<h4>스터디 모임 자료실</h4>	
-			<p>스터디 자료를 올리고, 다운로드 할 수 있습니다.<br>친구들과 함께 자료를 공유하고 관리해보세요!</p>
+			<h4>스터디 모임 게시판</h4>	
+			<p>스터디 모임에 필요한 공지 또는 자료들을 올리고, 다운로드 할 수 있습니다.<br>친구들과 함께 자료를 공유하고 관리해보세요!</p>
 		</div>
 		<div>
-			<a href="<c:url value="/file/groupFileRegister"/>" id="csRegisterBtn" type="button" class="btn">파일 업로드</a>
+			<a href="<c:url value="/file/groupFileRegister"/>" id="csRegisterBtn" type="button" class="btn">게시글 작성</a>
 		</div>
 	</div>
 	
@@ -25,7 +25,7 @@
 <!-- 	<div id="csListBox" class="d-flex justify-content-around"> -->
 	<div id="csListBox">
 		<div>
-			<h4>모임별 자료 확인</h4>	
+			<h4>모임별 게시판 확인</h4>	
 		</div>
 	</div>
 	

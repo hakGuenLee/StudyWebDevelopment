@@ -53,9 +53,13 @@ a{
 	float: right;
 }
 
+#usermenu{
+	width:100%;
+}
+
 #usermenu ul > li{
 	float: left;
-	width : 90px;
+	/* width : 200px; */
 	margin-left:35px;
 }
 

@@ -22,27 +22,37 @@
 			<div id="guidemenu">
 				<ul>
 					<li class="submenu"><a>이용안내</a></li>
-					<li class="submenu"><a href="<c:url value="/groupSearch/groupSearchPage"/>">모임찾기</a></li>
-					<li class="submenu"><a href="<c:url value="/group/groupOpenPage"/>">모임 만들기</a></li>
-					<li class="submenu"><a href="<c:url value="/file/groupFilePage"/>">자료실</a></li>
-					<li>일정관리
+					<li class="submenu"><a href="<c:url value="/groupSearch/groupSearchPage"/>">Study 검색</a></li>
+					<li class="submenu"><a href="<c:url value="/group/groupOpenPage"/>">Study 등록</a></li>
+					
+					<li><a href="<c:url value="/location/movetoMap"/>">Study 장소</a></li>
+					<li><a href="<c:url value="/location/movetoMap"/>">Study 물품</a>
 						<ul>
-							<li class="submenu"><a>일정 만들기</a></li>
-							<li class="submenu"><a>나의 모임 일정</a></li>
+							<li class="submenu"><a>도서</a></li>
+							<li class="submenu"><a>필기구/노트</a></li>
 						</ul>
 					</li>
-					<li><a href="<c:url value="/location/movetoMap"/>">장소 둘러보기</a></li>
+					<li><a href="<c:url value="/location/movetoMap"/>">그룹채팅</a></li>
 				</ul>	
 			</div>	
 			<div id="usermenu">
 				<ul>
+					<li style="width:150px">Study Manager
+						<ul>
+							<li class="submenu"><a href="<c:url value="/group/myGroupManager"/>">나의 스터디 모임 관리</a></li>
+							<li class="submenu"><a href="<c:url value="/file/groupFilePage"/>">스터디 게시판</a></li>
+							<li class="submenu"><a href="<c:url value="/location/myWishList"/>">모임 장소 위시리스트</a></li>
+							<li class="submenu"><a>스터디 일정 관리</a></li>
+						</ul>				
+					</li>
+				
+				
 					<li>MyPage
 						<ul>
-							<li class="submenu"><a href="<c:url value="/userAccount/userUpdatePage"/>">나의 정보 수정</a></li>
-							<li class="submenu"><a href="<c:url value="/group/myGroupManager"/>">나의 모임 관리</a></li>
+							<li class="submenu"><a href="<c:url value="/userAccount/userUpdatePage"/>">나의 정보 수정</a></li>						
 							<li class="submenu"><a href="<c:url value="/userMessage/messageArived"/>">받은 메세지함</a></li>
 							<li class="submenu"><a href="<c:url value="/userMessage/sendMessagePage"/>">보낸 메세지함</a></li>
-							<li class="submenu"><a href="<c:url value="/location/myWishList"/>">나의 위시리스트</a></li>
+							
 							<li class="submenu"><a href="<c:url value="/userCs/myCsPage"/>">1:1문의하기</a></li>
 						</ul>				
 					</li>

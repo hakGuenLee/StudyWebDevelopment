@@ -38,6 +38,17 @@ public class GroupSearchController {
 		
 	}
 	
+	//모임명 검색하기
+	@PostMapping("/searchGroupName")
+	public String groupNameSearch(@RequestParam("searchValue") String groupName, Model model, PageDTO pageDTO) {
+		
+		List<GroupDTO> findGroupList = groupSearchingService.findGroup(groupName, pageDTO);
+		
+		model.addAttribute("list", findGroupList);
+		
+		return "guidemenu/groupSearching";		
+	}
+	
 	
 
 	
@@ -84,16 +95,7 @@ public class GroupSearchController {
 	
 	
 	
-	//모임명 검색하기
-	@PostMapping("/searchGroupName")
-	public String groupNameSearch(@RequestParam("searchValue") String groupName, Model model, PageDTO pageDTO) {
-		
-		List<GroupDTO> findGroupList = groupSearchingService.findGroup(groupName, pageDTO);
-		
-		model.addAttribute("list", findGroupList);
-		
-		return "guidemenu/groupSearching";		
-	}
+
 
 	//문의하기
 	@PostMapping(value = "/sendQuestion",  produces = "application/text; charset=UTF-8")
