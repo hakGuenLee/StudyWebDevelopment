@@ -12,9 +12,9 @@ WHERE group_name = #{name}
 
 <!-- 스터디 모임 만들기 -->
 <insert id="InsertNewGroup">
-INSERT INTO studygroup_master(group_key, group_category, group_name, maker_id, maker_nickname, group_boundary, group_location, group_locationCity, group_info, register_dt)
+INSERT INTO studygroup_master(group_key, group_category, group_name, maker_id, maker_nickname, group_boundary, group_location, group_locationCity, group_info, open_yn)
 VALUES(#{groupDTO.group_key}, #{groupDTO.group_category}, #{groupDTO.group_name}, #{id}, #{nickname}, #{groupDTO.group_boundary}, #{groupDTO.group_location}, 
-#{groupDTO.group_locationCity}, #{groupDTO.group_info}, now())
+#{groupDTO.group_locationCity}, #{groupDTO.group_info}, #{groupDTO.open_yn})
 </insert>
 
 <!-- 스터디 모임 만들 시 group_detail에도 넣기 -->

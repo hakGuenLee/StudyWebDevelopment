@@ -34,7 +34,7 @@ a{
  	top:0; 
 	background-color:white;
 	height:130px;
-	transition: height .3s;
+	transition: height .5s;
 	
 }
 
@@ -42,7 +42,8 @@ a{
 	cursor:pointer;
 	
 	height:260px;
-	border-bottom:1px solid LightGray;
+	border-bottom:1px solid gray;
+	box-shadow: 0 4px 4px -4px gray;
 	transition: height .3s;
 	
 	

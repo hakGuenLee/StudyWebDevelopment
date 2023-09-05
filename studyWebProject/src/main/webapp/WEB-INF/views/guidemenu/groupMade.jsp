@@ -3,6 +3,8 @@
 		 pageEncoding="UTF-8"%>
 		 
 <link  href="<c:url value="/css/groupMade.css"/>" rel="stylesheet"/> 		 
+  <script  src="<c:url value="/js/groupMade.js"/>"></script>    
+  <script  src="<c:url value="/js/commonMovePage.js"/>"></script>    
 <jsp:include page="../include/header.jsp"/> 
 
 
@@ -11,8 +13,8 @@
 	<div class="d-flex justify-content-center">
 		<div id="mentBox">
 			<div>
-				<h3><b>모임 만들기</b></h3>	
-				<p>즐거운 스터디 모임을 시작할 수 있습니다!</p>
+				<h3><b>스터디 모임 만들기</b></h3>	
+				<p style="color:Peru   ">스터디 모임을 만들고 함께 공부를 시작해보세요!</p>
 				<img id="sideImg" src="<c:url value="/img/book.jpg"/>">
 			</div>
 		</div>
@@ -21,13 +23,21 @@
 			<div class="d-flex">
 				<p><b>모임명</b></p>
 				<input id="groupNameInput" type="text" class="form-control" placeholder="모임 이름을 입력해주세요!" name="group_name">
-				<button id="checkNameBtn" type="button" class="btn btn-secondary">중복 확인</button>
+				<button id="checkNameBtn" onclick="groupNameCheck()" type="button" class="btn btn-secondary">중복 확인</button>
 
 			</div>
 			<div id="register" class="d-flex mt-5">
 				<p><b>최대 인원</b></p>
 				<input id="memberCount" type="text" class="form-control" name="group_boundary">
 				<p style="margin-left:15px"><b>명</b></p> 
+			</div>
+			
+			<div id="groupOpenOrNot" class="d-flex mt-5">
+				<p><b>공개 설정</b></p>
+				<select id="open_yn" class="form-select" name="open_yn">
+					<option>공개</option>
+					<option>비공개</option>
+				</select>
 			</div>
 			
 			<div id="registerName" class="d-flex mt-5">
@@ -60,10 +70,10 @@
 
 			
 			<div id="buttonGroup" class="d-flex">
-				<div style="text-align:center; display:flex; justify-content:center; item-align:center">
-				<a id="goBackBtn" href="<c:url value="/"/>" type="button" class="btn">이전으로</a>
-				</div>
-				<button id="registerConfirmBtn" type="button" class="btn">모임 만들기</button>
+
+				<button onclick="gobackHome()" id="goBackBtn" type="button" class="btn">이전으로</button>
+
+				<button style="margin-left:10px" id="registerConfirmBtn" type="button" class="btn" onclick="groupMade()">모임 만들기</button>
 				
 			</div>
 		  </form>
@@ -104,8 +114,6 @@ $(document).ready(function(){
 	
 	})
 
-	
-	
 	var cityCode = '300'
 
 	//처음에는 바로 출력되는 서울의 행정구 가져오기
@@ -126,81 +134,6 @@ $(document).ready(function(){
 
 
 </script>
-
-
-<script>
-//모임명 중복검사
-$("#checkNameBtn").on("click", function(){
-	
-	groupName = $("#groupNameInput").val();
-	
-	if(groupName == 0){
-		alert("모임명을 입력해주세요!");
-	}else{
-		$.ajax({
-			url:"/study/group/nameCheck",
-			type:"post",
-			data:{"name" : groupName},
-			success:function(data){
-				if(data == "중복된 모임 이름입니다! 다른 이름으로 만들어주세요!"){
-					alert(data);
-					$("#groupNameInput").val("");
-				}else{
-					alert(data);
-				}
-			}
-		})
-	
-	}
-
-})
-
-
-	
-	function selectLocation(){
-		let location = $("#locationlist option:selected").val();
-		console.log(location);
-		
-		
- 		var cityCode = '300'
-
-			console.log("지역명 : " + location)
-			
-			getLocationCity(cityCode, location, function(data){
-				console.log(data);
-				let cityList = data;
-				let str2 = "";
-				
-				for(let i=0; i<cityList.length; i++){
-					str2 += "<option>"+cityList[i].item_nm+"</option>";
-				}
-				
-				$("#locationCity").html(str2);
-				
-			}) 
-	}
-	
-
-//빈 값 유효성 체크
-
-$("#registerConfirmBtn").on("click", function(){
-
-	let groupName =  $("#groupNameInput").val();
-	let memberCount = $("#memberCount").val();
-	let category = $("#groupCategory").val();
-	let intro = $("#groupIntro").val();
-	
-	if(groupName == 0 || memberCount == 0 || category == 0 || intro == 0){
-		alert("내용을 빠짐 없이 입력해주세요!");
-		location.replace("#");
-	}else{
-		$("#registerConfirmBtn").attr("type", "submit");
-	}
-
-})
-</script>
-
-
 
 </body>
 </html>

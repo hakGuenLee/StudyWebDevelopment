@@ -21,6 +21,8 @@ public class GroupDTO {
 	private String member_count; //모임의 참가인원 숫자
 	private String use_yn; //모임 활성화 여부
 	private Date register_dt; //모임 개설 일자
+	private String open_yn; //모임 공개 여부 설정
+	
 	
 	private String member_id; //참가인원 아이디
 	private String member_nickname; //참가인원 닉네임
