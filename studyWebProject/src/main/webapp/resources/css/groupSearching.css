@@ -3,11 +3,19 @@ section{
 	margin-top:10%; 
 }
 
-#guideBox{
-	margin-left:60px;
+#wrapperBox{
+	margin-left:10px;
 }
 
-#guideBox p{
+#guideText{
+	margin-left:10px;
+}
+
+#wrapper{
+	left:0;
+}
+
+#guideText p{
 	color:gray;
 	margin-top:30px;
 }
