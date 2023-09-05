@@ -49,10 +49,10 @@
 			</div>	
 			<div id="usermenu">
 				<ul class="subul">
-					<li><a href="<c:url value="/location/movetoMap"/>">커뮤니티</a>
+					<li><a href="">커뮤니티</a>
 						<ul>
 							<li><a>공지사항</a></li>
-							<li><a>공지사항</a></li>
+							<li><a href="<c:url value="/userCs/csRegisterPage"/>">문의하기</a></li>
 						</ul>
 					</li>
 				
@@ -76,7 +76,7 @@
 						<li><a href="<c:url value="/userRegister/acceptRule"/>">join</a></li>
 					</c:if>
 					<c:if test="${sessionScope.userDTO != null }">
-						<span style="color:gray">즐거운 스터디 되세요!</span>
+						<span style="color:gray">${sessionScope.userDTO.user_nm}님, 즐거운 스터디 되세요!</span>
 					</c:if>
 					
 				</ul>

@@ -33,6 +33,9 @@ a{
 /*  	z-index:1;  */ 
  	top:0; 
 	background-color:white;
+	height:130px;
+	transition: height .3s;
+	
 }
 
 #menu:hover{
@@ -40,8 +43,7 @@ a{
 	
 	height:260px;
 	border-bottom:1px solid LightGray;
-	transition-property:heght;
-	transition-duration:3s;
+	transition: height .3s;
 	
 	
 }
@@ -70,7 +72,7 @@ a{
 }
 
 #guidemenu{
-	margin-left:300px;
+	margin-left:340px;
 }
 
 #guidemenu ul > li{
