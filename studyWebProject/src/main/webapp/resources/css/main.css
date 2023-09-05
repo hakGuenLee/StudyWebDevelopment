@@ -14,17 +14,49 @@ a{
 
 /* Header CSS */
 
-
+ header{
+/*  border:1px solid black;   */
+ 	position:relative;  
+	z-index:99;
+ 	overflow:hidden;
+}
+ 
 #menu{
 	 display:flex; 
 	justify-content:space-between;
-	margin-top:30px;
-
+	width:100%;
+ 	margin-top:20px; 
+	position:fixed;
+/*  	border:1px solid blue;  */
+	
+/*  	z-index:1;  */ 
+/*  	top:0; */
+	background-color:white;
 }
+
+#menu:hover{
+	cursor:pointer;
+	
+	height:230px;
+	border-bottom:1px solid LightGray;
+	transition-property:heght;
+	transition-duration:3s;
+	
+	
+}
+
+
+
+.subul{
+    z-index: 0;
+}
+
+
 
  #menu ul{
 	list-style-type:none;
 } 
+
 
 #logo{
 	margin-left:30px;
@@ -93,6 +125,7 @@ a{
 
 
 /* Section CSS */
+
 #middleArea{
 	display:flex;
 	justify-content:center;
@@ -118,6 +151,8 @@ a{
 		transform: translateZ(0);
 	}
 }
+
+
 
 #middleArea{
 	position:relative;

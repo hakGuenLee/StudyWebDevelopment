@@ -20,7 +20,7 @@
 				<a href="<c:url value="/"/>">HappyStudy</a>
 			</div>						
 			<div id="guidemenu">
-				<ul>
+				<ul class="subul">
 					<li class="submenu"><a href="<c:url value="/groupSearch/groupSearchPage"/>">스터디 검색</a></li>
 					<li class="submenu"><a href="<c:url value="/group/groupOpenPage"/>">스터디 등록</a></li>
 					
@@ -35,8 +35,8 @@
 				</ul>	
 			</div>	
 			<div id="usermenu">
-				<ul>
-					<li style="width:120px">Study Manager
+				<ul class="subul">
+					<li style="width:120px"><b>Study Manager</b>
 						<ul>
 							<li class="submenu"><a href="<c:url value="/group/myGroupManager"/>">스터디 모임 관리</a></li>
 							<li class="submenu"><a href="<c:url value="/file/groupFilePage"/>">스터디 게시판</a></li>
@@ -46,7 +46,7 @@
 					</li>
 				
 				
-					<li>MyPage
+					<li><b>MyPage</b>
 						<ul>
 							<li class="submenu"><a href="<c:url value="/userAccount/userUpdatePage"/>">나의 정보 수정</a></li>						
 							<li class="submenu"><a href="<c:url value="/userMessage/messageArived"/>">받은 메세지함</a></li>
