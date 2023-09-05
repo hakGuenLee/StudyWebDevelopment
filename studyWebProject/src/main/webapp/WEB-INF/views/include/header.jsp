@@ -21,22 +21,22 @@
 			</div>						
 			<div id="guidemenu">
 				<ul class="subul">
-					<li class="submenu"><a href="<c:url value="/groupSearch/groupSearchPage"/>">스터디 검색</a></li>
-					<li class="submenu"><a href="<c:url value="/group/groupOpenPage"/>">스터디 등록</a></li>
-					
-					<li><a href="<c:url value="/location/movetoMap"/>">스터디 장소</a></li>
-					<li><a href="<c:url value="/location/movetoMap"/>">스터디 용품</a>
+					<li class="submenu"><a href="<c:url value="/groupSearch/groupSearchPage"/>">스터디 모임</a>
 						<ul>
-							<li class="submenu"><a>도서</a></li>
-							<li class="submenu"><a>필기구/노트</a></li>
+							<li class="submenu"><a href="<c:url value="/groupSearch/groupSearchPage"/>">스터디 모임 검색</a>	
+							<li class="submenu"><a href="<c:url value="/group/groupOpenPage"/>">스터디 만들기</a></li>	
+							<li class="submenu"><a href="<c:url value="/group/groupOpenPage"/>">스터디 생활정보</a></li>	
+						</ul>
+					</li>	
+					
+					
+					<li><a href="<c:url value="/location/movetoMap"/>">스터디 헬퍼</a>
+						<ul>
+							<li><a href="<c:url value="/location/movetoMap"/>">모임장소 둘러보기</a>	
+							<li class="submenu"><a>참고 도서 검색</a></li>
 						</ul>
 					</li>
-					<li><a href="<c:url value="/location/movetoMap"/>">그룹채팅</a></li>
-				</ul>	
-			</div>	
-			<div id="usermenu">
-				<ul class="subul">
-					<li style="width:120px"><b>Study Manager</b>
+					<li><a>나의 스터디룸</a>
 						<ul>
 							<li class="submenu"><a href="<c:url value="/group/myGroupManager"/>">스터디 모임 관리</a></li>
 							<li class="submenu"><a href="<c:url value="/file/groupFilePage"/>">스터디 게시판</a></li>
@@ -44,9 +44,20 @@
 							<li class="submenu"><a>스터디 일정 관리</a></li>
 						</ul>				
 					</li>
+					
+				</ul>	
+			</div>	
+			<div id="usermenu">
+				<ul class="subul">
+					<li><a href="<c:url value="/location/movetoMap"/>">커뮤니티</a>
+						<ul>
+							<li><a>공지사항</a></li>
+							<li><a>공지사항</a></li>
+						</ul>
+					</li>
 				
 				
-					<li><b>MyPage</b>
+					<li>MyPage
 						<ul>
 							<li class="submenu"><a href="<c:url value="/userAccount/userUpdatePage"/>">나의 정보 수정</a></li>						
 							<li class="submenu"><a href="<c:url value="/userMessage/messageArived"/>">받은 메세지함</a></li>
