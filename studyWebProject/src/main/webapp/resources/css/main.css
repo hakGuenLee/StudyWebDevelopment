@@ -16,7 +16,7 @@ a{
 
 
 #menu{
-	display:flex;
+	 display:flex; 
 	justify-content:space-between;
 	margin-top:30px;
 
@@ -54,16 +54,21 @@ a{
 }
 
 #usermenu{
-	width:100%;
+	/* width:100%; */
 }
 
 #usermenu ul > li{
 	float: left;
-	/* width : 200px; */
-	margin-left:35px;
+	width : 110px;
+	margin-left:25px;
+	text-align:center;
 }
 
 #usermenu ul > li li{
+	/* float: right; */
+		font-size:15px;
+	font-weight:normal;
+	margin-top:10px;
 	float: right;
 }
 
@@ -126,7 +131,3 @@ th{
 td{
 	text-align:center;
 }
-
-
-
-

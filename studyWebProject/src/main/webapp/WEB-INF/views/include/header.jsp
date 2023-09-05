@@ -21,7 +21,6 @@
 			</div>						
 			<div id="guidemenu">
 				<ul>
-					<li class="submenu"><a>이용안내</a></li>
 					<li class="submenu"><a href="<c:url value="/groupSearch/groupSearchPage"/>">스터디 검색</a></li>
 					<li class="submenu"><a href="<c:url value="/group/groupOpenPage"/>">스터디 등록</a></li>
 					
@@ -37,11 +36,11 @@
 			</div>	
 			<div id="usermenu">
 				<ul>
-					<li style="width:150px">Study Manager
+					<li style="width:120px">Study Manager
 						<ul>
-							<li class="submenu"><a href="<c:url value="/group/myGroupManager"/>">나의 스터디 모임 관리</a></li>
+							<li class="submenu"><a href="<c:url value="/group/myGroupManager"/>">스터디 모임 관리</a></li>
 							<li class="submenu"><a href="<c:url value="/file/groupFilePage"/>">스터디 게시판</a></li>
-							<li class="submenu"><a href="<c:url value="/location/myWishList"/>">모임 장소 위시리스트</a></li>
+							<li class="submenu"><a href="<c:url value="/location/myWishList"/>">장소 위시리스트</a></li>
 							<li class="submenu"><a>스터디 일정 관리</a></li>
 						</ul>				
 					</li>
