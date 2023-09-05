@@ -1,6 +1,6 @@
 
 section{
-	margin-top:150px;
+	margin-top:180px;
 }
 
 #sideImg{
@@ -41,7 +41,7 @@ section{
 }
 
 #locationCity{
-	margin-left: 50px;
+	margin-left: 35px;
 	width:350px;
 }
 
@@ -66,6 +66,7 @@ section{
 	width:130px;
 	height:50px;
 	color:white;
+	vertical-align:middle
 }
 
 #registerConfirmBtn{
@@ -74,3 +75,5 @@ section{
 	height:50px;
 	color:white;
 }
+
+

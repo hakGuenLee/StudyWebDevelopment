@@ -194,27 +194,37 @@ $("#searchId").on("click", function(){
 //아이디찾기 Modal에서 찾기 버튼 클릭 시 아이디 찾기 진행 및 결과 Modal 열기
 $("#serchIdBtn").on("click", function(){
 	let mail = $("#mailInput").val();
-	console.log(mail);
 	
-	$.ajax({
-		url:"/study/userAccount/idSerch",
-		type:"post",
-		data: {"mail" : mail},
-		success: function(data){
-			console.log(data)
-			
-			$("#idsearchResultModal").modal("show");
-			
-			let str = "";
-			str += "<p>검색된 ID : " +data+ "</p>";
-			$("#idSearchResultModalBody").html(str);
-			
-			
-		},
-		error: function(){
-			alert("요청실패!");
-		}
-	})
+	if(mail == 0){
+		alert("메일을 입력해주세요!");
+
+	}else{
+		
+
+	
+	console.log(mail);
+		
+		$.ajax({
+			url:"/study/userAccount/idSerch",
+			type:"post",
+			data: {"mail" : mail},
+			success: function(data){
+				console.log(data)
+				
+				$("#idsearchResultModal").modal("show");
+				
+				let str = "";
+				str += "<p>검색된 ID : " +data+ "</p>";
+				$("#idSearchResultModalBody").html(str);
+				
+				
+			},
+			error: function(){
+				alert("요청실패!");
+			}
+		})
+	
+	}
 })
 
 //비밀번호 찾기 Modal 열기

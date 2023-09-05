@@ -45,7 +45,7 @@
 			</div>
 			
 			<div id="location2" class="d-flex mt-5">
-				<p><b>행정구</b></p>
+				<p><b>상세 지역</b></p>
 				<select id="locationCity" class="form-select" name="group_locationCity">
 					<option></option>
 				</select>
@@ -54,13 +54,15 @@
 			
 			<div class="mt-5 d-flex">
 				<p><b>모임 설명</b></p>
-				<textarea name="group_info" id="groupIntro" class="form-control" placeholder="30자 내외로 작성해주세요! 작성해주신 내용은 초대할 친구들에게 전해집니다!"></textarea>
+				<textarea name="group_info" id="groupIntro" class="form-control" 
+				placeholder="다른 회원들이 볼 수 있는 모임에 대한 소개 내용을 적어주세요. 더불어 가입 조건을 꼭 명시해주세요! 불량 회원 또는 적합하지 않은 회원의 가입을 방지할 수 있습니다. "></textarea>
 			</div>
-			
 
 			
-			<div id="buttonGroup">
+			<div id="buttonGroup" class="d-flex">
+				<div style="text-align:center; display:flex; justify-content:center; item-align:center">
 				<a id="goBackBtn" href="<c:url value="/"/>" type="button" class="btn">이전으로</a>
+				</div>
 				<button id="registerConfirmBtn" type="button" class="btn">모임 만들기</button>
 				
 			</div>
@@ -132,19 +134,24 @@ $("#checkNameBtn").on("click", function(){
 	
 	groupName = $("#groupNameInput").val();
 	
-	$.ajax({
-		url:"/study/group/nameCheck",
-		type:"post",
-		data:{"name" : groupName},
-		success:function(data){
-			if(data == "중복된 모임 이름입니다! 다른 이름으로 만들어주세요!"){
-				alert(data);
-				$("#groupNameInput").val("");
-			}else{
-				alert(data);
+	if(groupName == 0){
+		alert("모임명을 입력해주세요!");
+	}else{
+		$.ajax({
+			url:"/study/group/nameCheck",
+			type:"post",
+			data:{"name" : groupName},
+			success:function(data){
+				if(data == "중복된 모임 이름입니다! 다른 이름으로 만들어주세요!"){
+					alert(data);
+					$("#groupNameInput").val("");
+				}else{
+					alert(data);
+				}
 			}
-		}
-	})
+		})
+	
+	}
 
 })
 

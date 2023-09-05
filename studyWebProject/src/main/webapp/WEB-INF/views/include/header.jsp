@@ -16,7 +16,7 @@
 <body>
 	<header>
 		<div id="menu">			
-			<div id="logo">	
+			<div id="logo" style="margin-top:20px">	
 				<a href="<c:url value="/"/>">HappyStudy</a>
 			</div>						
 			<div id="guidemenu">

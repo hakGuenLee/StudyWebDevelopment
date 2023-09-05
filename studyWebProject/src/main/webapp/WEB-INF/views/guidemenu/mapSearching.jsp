@@ -21,7 +21,7 @@ $(document).ready(function(){
 
 
 	<section class="mt-5">
-		<div class="d-flex" style="margin-top:130px">
+		<div class="d-flex" style="margin-top:180px">
 			<div style="margin-left:300px">
 				<h4 style="font-size:28px"><b>장소 둘러보기</b></h4>
 				<p>친구들과 함께 스터디 하기 좋은 장소를 찾아보세요!</p>
